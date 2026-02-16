@@ -40,6 +40,7 @@ export function EventRegistrationModal({
     });
     const [screenshot, setScreenshot] = useState<File | null>(null);
     const [screenshotName, setScreenshotName] = useState<string | null>(null);
+    const [screenshotPreview, setScreenshotPreview] = useState<string | null>(null);
 
     if (!event) return null;
 
@@ -54,8 +55,23 @@ export function EventRegistrationModal({
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.files && e.target.files[0]) {
-            setScreenshot(e.target.files[0]);
-            setScreenshotName(e.target.files[0].name);
+            const file = e.target.files[0];
+
+            // Check file size (500KB limit for EmailJS reliability)
+            if (file.size > 500000) {
+                toast.error("File is too large! Please upload a screenshot smaller than 500KB.");
+                return;
+            }
+
+            setScreenshot(file);
+            setScreenshotName(file.name);
+
+            // Create preview
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setScreenshotPreview(reader.result as string);
+            };
+            reader.readAsDataURL(file);
         }
     };
 
@@ -85,20 +101,29 @@ export function EventRegistrationModal({
                 return;
             }
             if (!formData.transactionId) {
-                toast.error("Please enter the Transaction ID / UTR Number.");
+                toast.error("Please enter the Transaction ID.");
+                return;
+            }
+            if (formData.transactionId.length < 10) {
+                toast.error("The Transaction ID seems too short. Please verify it.");
                 return;
             }
         }
 
-        const toastId = toast.loading("Sending message...");
+        setLoading(true);
+        const toastId = toast.loading("Sending registration & payment details...");
 
         try {
             const templateParams = {
                 name: formData.name,
                 email: formData.email,
                 phone: formData.phone,
-                title: `Event Registration: ${event.title}`,
-                message: `Event: ${event.title}\nOrganization: ${formData.organization}\nTransaction ID: ${formData.transactionId || "N/A (Free Event)"}\nComments: ${formData.comments || "None"}`,
+                event_name: event.title,
+                organization: formData.organization,
+                transaction_id: formData.transactionId || "N/A (Free Event)",
+                comments: formData.comments || "None",
+                // Base64 string for the attachment (Must match variable in EmailJS template)
+                payment_screenshot: screenshotPreview || "",
             };
 
             await emailjs.send(
@@ -111,7 +136,7 @@ export function EventRegistrationModal({
             setLoading(false);
             toast.success("Registration Successful!", {
                 id: toastId,
-                description: `You have successfully registered for ${event.title}. Our team will verify your details and contact you shortly.`,
+                description: `We've received your registration for ${event.title}. Our team will verify the payment and confirm your seat shortly.`,
             });
 
             // Reset and close
@@ -125,14 +150,23 @@ export function EventRegistrationModal({
             });
             setScreenshot(null);
             setScreenshotName(null);
+            setScreenshotPreview(null);
             setStep(1);
             onClose();
         } catch (error: any) {
             console.error("Event Registration Error:", error);
             setLoading(false);
-            const errorMessage = error?.text || error?.message || "Check your internet or EmailJS account.";
+
+            let errorMessage = "Check your internet or EmailJS settings.";
+            if (error?.text?.includes("too large")) {
+                errorMessage = "The attachment is too large for the current EmailJS plan. Try a smaller image.";
+            } else if (error?.text) {
+                errorMessage = error.text;
+            }
+
             toast.error(`Error: ${errorMessage}`, {
-                id: toastId
+                id: toastId,
+                description: "If this persists, please contact us with your UTR number."
             });
         }
     };
@@ -313,6 +347,12 @@ export function EventRegistrationModal({
                                             onChange={handleFileChange}
                                         />
                                     </div>
+                                    {screenshotPreview && (
+                                        <div className="mt-4 relative rounded-xl overflow-hidden border shadow-inner bg-black/5">
+                                            <p className="text-[10px] uppercase tracking-wider font-bold text-muted-foreground absolute top-2 left-2 bg-white/80 px-2 py-0.5 rounded-md z-10 shadow-sm">Preview</p>
+                                            <img src={screenshotPreview} alt="Payment Preview" className="w-full h-auto max-h-[200px] object-contain mx-auto" />
+                                        </div>
+                                    )}
                                 </div>
                             </div>
 
