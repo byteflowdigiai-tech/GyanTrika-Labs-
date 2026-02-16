@@ -47,7 +47,7 @@ export const events: Event[] = [
         image: "https://images.unsplash.com/photo-1560493676-04071c5f467b?auto=format&fit=crop&q=80&w=1200",
         description: "Solve real-world agricultural problems using technology. Prizes worth ₹1 Lakh up for grabs!",
         status: "Upcoming",
-        price: "Free",
+        price: "₹20",
     },
     {
         id: "4",
