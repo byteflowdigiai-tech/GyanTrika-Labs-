@@ -1,14 +1,30 @@
+# Sitemap files
+Sitemap: https://gyantrikalabs.in/sitemap.xml
+
+# Allow all bots to crawl everything
+User-agent: *
+Allow: /
+
+# Crawl-delay for polite bots
+Crawl-delay: 1
+
+# Specific rules for common search engines
 User-agent: Googlebot
 Allow: /
 
-User-agent: Bingbot
+User-agent: Bingbot  
 Allow: /
 
-User-agent: Twitterbot
+User-agent: Slurp
 Allow: /
 
-User-agent: facebookexternalhit
-Allow: /
+# Block sensitive areas (even though we don't have auth pages publically exposed)
+Disallow: /lms/dashboard
+Disallow: /login
+Disallow: /signup
 
-User-agent: *
-Allow: /
+# Block these from indexing (less important pages)
+Disallow: /*?*
+Disallow: /*.json$
+Disallow: /*.xml$
+Disallow: /api/
