@@ -1,5 +1,5 @@
 # Sitemap files
-Sitemap: https://gyantrikalabs.com/sitemap.xml
+Sitemap: https://gyantrika.com/sitemap.xml
 
 # Allow all bots to crawl everything
 User-agent: *
