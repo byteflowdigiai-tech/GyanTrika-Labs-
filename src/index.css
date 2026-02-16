@@ -1,0 +1,199 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* Light theme - Matched to logo blue (#1B456C) */
+    --background: 0 0% 100%;
+    --foreground: 209 60% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 209 60% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 209 60% 15%;
+
+    --primary: 209 60% 26%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 209 40% 94%;
+    --secondary-foreground: 209 60% 26%;
+
+    --muted: 209 20% 95%;
+    --muted-foreground: 209 30% 45%;
+
+    --accent: 209 85% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 209 30% 88%;
+    --input: 209 30% 88%;
+    --ring: 209 60% 26%;
+
+    --radius: 0.75rem;
+
+    /* Custom tokens */
+    --hero-gradient: linear-gradient(135deg, hsl(209 40% 98%) 0%, hsl(209 50% 92%) 100%);
+    --card-gradient: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(209 40% 97%) 100%);
+    --glow: 0 0 40px hsla(209, 85%, 45%, 0.15);
+    --circuit-color: hsla(209, 60%, 26%, 0.08);
+  }
+
+  .dark {
+    /* Dark theme - Electric version of logo blue */
+    --background: 220 35% 6%;
+    --foreground: 209 20% 92%;
+
+    --card: 220 30% 10%;
+    --card-foreground: 209 20% 92%;
+
+    --popover: 220 30% 10%;
+    --popover-foreground: 209 20% 92%;
+
+    --primary: 209 90% 60%;
+    --primary-foreground: 220 35% 6%;
+
+    --secondary: 220 25% 15%;
+    --secondary-foreground: 209 90% 60%;
+
+    --muted: 220 25% 12%;
+    --muted-foreground: 209 20% 60%;
+
+    --accent: 209 90% 55%;
+    --accent-foreground: 220 35% 6%;
+
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 25% 18%;
+    --input: 220 25% 18%;
+    --ring: 209 90% 60%;
+
+    --hero-gradient: linear-gradient(135deg, hsl(220 35% 6%) 0%, hsl(220 40% 10%) 100%);
+    --card-gradient: linear-gradient(180deg, hsl(220 30% 10%) 0%, hsl(220 35% 14%) 100%);
+    --glow: 0 0 60px hsla(209, 90%, 55%, 0.2);
+    --circuit-color: hsla(209, 90%, 55%, 0.1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 130px;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Orbitron', sans-serif;
+    @apply text-primary;
+  }
+}
+
+@layer components {
+  .tech-gradient {
+    background: var(--hero-gradient);
+  }
+
+  .card-gradient {
+    background: var(--card-gradient);
+  }
+
+  .glow-effect {
+    box-shadow: var(--glow);
+  }
+
+  .circuit-pattern {
+    background-image:
+      linear-gradient(var(--circuit-color) 1px, transparent 1px),
+      linear-gradient(90deg, var(--circuit-color) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  .nav-link {
+    @apply text-foreground/80 hover:text-primary transition-colors duration-200 font-medium;
+  }
+
+  .nav-link-active {
+    @apply text-primary font-semibold;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-float-delayed {
+    animation: float 6s ease-in-out 2s infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulseGlow 3s ease-in-out infinite;
+  }
+
+  .mask-radial-fade {
+    mask-image: radial-gradient(circle, black 40%, transparent 80%);
+  }
+
+  .animate-spin-slow {
+    animation: spin 8s linear infinite;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulseGlow {
+
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
