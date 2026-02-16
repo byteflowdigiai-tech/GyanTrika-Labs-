@@ -15,7 +15,7 @@ export function Footer() {
                     <div className="space-y-4">
                         <img
                             src={theme === "dark" ? logoDark : logoLight}
-                            alt="GyaanTrika Labs"
+                            alt="GyanTrika Labs"
                             className="h-44 w-auto object-contain mix-blend-multiply dark:mix-blend-screen dark:invert"
                         />
                         <p className="text-muted-foreground text-sm leading-relaxed">
@@ -80,7 +80,7 @@ export function Footer() {
                     <div className="hidden md:block order-1"></div>
 
                     <div className="text-sm text-muted-foreground text-center order-2">
-                        <p>© {new Date().getFullYear()} GyaanTrika Labs. All rights reserved. | Lab of Ideas</p>
+                        <p>© {new Date().getFullYear()} GyanTrika Labs. All rights reserved. | Lab of Ideas</p>
                         <p className="mt-1 text-xs opacity-70">
                             Developed by <a href="https://www.byteflowdigiai.com/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors font-semibold">ByteFlow DigiAI</a>
                         </p>

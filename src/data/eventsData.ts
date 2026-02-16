@@ -31,7 +31,7 @@ export const events: Event[] = [
         category: "Workshop",
         date: "2026-02-20",
         time: "2:00 PM - 5:00 PM",
-        location: "GyaanTrika Labs, Indiranagar",
+        location: "GyanTrika Labs, Indiranagar",
         image: "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?auto=format&fit=crop&q=80&w=1200",
         description: "Hands-on workshop to build your own smart home devices using ESP32 and Arduino.",
         status: "Upcoming",

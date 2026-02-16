@@ -13,10 +13,10 @@ import { useEffect } from "react";
 
 const BlogPage = () => {
     useEffect(() => {
-        document.title = "Tech Insights Hub - GyaanTrika Labs Blog | Robotics, AI, IoT (2026)";
+        document.title = "Tech Insights Hub - GyanTrika Labs Blog | Robotics, AI, IoT (2026)";
         const metaDesc = document.querySelector('meta[name="description"]');
         if (metaDesc) {
-            metaDesc.setAttribute("content", "Explore the latest in Robotics, AI, and IoT on the GyaanTrika Labs blog. Dive into expert tutorials, industry insights, and innovation stories.");
+            metaDesc.setAttribute("content", "Explore the latest in Robotics, AI, and IoT on the GyanTrika Labs blog. Dive into expert tutorials, industry insights, and innovation stories.");
         }
     }, []);
 

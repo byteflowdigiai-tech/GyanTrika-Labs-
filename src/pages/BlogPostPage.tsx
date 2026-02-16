@@ -31,7 +31,7 @@ const BlogPostPage = () => {
 
     useEffect(() => {
         if (post) {
-            document.title = `${post.title} | GyaanTrika Labs Blog`;
+            document.title = `${post.title} | GyanTrika Labs Blog`;
             const metaDesc = document.querySelector('meta[name="description"]');
             if (metaDesc) {
                 metaDesc.setAttribute("content", post.excerpt);

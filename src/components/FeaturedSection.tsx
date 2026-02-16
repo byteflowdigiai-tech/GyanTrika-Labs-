@@ -39,7 +39,7 @@ export function FeaturedSection() {
               Hands-On Learning for the <span className="text-gradient">Future Innovators</span>
             </h2>
             <p className="text-muted-foreground mb-8">
-              At GyaanTrika Labs, we believe in learning by doing. Our curriculum combines theoretical knowledge with practical projects, ensuring students gain real-world skills that matter in today's tech-driven world.
+              At GyanTrika Labs, we believe in learning by doing. Our curriculum combines theoretical knowledge with practical projects, ensuring students gain real-world skills that matter in today's tech-driven world.
             </p>
             <Button asChild className="gap-2">
               <Link to="/programs">
