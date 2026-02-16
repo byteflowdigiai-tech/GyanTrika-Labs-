@@ -259,7 +259,7 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Hands-on learning in Robotics, AI, IoT, PCB Design & 3D Printing — built for real-world innovation.
+            Best Robotics & AI Training Institute in Guwahati, Assam — Hands-on learning in Robotics, AI, IoT, PCB Design & 3D Printing for kids and students.
           </motion.p>
 
           <motion.div
