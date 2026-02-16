@@ -7,7 +7,7 @@
 
 <!-- Homepage - Highest Priority -->
 <url>
-  <loc>https://gyantrikalabs.in/</loc>
+  <loc>https://gyantrikalabs.com/</loc>
   <lastmod>2026-02-16</lastmod>
   <changefreq>daily</changefreq>
   <priority>1.0</priority>
@@ -15,28 +15,28 @@
 
 <!-- Main Service Pages - High Priority -->
 <url>
-  <loc>https://gyantrikalabs.in/lms</loc>
+  <loc>https://gyantrikalabs.com/lms</loc>
   <lastmod>2026-02-16</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.9</priority>
 </url>
 
 <url>
-  <loc>https://gyantrikalabs.in/programs</loc>
+  <loc>https://gyantrikalabs.com/programs</loc>
   <lastmod>2026-02-16</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.9</priority>
 </url>
 
 <url>
-  <loc>https://gyantrikalabs.in/shop</loc>
+  <loc>https://gyantrikalabs.com/shop</loc>
   <lastmod>2026-02-16</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.9</priority>
 </url>
 
 <url>
-  <loc>https://gyantrikalabs.in/events</loc>
+  <loc>https://gyantrikalabs.com/events</loc>
   <lastmod>2026-02-16</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.9</priority>
@@ -44,7 +44,7 @@
 
 <!-- Blog Listing - High Priority for SEO -->
 <url>
-  <loc>https://gyantrikalabs.in/blogs</loc>
+  <loc>https://gyantrikalabs.com/blogs</loc>
   <lastmod>2026-02-16</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.9</priority>
@@ -52,56 +52,56 @@
 
 <!-- Individual Blog Posts - High SEO Value -->
 <url>
-  <loc>https://gyantrikalabs.in/blog/arduino-for-beginners-guide</loc>
+  <loc>https://gyantrikalabs.com/blog/arduino-for-beginners-guide</loc>
   <lastmod>2026-01-28</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>
 </url>
 
 <url>
-  <loc>https://gyantrikalabs.in/blog/iot-smart-home-automation-guide</loc>
+  <loc>https://gyantrikalabs.com/blog/iot-smart-home-automation-guide</loc>
   <lastmod>2026-01-28</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>
 </url>
 
 <url>
-  <loc>https://gyantrikalabs.in/blog/ai-machine-learning-robotics-guide</loc>
+  <loc>https://gyantrikalabs.com/blog/ai-machine-learning-robotics-guide</loc>
   <lastmod>2026-01-28</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>
 </url>
 
 <url>
-  <loc>https://gyantrikalabs.in/blog/top-robotics-projects-for-students-2026</loc>
+  <loc>https://gyantrikalabs.com/blog/top-robotics-projects-for-students-2026</loc>
   <lastmod>2026-01-28</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>
 </url>
 
 <url>
-  <loc>https://gyantrikalabs.in/blog/3d-printing-in-education-benefits</loc>
+  <loc>https://gyantrikalabs.com/blog/3d-printing-in-education-benefits</loc>
   <lastmod>2026-01-28</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>
 </url>
 
 <url>
-  <loc>https://gyantrikalabs.in/blog/pcb-design-fundamentals-guide</loc>
+  <loc>https://gyantrikalabs.com/blog/pcb-design-fundamentals-guide</loc>
   <lastmod>2026-01-28</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>
 </url>
 
 <url>
-  <loc>https://gyantrikalabs.in/blog/sensor-integration-robotics-guide</loc>
+  <loc>https://gyantrikalabs.com/blog/sensor-integration-robotics-guide</loc>
   <lastmod>2026-01-28</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>
 </url>
 
 <url>
-  <loc>https://gyantrikalabs.in/blog/python-for-robotics-libraries-guide</loc>
+  <loc>https://gyantrikalabs.com/blog/python-for-robotics-libraries-guide</loc>
   <lastmod>2026-01-28</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>
@@ -109,42 +109,42 @@
 
 <!-- Projects Section - Important for Lead Generation -->
 <url>
-  <loc>https://gyantrikalabs.in/projects</loc>
+  <loc>https://gyantrikalabs.com/projects</loc>
   <lastmod>2026-02-16</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.85</priority>
 </url>
 
 <url>
-  <loc>https://gyantrikalabs.in/projects/robotics</loc>
+  <loc>https://gyantrikalabs.com/projects/robotics</loc>
   <lastmod>2026-02-16</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 
 <url>
-  <loc>https://gyantrikalabs.in/projects/iot</loc>
+  <loc>https://gyantrikalabs.com/projects/iot</loc>
   <lastmod>2026-02-16</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 
 <url>
-  <loc>https://gyantrikalabs.in/projects/ai</loc>
+  <loc>https://gyantrikalabs.com/projects/ai</loc>
   <lastmod>2026-02-16</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 
 <url>
-  <loc>https://gyantrikalabs.in/projects/pcb</loc>
+  <loc>https://gyantrikalabs.com/projects/pcb</loc>
   <lastmod>2026-02-16</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 
 <url>
-  <loc>https://gyantrikalabs.in/projects/3d</loc>
+  <loc>https://gyantrikalabs.com/projects/3d</loc>
   <lastmod>2026-02-16</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
@@ -152,14 +152,14 @@
 
 <!-- Shop Categories -->
 <url>
-  <loc>https://gyantrikalabs.in/shop/kits</loc>
+  <loc>https://gyantrikalabs.com/shop/kits</loc>
   <lastmod>2026-02-16</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.75</priority>
 </url>
 
 <url>
-  <loc>https://gyantrikalabs.in/shop/bots</loc>
+  <loc>https://gyantrikalabs.com/shop/bots</loc>
   <lastmod>2026-02-16</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.75</priority>
@@ -167,14 +167,14 @@
 
 <!-- Books Section -->
 <url>
-  <loc>https://gyantrikalabs.in/books</loc>
+  <loc>https://gyantrikalabs.com/books</loc>
   <lastmod>2026-02-16</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.7</priority>
 </url>
 
 <url>
-  <loc>https://gyantrikalabs.in/books/Arduino</loc>
+  <loc>https://gyantrikalabs.com/books/Arduino</loc>
   <lastmod>2026-02-16</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.65</priority>
@@ -182,14 +182,14 @@
 
 <!-- About and Contact - Standard Priority -->
 <url>
-  <loc>https://gyantrikalabs.in/about</loc>
+  <loc>https://gyantrikalabs.com/about</loc>
   <lastmod>2026-02-16</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.6</priority>
 </url>
 
 <url>
-  <loc>https://gyantrikalabs.in/contact</loc>
+  <loc>https://gyantrikalabs.com/contact</loc>
   <lastmod>2026-02-16</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.7</priority>
@@ -197,14 +197,14 @@
 
 <!-- Legal Pages - Lower Priority -->
 <url>
-  <loc>https://gyantrikalabs.in/privacy-policy</loc>
+  <loc>https://gyantrikalabs.com/privacy-policy</loc>
   <lastmod>2026-02-16</lastmod>
   <changefreq>yearly</changefreq>
   <priority>0.3</priority>
 </url>
 
 <url>
-  <loc>https://gyantrikalabs.in/terms-conditions</loc>
+  <loc>https://gyantrikalabs.com/terms-conditions</loc>
   <lastmod>2026-02-16</lastmod>
   <changefreq>yearly</changefreq>
   <priority>0.3</priority>
