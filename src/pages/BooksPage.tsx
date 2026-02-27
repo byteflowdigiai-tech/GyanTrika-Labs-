@@ -29,31 +29,25 @@ import {
 } from "lucide-react";
 import { bookServiceCategories } from "@/data/booksPageData";
 import { books, Book } from "@/data/booksData";
+import { toast } from "sonner";
 
 const BooksPage = () => {
     const { category } = useParams();
     const navigate = useNavigate();
     const [selectedBook, setSelectedBook] = useState<Book | null>(null);
-    const [downloading, setDownloading] = useState<string | null>(null);
 
     const handleSystemDownload = (e: React.MouseEvent, url: string, filename: string) => {
         e.preventDefault();
         e.stopPropagation();
 
-        // Show loading state for UX
-        setDownloading(filename);
-
-        // Create a hidden link and trigger download
-        const link = document.createElement('a');
-        link.href = url === "#" ? "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" : url;
-        link.download = filename;
-        link.target = "_blank"; // Fallback for some browsers
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-
-        // Reset state after a short delay
-        setTimeout(() => setDownloading(null), 2000);
+        toast.info("Please contact us for the books.", {
+            description: "Our books are complementary with our courses. If you only wish to purchase the books, please contact us.",
+            action: {
+                label: "Contact Us",
+                onClick: () => navigate("/contact"),
+            },
+            duration: 6000,
+        });
     };
 
     // Scroll to top on mount or category change
@@ -70,7 +64,7 @@ const BooksPage = () => {
                 <section className="relative pt-32 pb-20 overflow-hidden">
                     <div className="absolute inset-0 bg-primary/90 dark:bg-primary/20 z-0 overflow-hidden">
                         <motion.div
-                            className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center mix-blend-overlay opacity-30"
+                            className="absolute inset-0 bg-[url('/images/library_hero_bg.png')] bg-cover bg-center mix-blend-overlay opacity-30"
                             animate={{ scale: [1, 1.15, 1] }}
                             transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
                         />
@@ -87,7 +81,7 @@ const BooksPage = () => {
                                 <span>Digital Learning Resources</span>
                             </div>
                             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 font-display tracking-tight">
-                                Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-cyan-200">Library</span>
+                                Learning <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-cyan-200">Materials</span>
                             </h1>
                             <p className="text-lg text-white/80 max-w-2xl mx-auto leading-relaxed">
                                 Dive into our collection of meticulously curated technical literature designed for architects of the future.
@@ -199,15 +193,16 @@ const BooksPage = () => {
     }
 
     // VIEW 2: INDIVIDUAL BOOKS LIST
-    const categoryInfo = bookServiceCategories.find(s => s.id === category || s.link.includes(category));
+    // Normalize the category parameter for case-insensitive lookup
+    const safeCategoryParam = (category || "").toLowerCase();
+    const categoryInfo = bookServiceCategories.find(s => s.id === safeCategoryParam || s.link.includes(safeCategoryParam));
     const normalizedCategoryName = categoryInfo ? categoryInfo.title : "Library";
 
     const filteredBooks = books.filter(p => {
         if (!categoryInfo) return true;
         // Normalize: lowercase and replace spaces with hyphens for comparison
         const bookCategorySlug = p.category.toLowerCase().replace(/\s+/g, '-');
-        const paramCategorySlug = category.toLowerCase();
-        return bookCategorySlug === paramCategorySlug;
+        return bookCategorySlug === safeCategoryParam;
     });
 
     const formatDate = (dateString: string) => {
@@ -233,10 +228,7 @@ const BooksPage = () => {
                     <motion.div
                         className={`absolute inset-0 bg-cover bg-center bg-no-repeat opacity-60 mix-blend-screen`}
                         style={{
-                            backgroundImage: `url(${category === '3d-printing'
-                                ? 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=2070&auto=format&fit=crop'
-                                : categoryInfo?.image || 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop'
-                                })`
+                            backgroundImage: `url(${categoryInfo?.image || '/images/library_hero_bg.png'})`
                         }}
                         animate={{
                             scale: [1, 1.05, 1],
@@ -352,9 +344,11 @@ const BooksPage = () => {
                                             <CardTitle className="text-xl group-hover:text-primary transition-colors line-clamp-2 leading-tight">
                                                 {book.title}
                                             </CardTitle>
-                                            <p className="text-sm text-slate-500 mt-1 flex items-center gap-1 font-medium">
-                                                By {book.author}
-                                            </p>
+                                            {book.author && book.author !== "Unknown" && (
+                                                <p className="text-sm text-slate-500 mt-1 flex items-center gap-1 font-medium">
+                                                    By {book.author}
+                                                </p>
+                                            )}
                                         </CardHeader>
                                         <CardContent className="px-5 pt-0 flex-1">
                                             <p className="text-sm text-slate-600 dark:text-slate-400 line-clamp-3 leading-relaxed">
@@ -373,11 +367,11 @@ const BooksPage = () => {
                                                 </div>
                                             </div>
                                             <Button
-                                                className="rounded-xl bg-primary hover:bg-primary/90 text-white gap-2 font-bold px-4 h-10 shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all"
+                                                className="rounded-xl bg-primary text-white gap-2 font-bold px-4 h-10 shadow-lg shadow-primary/20 opacity-60 cursor-not-allowed hover:bg-primary"
                                                 onClick={(e) => handleSystemDownload(e, book.downloadUrl, `${book.title.replace(/\s+/g, '-').toLowerCase()}.pdf`)}
                                             >
-                                                <Download className={`w-4 h-4 ${downloading === `${book.title.replace(/\s+/g, '-').toLowerCase()}.pdf` ? 'animate-bounce' : ''}`} />
-                                                {downloading === `${book.title.replace(/\s+/g, '-').toLowerCase()}.pdf` ? "..." : "Download"}
+                                                <Download className="w-4 h-4" />
+                                                Download
                                             </Button>
                                         </CardFooter>
                                     </Card>
@@ -432,9 +426,11 @@ const BooksPage = () => {
                             <h2 className="text-3xl font-bold mb-2 leading-tight">
                                 {selectedBook?.title}
                             </h2>
-                            <p className="text-primary font-bold mb-6 flex items-center gap-2">
-                                <User className="w-4 h-4" /> By {selectedBook?.author}
-                            </p>
+                            {selectedBook?.author && selectedBook.author !== "Unknown" && (
+                                <p className="text-primary font-bold mb-6 flex items-center gap-2">
+                                    <User className="w-4 h-4" /> By {selectedBook?.author}
+                                </p>
+                            )}
 
                             <div className="grid grid-cols-2 gap-4 mb-8">
                                 <div className="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-800">
@@ -458,11 +454,11 @@ const BooksPage = () => {
 
                             <div className="flex gap-4">
                                 <Button
-                                    className="flex-1 h-14 rounded-2xl bg-primary hover:bg-primary/90 text-white font-bold gap-3 text-lg h-14"
+                                    className="flex-1 rounded-2xl bg-primary hover:bg-primary text-white font-bold gap-3 text-lg h-14 opacity-60 cursor-not-allowed"
                                     onClick={(e) => handleSystemDownload(e, selectedBook?.downloadUrl || "#", `${selectedBook?.title.replace(/\s+/g, '-').toLowerCase()}.pdf`)}
                                 >
-                                    <Download className={`w-5 h-5 ${downloading ? 'animate-bounce' : ''}`} />
-                                    {downloading ? "Downloading..." : "Download PDF"}
+                                    <Download className="w-5 h-5" />
+                                    Download PDF
                                 </Button>
                             </div>
                         </div>

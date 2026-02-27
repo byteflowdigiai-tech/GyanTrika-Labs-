@@ -26,7 +26,8 @@ import BooksPage from "./pages/BooksPage";
 import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
 import NotFound from "./pages/NotFound";
-import EventsPage from "./pages/EventsPage";
+import NeetJeePage from "./pages/NeetJeePage";
+
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import TermsConditionsPage from "./pages/TermsConditionsPage";
 
@@ -61,18 +62,14 @@ const App = () => (
               <Route path="/blogs" element={<BlogPage />} />
               <Route path="/blog/:slug" element={<BlogPostPage />} />
 
-              {/* Projects Route - Single Page */}
+              {/* Projects Route */}
               <Route path="/projects" element={<ProjectsPage />} />
-              <Route path="/projects/robotics" element={<ProjectsPage />} />
-              <Route path="/projects/iot" element={<ProjectsPage />} />
-              <Route path="/projects/ai" element={<ProjectsPage />} />
-              <Route path="/projects/pcb" element={<ProjectsPage />} />
-              <Route path="/projects/3d" element={<ProjectsPage />} />
+              <Route path="/projects/:category" element={<ProjectsPage />} />
 
               <Route path="/books" element={<BooksPage />} />
               <Route path="/books/:category" element={<BooksPage />} />
               <Route path="/programs" element={<ProgramsPage />} />
-              <Route path="/events" element={<EventsPage />} />
+              <Route path="/neet-jee" element={<NeetJeePage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />

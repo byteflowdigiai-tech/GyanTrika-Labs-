@@ -1,5 +1,5 @@
 
-import { Bot, Cpu, Brain, CircuitBoard, Printer } from "lucide-react";
+import { Bot, Cpu, CircuitBoard, Printer, Rocket, Layers, Lightbulb } from "lucide-react";
 
 export interface ProjectService {
     id: string;
@@ -15,83 +15,83 @@ export interface ProjectService {
 
 export const projectServices: ProjectService[] = [
     {
-        id: "robotics",
-        title: "Robotics",
-        description: "Design and build advanced robotic systems, from autonomous rovers to complex robotic arms.",
+        id: "stem-tinkering",
+        title: "STEM & Tinkering Lab",
+        description: "A creative space for hands-on learning, fostering innovation. We offer complete Atal Tinkering Lab setup as per NITI AAYOG approved specifications, categorized into 4 comprehensive packages.",
         features: [
-            "Autonomous Navigation",
-            "Robotic Arms & Kinematics",
-            "Sensor Integration",
-            "Control Systems"
+            "Package 1 (P1) - Electronics, Robotics, IoT",
+            "Package 2 (P2) - Rapid Prototyping Tools",
+            "Package 3 (P3) - Mechanical & Measurement Tools",
+            "Package 4 (P4) - Power Supply & Safety Equipment"
+        ],
+        icon: Lightbulb,
+        image: "/images/STEM & Tinkering LAb.png",
+        link: "/projects/stem-tinkering",
+        color: "from-yellow-500 to-orange-500",
+        hoverImage: "/images/STEM & Tinkering Lab 2.png"
+    },
+    {
+        id: "ai-robotics",
+        title: "AI & Robotics Lab",
+        description: "Advanced facility for designing autonomous systems, robotic arms, and implementing artificial intelligence algorithms.",
+        features: [
+            "Sensor Integration Modules",
+            "Robotics Assembly Components",
+            "AI Programming & Software Stack",
+            "Project-Based Learning Manuals"
         ],
         icon: Bot,
         image: "/images/bot-workbench.png",
-        link: "/projects/robotics",
-        color: "from-cyan-500 to-blue-500",
+        link: "/projects/ai-robotics",
+        color: "from-blue-500 to-cyan-500",
         hoverImage: "/images/robotics-hover-new.png"
     },
     {
-        id: "iot",
-        title: "Internet of Things (IoT)",
-        description: "Connect the physical world to the digital realm with smart sensors and cloud-integrated solutions.",
+        id: "embedded-electronics",
+        title: "Embedded Systems & Electronics Lab",
+        description: "Deep dive into circuit design, microcontrollers, PCB fabrication, and IoT systems connectivity.",
         features: [
-            "Smart Home Automation",
-            "Industrial IoT Monitoring",
-            "Cloud Data Logging",
-            "Wireless Connectivity"
-        ],
-        icon: Cpu,
-        image: "/images/iot-projects.png",
-        link: "/projects/iot",
-        color: "from-indigo-500 to-violet-500",
-        hoverImage: "/images/iot-hover.png"
-    },
-    {
-        id: "ai",
-        title: "Artificial Intelligence",
-        description: "Implement cutting-edge AI and Machine Learning models for vision, speech, and predictive analysis.",
-        features: [
-            "Computer Vision",
-            "Pattern Recognition",
-            "Voice Assistants",
-            "Edge AI Implementation"
-        ],
-        icon: Brain,
-        image: "/images/ai-projects.png",
-        link: "/projects/ai",
-        color: "from-fuchsia-500 to-pink-500",
-        hoverImage: "/images/ai-hover.png"
-    },
-    {
-        id: "pcb",
-        title: "PCB Design",
-        description: "Professional Printed Circuit Board design, from schematic capture to manufacturing files.",
-        features: [
-            "Schematic Design",
-            "Multi-layer Layout",
-            "Component Selection",
-            "Prototyping"
+            "Circuit Design",
+            "Microcontroller Programming",
+            "PCB Fabrication",
+            "IoT Sensor Networks"
         ],
         icon: CircuitBoard,
-        image: "/images/pcb-projects.png",
-        link: "/projects/pcb",
+        image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop",
+        link: "/projects/embedded-electronics",
         color: "from-emerald-500 to-green-500",
-        hoverImage: "/images/pcb-hover.jpg"
+        hoverImage: "/images/Electronics Lab.png"
     },
     {
-        id: "3d",
-        title: "3D Designing & Printing",
-        description: "Turn concepts into reality with precision CAD modeling and 3D printing services.",
+        id: "astronomy",
+        title: "Astronomy Lab",
+        description: "Explore the cosmos with varied telescopes, sky mapping tools, and space science observational equipment.",
         features: [
-            "CAD Modeling",
-            "Rapid Prototyping",
-            "Functional Parts",
-            "Product Enclosures"
+            "Telescope Operation",
+            "Stargazing Sessions",
+            "Celestial Mapping",
+            "Space Science"
         ],
-        icon: Printer,
-        image: "/images/3d-printing-projects.png",
-        link: "/projects/3d",
-        color: "from-orange-500 to-amber-500",
-        hoverImage: "/images/3d-hover.jpg"
+        icon: Rocket,
+        image: "https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?q=80&w=2070&auto=format&fit=crop",
+        link: "/projects/astronomy",
+        color: "from-indigo-500 to-violet-500",
+        hoverImage: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop"
+    },
+    {
+        id: "composite-skills",
+        title: "Composite Skills Lab",
+        description: "A multidisciplinary hub integrating 3D printing, carpentry, artistic crafts, and modern fabrication techniques.",
+        features: [
+            "3D Printing & Design",
+            "Carpentry & Woodwork",
+            "Digital Fabrication",
+            "Artistic Crafting"
+        ],
+        icon: Layers,
+        image: "/images/composite_lab_3d_printing.png",
+        link: "/projects/composite-skills",
+        color: "from-pink-500 to-rose-500",
+        hoverImage: "/images/composite_lab_details.png"
     }
 ];

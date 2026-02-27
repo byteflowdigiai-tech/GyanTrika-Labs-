@@ -39,7 +39,7 @@ export const bookServiceCategories: BookService[] = [
             "IoT Projects"
         ],
         icon: Cpu,
-        image: "https://images.unsplash.com/photo-1553406830-ef2513450d76?auto=format&fit=crop&q=80&w=800",
+        image: "/images/arduino_category_books.png",
         link: "/books/arduino",
         color: "from-teal-500 to-cyan-500"
     },
@@ -54,7 +54,7 @@ export const bookServiceCategories: BookService[] = [
             "Component Fundamentals"
         ],
         icon: CircuitBoard,
-        image: "https://images.unsplash.com/photo-1608564697071-ddf911d81370?auto=format&fit=crop&q=80&w=800",
+        image: "/images/electronics_category_books.png",
         link: "/books/electronics",
         color: "from-emerald-500 to-green-500"
     },

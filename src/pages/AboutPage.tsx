@@ -73,8 +73,8 @@ const AboutPage = () => {
 
 
     const stats = [
-        { number: "250+", label: "Students Trained" },
-        { number: "3+", label: "Industry Partners" },
+        { number: "2000+", label: "Students Trained" },
+        { number: "10+", label: "Industry Partners" },
         { number: "98%", label: "Success Rate" },
         { number: "4.9/5", label: "Average Rating" }
     ];

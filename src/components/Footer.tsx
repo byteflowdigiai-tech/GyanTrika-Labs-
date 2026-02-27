@@ -35,15 +35,15 @@ export function Footer() {
                         </ul>
                     </div>
 
-                    {/* Projects */}
+                    {/* Lab Setups */}
                     <div>
-                        <h4 className="font-display font-semibold mb-4">Projects</h4>
+                        <h4 className="font-display font-semibold mb-4">Lab Setups</h4>
                         <ul className="space-y-2 text-sm">
-                            <li><Link to="/projects/robotics" className="text-muted-foreground hover:text-primary transition-colors">Robotics</Link></li>
-                            <li><Link to="/projects/iot" className="text-muted-foreground hover:text-primary transition-colors">IoT</Link></li>
-                            <li><Link to="/projects/ai" className="text-muted-foreground hover:text-primary transition-colors">AI</Link></li>
-                            <li><Link to="/projects/pcb" className="text-muted-foreground hover:text-primary transition-colors">PCB Design</Link></li>
-                            <li><Link to="/projects/3d" className="text-muted-foreground hover:text-primary transition-colors">3D Printing</Link></li>
+                            <li><Link to="/projects/stem-tinkering" className="text-muted-foreground hover:text-primary transition-colors">STEM & Tinkering Lab</Link></li>
+                            <li><Link to="/projects/ai-robotics" className="text-muted-foreground hover:text-primary transition-colors">AI & Robotics Lab</Link></li>
+                            <li><Link to="/projects/embedded-electronics" className="text-muted-foreground hover:text-primary transition-colors">Embedded Systems Lab</Link></li>
+                            <li><Link to="/projects/astronomy" className="text-muted-foreground hover:text-primary transition-colors">Astronomy Lab</Link></li>
+                            <li><Link to="/projects/composite-skills" className="text-muted-foreground hover:text-primary transition-colors">Composite Skills Lab</Link></li>
                         </ul>
                     </div>
 
@@ -66,11 +66,11 @@ export function Footer() {
                             </li>
                             <li className="flex items-center gap-2">
                                 <Phone className="h-4 w-4 text-primary" />
-                                <span className="text-muted-foreground">+91 91810 15607</span>
+                                <a href="tel:+919181015607" className="text-muted-foreground hover:text-primary transition-colors">+91 91810 15607</a>
                             </li>
                             <li className="flex items-center gap-2">
                                 <Mail className="h-4 w-4 text-primary" />
-                                <span className="text-muted-foreground">info@gyantrikalabs.in</span>
+                                <a href="mailto:info@gyantrikalabs.in" className="text-muted-foreground hover:text-primary transition-colors">info@gyantrikalabs.in</a>
                             </li>
                         </ul>
                     </div>
@@ -87,7 +87,11 @@ export function Footer() {
                     </div>
 
                     <div className="flex flex-col items-center md:items-end gap-2 order-3">
-                        {/* Credits removed as per request */}
+                        <div className="flex gap-4">
+                            <a href="https://www.facebook.com/Gyantrika/" target="_blank" rel="noopener noreferrer" className="h-8 w-8 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-colors" aria-label="Facebook">
+                                <Facebook className="h-4 w-4" />
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

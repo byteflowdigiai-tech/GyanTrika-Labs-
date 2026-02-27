@@ -1,26 +1,38 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Bot, Cpu, Printer } from "lucide-react";
+import { Bot, CircuitBoard, Lightbulb, Rocket, Layers, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
 const features = [
   {
+    icon: Lightbulb,
+    title: "STEM & Tinkering Lab",
+    description: "Complete Atal Tinkering Lab setup as per NITI AAYOG specifications.",
+    href: "/projects/stem-tinkering",
+  },
+  {
     icon: Bot,
-    title: "Robotics Projects",
-    description: "Build autonomous robots, line followers, and advanced mechatronics systems.",
-    href: "/projects/robotics",
+    title: "AI & Robotics Lab",
+    description: "Advanced facility for designing autonomous systems and robotic arms.",
+    href: "/projects/ai-robotics",
   },
   {
-    icon: Cpu,
-    title: "IoT & AI Solutions",
-    description: "Create smart devices and implement machine learning in real applications.",
-    href: "/projects/iot",
+    icon: CircuitBoard,
+    title: "Embedded Systems & Electronics Lab",
+    description: "Deep dive into circuit design, microcontrollers, and IoT connectivity.",
+    href: "/projects/embedded-electronics",
   },
   {
-    icon: Printer,
-    title: "3D Design & Print",
-    description: "Design custom parts and prototypes with professional 3D printing.",
-    href: "/projects/3d",
+    icon: Rocket,
+    title: "Astronomy Lab",
+    description: "Explore the cosmos with varied telescopes and space science equipment.",
+    href: "/projects/astronomy",
+  },
+  {
+    icon: Layers,
+    title: "Composite Skills Lab",
+    description: "Multidisciplinary hub integrating 3D printing, carpentry, and fabrication.",
+    href: "/projects/composite-skills",
   },
 ];
 
@@ -43,7 +55,7 @@ export function FeaturedSection() {
             </p>
             <Button asChild className="gap-2">
               <Link to="/programs">
-                View Programs <ArrowRight className="w-4 h-4" />
+                View Our courses <ArrowRight className="w-4 h-4" />
               </Link>
             </Button>
           </motion.div>

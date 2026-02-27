@@ -6,7 +6,8 @@ import {
 
   BookOpen,
   Code,
-  Trophy
+  Trophy,
+  Target
 } from "lucide-react";
 import { CategoryCard } from "./CategoryCard";
 
@@ -31,23 +32,23 @@ const categories = [
   },
 
   {
-    title: "E-Books Library",
+    title: "Learning Materials",
     description: "Comprehensive resources and reference materials for self-learning.",
     icon: BookOpen,
     href: "/books",
   },
   {
-    title: "Programs",
+    title: "Our Courses",
     description: "Structured learning programs and certification courses.",
     icon: Code,
     href: "/programs",
   },
 
   {
-    title: "Events & Challenges",
-    description: "Competitions, hackathons, and events to showcase your skills.",
-    icon: Trophy,
-    href: "/events",
+    title: "NEET / JEE",
+    description: "Excel in your competitive exams with our structured programs.",
+    icon: Target,
+    href: "/neet-jee",
   },
 ];
 
@@ -62,10 +63,10 @@ export function CategoriesSection() {
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
-            Explore Our <span className="text-gradient">Ecosystem</span>
+          <h2 className="font-display text-4xl md:text-5xl font-semibold mb-6 tracking-tight">
+            Explore Our <span className="text-[#1572d4]">Ecosystem</span>
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-[#567a99] max-w-2xl mx-auto text-lg">
             Everything you need to learn, build, and innovate in the world of robotics and emerging technologies.
           </p>
         </motion.div>

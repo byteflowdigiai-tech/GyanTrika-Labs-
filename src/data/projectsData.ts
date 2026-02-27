@@ -1,7 +1,7 @@
 export interface Project {
     id: string;
     title: string;
-    category: "Robotics" | "IoT" | "AI" | "PCB" | "3D Designing & Printing";
+    category: "STEM & Tinkering Lab" | "AI & Robotics Lab" | "Embedded Systems & Electronics Lab" | "Astronomy Lab" | "Composite Skills Lab";
     description: string;
     image: string;
     difficulty: "Beginner" | "Intermediate" | "Advanced";
@@ -10,153 +10,204 @@ export interface Project {
 }
 
 export const projects: Project[] = [
-    // Robotics Projects
     {
-        id: "rob-001",
-        title: "Line Following Robot",
-        category: "Robotics",
-        description: "Build an autonomous robot that follows a black line using IR sensors. Perfect for learning basic robotics and control systems.",
-        image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=800",
+        id: "stem-p1",
+        title: "Tinkering Lab – Package 1 (P1) – Electronics Development, Robotics, Internet of Things and Sensors",
+        category: "STEM & Tinkering Lab",
+        description: "Tinkering Lab Package 1 contains components for Electronics Development, Internet of Things & Sensors, Robotics, and DIY Kits.\n\nThis product is As per QR/specification for Package No. 1 – Tinkering Lab of NITI AAYOG Electronics Development, Robotics, Internet of Things and Sensors approved by NITI AAYOG(Approved Copy of Qrs / Specification uploaded in GeM portal).",
+        image: "/images/STEM & Tinkering LAb.png",
         difficulty: "Beginner",
-        duration: "2-3 hours",
-        components: ["Arduino UNO", "IR Sensors", "Motor Driver", "DC Motors"]
+        duration: "N/A",
+        components: ["Electronics Development", "Internet of Things", "Robotics", "DIY Kits"]
     },
     {
-        id: "rob-002",
-        title: "Obstacle Avoiding Robot",
-        category: "Robotics",
-        description: "Create a smart robot that detects and avoids obstacles using ultrasonic sensors. Learn about autonomous navigation.",
-        image: "https://images.unsplash.com/photo-1563207153-f403bf289096?auto=format&fit=crop&q=80&w=800",
-        difficulty: "Intermediate",
-        duration: "3-4 hours",
-        components: ["Arduino", "Ultrasonic Sensor", "Servo Motor", "Chassis"]
-    },
-    {
-        id: "rob-003",
-        title: "Robotic Arm",
-        category: "Robotics",
-        description: "Design and build a multi-axis robotic arm with servo motors. Explore kinematics and precision control.",
-        image: "https://images.unsplash.com/photo-1567789884554-0b844b597180?auto=format&fit=crop&q=80&w=800",
-        difficulty: "Advanced",
-        duration: "6-8 hours",
-        components: ["Arduino Mega", "Servo Motors", "Joystick", "3D Printed Parts"]
-    },
-
-    // IoT Projects
-    {
-        id: "iot-001",
-        title: "Smart Home Automation",
-        category: "IoT",
-        description: "Control home appliances remotely using WiFi and mobile app. Learn IoT fundamentals and cloud connectivity.",
-        image: "https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&q=80&w=800",
-        difficulty: "Intermediate",
-        duration: "4-5 hours",
-        components: ["ESP8266", "Relay Module", "Sensors", "Mobile App"]
-    },
-    {
-        id: "iot-002",
-        title: "Weather Monitoring Station",
-        category: "IoT",
-        description: "Build a complete weather station that monitors temperature, humidity, and pressure with cloud data logging.",
-        image: "https://images.unsplash.com/photo-1592210454359-9043f067919b?auto=format&fit=crop&q=80&w=800",
+        id: "stem-p2",
+        title: "Tinkering Lab – Package 2 (P2) Rapid Prototyping Tool",
+        category: "STEM & Tinkering Lab",
+        description: "Tinkering Lab Package 2 contains components for 3D Printing, Rapid Prototyping, and DIY Crafting.\n\nThis product is as per QR/specification for Package No.2 – Tinkering Lab of NITI AAYOG Rapid Prototyping Tools approved by NITI AAYOG(Approved Copy of Qrs / Specification uploaded in GeM portal).",
+        image: "/images/STEM & Tinkering Lab 2.png",
         difficulty: "Beginner",
-        duration: "2-3 hours",
-        components: ["NodeMCU", "DHT22", "BMP180", "ThingSpeak"]
+        duration: "N/A",
+        components: ["3D Printing", "Rapid Prototyping", "DIY Crafting"]
     },
     {
-        id: "iot-003",
-        title: "Smart Plant Watering System",
-        category: "IoT",
-        description: "Automated plant watering system with soil moisture monitoring and remote control via smartphone.",
-        image: "https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?auto=format&fit=crop&q=80&w=800",
+        id: "stem-p3",
+        title: "Tinkering Lab – Package 3 (P3) – Mechanical, Electrical and Measurement Tools",
+        category: "STEM & Tinkering Lab",
+        description: "Tinkering Lab Package 3 contains components for Electronics and Mechanical Prototyping.\n\nThis product is as per QR/specification for Package No.3 – Tinkering Lab of NITI AAYOG Mechanical, Electrical, and Measurement Tools approved by NITI AAYOG(Approved Copy of Qrs / Specification uploaded in GeM portal).",
+        image: "/images/stem_p3_tools.png",
+        difficulty: "Beginner",
+        duration: "N/A",
+        components: ["Electronics Prototyping", "Mechanical Prototyping", "Measurement Tools"]
+    },
+    {
+        id: "stem-p4",
+        title: "Tinkering Lab – Package 4 (P4) – Power Supply and Accessories and Safety Equipment",
+        category: "STEM & Tinkering Lab",
+        description: "Tinkering Lab Package 4 contains components for DIY Tinkering and Safety.\n\nThis product is as per QR/specification for Package No. 4 – Tinkering Lab of NITI AAYOG Power Supply and Accessories and Safety Equipment approved by NITI AAYOG(Approved Copy of Qrs / Specification uploaded in GeM portal).",
+        image: "/images/stem_p4_safety.png",
+        difficulty: "Beginner",
+        duration: "N/A",
+        components: ["DIY Tinkering", "Power Supply", "Safety Equipment"]
+    },
+    {
+        id: "embedded-p1",
+        title: "Embedded Systems Lab – Package 1 – Core Microcontrollers & Circuit Board Modules",
+        category: "Embedded Systems & Electronics Lab",
+        description: "Focus on establishing a core foundation in Microcontroller architecture, breadboarding, and basic circuit design.\n\nThis package includes fundamental kits like Arduino, ESP32, and Raspberry Pi modules to allow students to learn basic to intermediate digital logic, interfacing, and signal processing.",
+        image: "/images/embedded_p1_microcontrollers.png",
+        difficulty: "Beginner",
+        duration: "N/A",
+        components: ["Microcontrollers", "Breadboards", "Basic Circuit Modules"]
+    },
+    {
+        id: "embedded-p2",
+        title: "Embedded Systems Lab – Package 2 – Professional Circuit Design & PCB Fabrication Kit",
+        category: "Embedded Systems & Electronics Lab",
+        description: "Move beyond breadboards. Package 2 brings tools necessary for designing real printed circuit boards (PCBs) and soldering components.\n\nIncludes advanced soldering stations, multi-meters, oscilloscopes, copper cladding materials, and etching accessories for in-house prototyping of professional-grade circuitry.",
+        image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop",
         difficulty: "Intermediate",
-        duration: "3-4 hours",
-        components: ["ESP32", "Soil Moisture Sensor", "Water Pump", "Relay"]
+        duration: "N/A",
+        components: ["PCB Fabrication", "Soldering Station", "Oscilloscopes"]
     },
-
-    // AI Projects
     {
-        id: "ai-001",
-        title: "Face Recognition System",
-        category: "AI",
-        description: "Implement a face recognition system using OpenCV and machine learning. Perfect for security applications.",
-        image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800",
+        id: "embedded-p3",
+        title: "Embedded Systems Lab – Package 3 – IoT & Advanced Sensor Data Connectivity Hub",
+        category: "Embedded Systems & Electronics Lab",
+        description: "Equip the lab for the Internet of Things (IoT). Connect electronic systems to the cloud, create smart home devices, and log sensor data remotely.\n\nContains advanced sensors (LIDAR, gas, telemetry), Wi-Fi/Bluetooth shields, and LoRa communication modules for comprehensive telemetry processing.",
+        image: "/images/embedded_p3_iot.png",
+        difficulty: "Intermediate",
+        duration: "N/A",
+        components: ["IoT Sensors", "Communication Modules", "Telemetry"]
+    },
+    {
+        id: "embedded-p4",
+        title: "Embedded Systems Lab – Package 4 – Advanced Firmware & RTOS Development",
+        category: "Embedded Systems & Electronics Lab",
+        description: "For mastering Embedded C, C++, and Real-Time Operating Systems (RTOS). Provides programmers and advanced debugging logic analyzers to test software on edge devices.\n\nThe ultimate software-hardware integration kit focusing on performance, memory safety, and real-world system timing constraints.",
+        image: "https://images.unsplash.com/photo-1555664424-778a1e5e1b48?q=80&w=2070&auto=format&fit=crop",
         difficulty: "Advanced",
-        duration: "5-6 hours",
-        components: ["Raspberry Pi", "Camera Module", "Python", "OpenCV"]
+        duration: "N/A",
+        components: ["Logic Analyzers", "Debugging Kits", "RTOS Architecture"]
     },
     {
-        id: "ai-002",
-        title: "Voice Controlled Assistant",
-        category: "AI",
-        description: "Create your own voice assistant that responds to commands and controls devices using speech recognition.",
-        image: "https://images.unsplash.com/photo-1589254065878-42c9da997008?auto=format&fit=crop&q=80&w=800",
+        id: "astronomy-p1",
+        title: "Astronomy Lab – Package 1 – Foundation Telescopes & Stargazing Kits",
+        category: "Astronomy Lab",
+        description: "Begin your journey into stargazing and celestial mapping. This package introduces basic optics and planetary observation.\n\nIncludes high-quality refractor manual telescopes, planispheres, and stargazing guides perfect for observing craters on the Moon and the brightest planets.",
+        image: "https://images.unsplash.com/photo-1543722530-d2c3201371e7?q=80&w=2074&auto=format&fit=crop",
+        difficulty: "Beginner",
+        duration: "N/A",
+        components: ["Refractor Telescopes", "Planispheres", "Observation Guides"]
+    },
+    {
+        id: "astronomy-p2",
+        title: "Astronomy Lab – Package 2 – Advanced Optical & Motorized Tracking Systems",
+        category: "Astronomy Lab",
+        description: "Take observational astronomy to the next level with motorized equatorial mounts and larger aperture reflectors.\n\nEquips the lab with automated Go-To tracking mounts, allowing students to effortlessly track deep-sky objects, solar filters for safe sun viewing, and precise alignment tools.",
+        image: "https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?q=80&w=2040&auto=format&fit=crop",
         difficulty: "Intermediate",
-        duration: "4-5 hours",
-        components: ["Raspberry Pi", "Microphone", "Speaker", "Python Libraries"]
+        duration: "N/A",
+        components: ["Motorized Mounts", "Reflector Telescopes", "Solar Filters"]
     },
     {
-        id: "ai-003",
-        title: "Object Detection Robot",
-        category: "AI",
-        description: "Build a robot that identifies and tracks objects using computer vision and deep learning models.",
-        image: "https://images.unsplash.com/photo-1535378917042-10a22c95931a?auto=format&fit=crop&q=80&w=800",
+        id: "astronomy-p3",
+        title: "Astronomy Lab – Package 3 – Astrophotography & Digital Imaging Suite",
+        category: "Astronomy Lab",
+        description: "Capture the cosmos digitally. This package provides everything needed to photograph galaxies, nebulas, and planetary details.\n\nIncludes specialized CCD/CMOS astrophotography cameras, adapters, intervalometers, and image processing software licenses for detailed celestial mapping.",
+        image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop",
+        difficulty: "Intermediate",
+        duration: "N/A",
+        components: ["Astrophotography Cameras", "Adapters", "Processing Software"]
+    },
+    {
+        id: "astronomy-p4",
+        title: "Astronomy Lab – Package 4 – Radio Astronomy & Space Science Data Analysis",
+        category: "Astronomy Lab",
+        description: "Explore the invisible universe. Set up a radio telescope array to detect solar flares, Jupiter's emissions, or map the Milky Way.\n\nComes with SDR (Software Defined Radio) kits, directional antennas, and data analysis stations to process space science data beyond the visible spectrum.",
+        image: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=2011&auto=format&fit=crop",
         difficulty: "Advanced",
-        duration: "8-10 hours",
-        components: ["Jetson Nano", "Camera", "Motors", "TensorFlow"]
+        duration: "N/A",
+        components: ["Radio Telescopes", "SDR Kits", "Data Analysis Terminals"]
     },
-
-    // PCB Projects
     {
-        id: "pcb-001",
-        title: "Custom Arduino Board",
-        category: "PCB",
-        description: "Design and fabricate your own Arduino-compatible PCB. Learn PCB design fundamentals and manufacturing.",
-        image: "https://images.unsplash.com/photo-1608564697071-ddf911d81370?auto=format&fit=crop&q=80&w=800",
+        id: "ai-robotics-p1",
+        title: "AI & Robotics Lab – Package 1 – Sensor Integration Modules",
+        category: "AI & Robotics Lab",
+        description: "Equip your lab with advanced sensor integration modules. This package contains a comprehensive set of sensors for environmental, motion, and distance detection.\n\nStudents will learn how to interface, calibrate, and process data from various sensors to give their robotic systems perception of the physical world.",
+        image: "https://images.unsplash.com/photo-1555664424-778a1e5e1b48?q=80&w=2070&auto=format&fit=crop",
+        difficulty: "Beginner",
+        duration: "N/A",
+        components: ["Proximity Sensors", "Motion Detectors", "Environmental Sensors"]
+    },
+    {
+        id: "ai-robotics-p2",
+        title: "AI & Robotics Lab – Package 2 – Robotics Assembly Components",
+        category: "AI & Robotics Lab",
+        description: "A robust collection of mechanical components, actuators, and chassis kits for building diverse robotic assemblies.\n\nFrom robotic arms and rovers to humanoid frames, this package includes precision motors, servos, and structural elements for assembling structural designs with high mobility.",
+        image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=2070&auto=format&fit=crop",
+        difficulty: "Intermediate",
+        duration: "N/A",
+        components: ["Servo Motors", "Chassis Kits", "Actuators"]
+    },
+    {
+        id: "ai-robotics-p3",
+        title: "AI & Robotics Lab – Package 3 – AI Programming & Software Stack",
+        category: "AI & Robotics Lab",
+        description: "Unleash the capabilities of artificial intelligence. This software stack and compute module package enables intelligent decision-making.\n\nFeaturing edge-computing devices, vision processing units, and access to machine learning libraries (like TensorFlow and OpenCV), students can program neural networks and computer vision algorithms.",
+        image: "/images/ai_robotics_p3_software.png",
         difficulty: "Advanced",
-        duration: "10-12 hours",
-        components: ["ATmega328P", "PCB Design Software", "Components", "Soldering Kit"]
+        duration: "N/A",
+        components: ["Edge Compute Modules", "Vision Processing", "ML Libraries"]
     },
     {
-        id: "pcb-002",
-        title: "LED Matrix Display",
-        category: "PCB",
-        description: "Create a custom PCB for an LED matrix display with animations and text scrolling capabilities.",
-        image: "https://images.unsplash.com/photo-1553406830-ef2513450d76?auto=format&fit=crop&q=80&w=800",
+        id: "ai-robotics-p4",
+        title: "AI & Robotics Lab – Package 4 – Project-Based Learning Manuals",
+        category: "AI & Robotics Lab",
+        description: "A comprehensive set of learning resources, manuals, and guided curriculums tailored for the AI and robotics ecosystem.\n\nThese step-by-step project blueprints guide educators and students from foundational concepts to advanced autonomous robotics applications, ensuring structured and hands-on skill development.",
+        image: "/images/ai_robotics_p4_manuals.png",
+        difficulty: "Beginner",
+        duration: "N/A",
+        components: ["Curriculum Guides", "Project Blueprints", "Educator Manuals"]
+    },
+    {
+        id: "composite-p1",
+        title: "Composite Skills Lab – Package 1 – 3D Printing & Design Prototyping",
+        category: "Composite Skills Lab",
+        description: "Transform digital designs into physical reality. This package contains everything required to introduce students to additive manufacturing.\n\nIncludes high-resolution FDM/SLA 3D printers, assorted PLA/ABS filaments, and CAD software licenses to learn parameterizing, slicing, and 3D modeling.",
+        image: "/images/close_up_3d_printing.png",
+        difficulty: "Beginner",
+        duration: "N/A",
+        components: ["3D Printers", "CAD Software", "Filaments"]
+    },
+    {
+        id: "composite-p2",
+        title: "Composite Skills Lab – Package 2 – Carpentry & Woodwork Mastery",
+        category: "Composite Skills Lab",
+        description: "Develop hands-on mechanical and crafting skills with robust carpentry tools. \n\nThis setup provides professional-grade saws, drills, sanding stations, carving chisels, and safety gear, allowing for the construction of wooden chassis, frames, and intricate custom furniture pieces.",
+        image: "/images/composite_lab_details.png",
         difficulty: "Intermediate",
-        duration: "5-6 hours",
-        components: ["Microcontroller", "LED Matrix", "Shift Registers", "PCB"]
-    },
-
-    // 3D Designing & Printing Projects
-    {
-        id: "3d-001",
-        title: "Custom Robot Chassis",
-        category: "3D Designing & Printing",
-        description: "Design and 3D print a custom robot chassis with mounting points for motors and electronics.",
-        image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=800",
-        difficulty: "Intermediate",
-        duration: "6-8 hours",
-        components: ["CAD Software", "3D Printer", "Filament", "Assembly Hardware"]
+        duration: "N/A",
+        components: ["Power Tools", "Hand Tools", "Safety Equipment"]
     },
     {
-        id: "3d-002",
-        title: "Quadcopter Frame",
-        category: "3D Designing & Printing",
-        description: "Design a lightweight yet strong quadcopter frame optimized for 3D printing and flight performance.",
-        image: "https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&q=80&w=800",
+        id: "composite-p3",
+        title: "Composite Skills Lab – Package 3 – Digital Fabrication & Laser Cutting",
+        category: "Composite Skills Lab",
+        description: "Merge precision engineering with artistic design. This digital fabrication package introduces subtractive manufacturing.\n\nFeaturing laser cutters, desktop CNC routers, and engraving tools, students can cut and engrave acrylic, wood, and soft metals to create precision parts and artistic pieces.",
+        image: "https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?q=80&w=2070&auto=format&fit=crop",
         difficulty: "Advanced",
-        duration: "8-10 hours",
-        components: ["Fusion 360", "3D Printer", "Carbon Fiber Rods", "Motors"]
+        duration: "N/A",
+        components: ["Laser Cutters", "CNC Routers", "Engraving Materials"]
     },
     {
-        id: "3d-003",
-        title: "Gripper Mechanism",
-        category: "3D Designing & Printing",
-        description: "Create a functional gripper mechanism for robotic arms with servo motor integration.",
-        image: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&q=80&w=800",
-        difficulty: "Intermediate",
-        duration: "4-5 hours",
-        components: ["CAD Software", "3D Printer", "Servo Motor", "Linkages"]
+        id: "composite-p4",
+        title: "Composite Skills Lab – Package 4 – Artistic Crafting & Mixed Media Assembly",
+        category: "Composite Skills Lab",
+        description: "Bring creativity and multi-material engineering together. This package provides tools for fine detailing, painting, and mixed media projects.\n\nIncludes airbrush kits, fine-detail modeling tools, epoxies, acrylic paints, and molding materials to finish, dye, and assemble composite materials seamlessly.",
+        image: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=2071&auto=format&fit=crop",
+        difficulty: "Beginner",
+        duration: "N/A",
+        components: ["Airbrush Kits", "Molding Materials", "Detailing Tools"]
     }
 ];

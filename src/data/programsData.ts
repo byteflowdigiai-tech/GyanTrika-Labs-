@@ -2,10 +2,11 @@ export interface Program {
     id: string;
     title: string;
     category: "Workshop" | "Course" | "Bootcamp" | "Certification" | "Mentorship";
-    duration: string;
+    duration?: string;
     level: "Beginner" | "Intermediate" | "Advanced" | "All Levels";
     mode: "Online" | "Offline" | "Hybrid";
     price: number;
+    pricingModel?: "monthly" | "one-time";
     discount?: number;
     image: string;
     description: string;
@@ -31,11 +32,10 @@ export const programs: Program[] = [
         id: "prog-001",
         title: "Arduino Robotics Bootcamp",
         category: "Bootcamp",
-        duration: "8 Weeks",
+        duration: "4 Weeks",
         level: "Beginner",
-        mode: "Hybrid",
-        price: 20000,
-        discount: 20,
+        mode: "Offline",
+        price: 4000,
         image: "https://images.unsplash.com/photo-1553406830-ef2513450d76?auto=format&fit=crop&q=80&w=1200",
         description: "Master Arduino programming and robotics from scratch. Build 10+ projects including line-following robots, obstacle avoiders, and robotic arms.",
         features: [
@@ -65,62 +65,18 @@ export const programs: Program[] = [
         enrolled: 847,
         rating: 4.8,
         reviews: 234,
-        startDate: "2026-02-01",
         spots: 25,
         certificate: true,
         tags: ["Arduino", "Robotics", "Embedded Systems", "Electronics"]
     },
     {
-        id: "prog-002",
-        title: "IoT Smart Home Development",
-        category: "Course",
-        duration: "6 Weeks",
-        level: "Intermediate",
-        mode: "Online",
-        price: 1000,
-        discount: 15,
-        image: "https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&q=80&w=1200",
-        description: "Learn to build smart home automation systems using ESP32, sensors, and cloud platforms. Create your own connected home devices.",
-        features: [
-            "ESP32 Development Kit",
-            "Cloud Platform Integration",
-            "Mobile App Development",
-            "Pre-recorded Video Lectures",
-            "Weekly Live Q&A Sessions",
-            "Project-Based Learning"
-        ],
-        curriculum: [
-            "IoT Fundamentals & Architecture",
-            "ESP32 Programming & WiFi",
-            "Sensor Networks & Data Collection",
-            "MQTT Protocol & Cloud Integration",
-            "Mobile App Development (Blynk)",
-            "Smart Lighting & Climate Control",
-            "Security & Best Practices",
-            "Capstone Smart Home Project"
-        ],
-        instructor: {
-            name: "Sd Abraar",
-            avatar: "/assets/authors/sd-abraar.jpg",
-            role: "IoT and Embedded Systems Specialist",
-            experience: "10+ years in IoT & Embedded Systems"
-        },
-        enrolled: 1234,
-        rating: 4.9,
-        reviews: 456,
-        startDate: "2026-02-10",
-        certificate: true,
-        tags: ["IoT", "ESP32", "Smart Home", "Cloud", "Mobile App"]
-    },
-    {
         id: "prog-003",
         title: "AI & Machine Learning for Robotics",
         category: "Bootcamp",
-        duration: "12 Weeks",
+        duration: "8 Weeks",
         level: "Advanced",
         mode: "Hybrid",
-        price: 24999,
-        discount: 25,
+        price: 8000,
         image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1200",
         description: "Dive deep into AI-powered robotics. Learn computer vision, object detection, path planning, and deploy ML models on edge devices.",
         features: [
@@ -152,7 +108,6 @@ export const programs: Program[] = [
         enrolled: 542,
         rating: 4.9,
         reviews: 178,
-        startDate: "2026-02-15",
         spots: 20,
         certificate: true,
         tags: ["AI", "Machine Learning", "Computer Vision", "ROS", "Python"]
@@ -161,10 +116,10 @@ export const programs: Program[] = [
         id: "prog-004",
         title: "PCB Design Mastery Workshop",
         category: "Workshop",
-        duration: "2 Days",
+        duration: "1 Week",
         level: "Intermediate",
         mode: "Offline",
-        price: 5000,
+        price: 2000,
         image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=1200",
         description: "Intensive weekend workshop on professional PCB design. Learn KiCad, design rules, and manufacture your own custom PCB.",
         features: [
@@ -194,7 +149,6 @@ export const programs: Program[] = [
         enrolled: 156,
         rating: 4.7,
         reviews: 89,
-        startDate: "2026-02-22",
         spots: 15,
         certificate: true,
         tags: ["PCB Design", "KiCad", "Electronics", "Hardware"]
@@ -203,10 +157,10 @@ export const programs: Program[] = [
         id: "prog-005",
         title: "3D Printing for Makers",
         category: "Workshop",
-        duration: "1 Day",
+        duration: "1 Week",
         level: "Beginner",
         mode: "Offline",
-        price: 2499,
+        price: 3000,
         image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=1200",
         description: "Learn 3D printing from scratch. Design your own models, understand slicing, and print your creations. Perfect for beginners!",
         features: [
@@ -236,7 +190,6 @@ export const programs: Program[] = [
         enrolled: 324,
         rating: 4.8,
         reviews: 167,
-        startDate: "2026-02-08",
         spots: 12,
         certificate: true,
         tags: ["3D Printing", "CAD", "Maker", "Design"]
@@ -247,9 +200,8 @@ export const programs: Program[] = [
         category: "Course",
         duration: "4 Weeks",
         level: "Beginner",
-        mode: "Online",
-        price: 6000,
-        discount: 10,
+        mode: "Hybrid",
+        price: 4000,
         image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=1200",
         description: "Master Python programming with a focus on engineering applications. Learn data analysis, automation, and scientific computing.",
         features: [
@@ -283,57 +235,13 @@ export const programs: Program[] = [
         tags: ["Python", "Programming", "Data Science", "Automation"]
     },
     {
-        id: "prog-007",
-        title: "Drone Programming & Automation",
-        category: "Bootcamp",
-        duration: "6 Weeks",
-        level: "Advanced",
-        mode: "Hybrid",
-        price: 8000,
-        discount: 20,
-        image: "https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&q=80&w=1200",
-        description: "Learn to program and automate drones for real-world applications. Covers flight control, computer vision, and autonomous navigation.",
-        features: [
-            "Drone Kit Included",
-            "Flight Simulator Access",
-            "Live Flight Sessions",
-            "Computer Vision Integration",
-            "Certificate & Drone License",
-            "Project Portfolio Development"
-        ],
-        curriculum: [
-            "Drone Fundamentals & Safety",
-            "Flight Control Systems",
-            "PID Controller Tuning",
-            "Sensor Integration (GPS, IMU)",
-            "Computer Vision for Drones",
-            "Autonomous Navigation",
-            "Mission Planning Software",
-            "Real-world Applications"
-        ],
-        instructor: {
-            name: "Vishal Nath & Dipak Barman",
-            avatar: "/assets/authors/dipak-barman.jpg",
-            role: "Electronics Engineers",
-            experience: "11+ years in Aerospace & Drones"
-        },
-        enrolled: 289,
-        rating: 4.8,
-        reviews: 124,
-        startDate: "2026-03-01",
-        spots: 18,
-        certificate: true,
-        tags: ["Drones", "Automation", "Computer Vision", "Aerospace"]
-    },
-    {
         id: "prog-008",
         title: "Embedded Systems Certification",
         category: "Certification",
-        duration: "16 Weeks",
+        duration: "8 Weeks",
         level: "Advanced",
-        mode: "Hybrid",
-        price: 29999,
-        discount: 30,
+        mode: "Offline",
+        price: 5000,
         image: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&q=80&w=1200",
         description: "Professional certification program in embedded systems. Learn ARM Cortex, RTOS, device drivers, and industry-standard practices.",
         features: [
@@ -366,7 +274,6 @@ export const programs: Program[] = [
         enrolled: 412,
         rating: 4.9,
         reviews: 203,
-        startDate: "2026-02-20",
         spots: 25,
         certificate: true,
         tags: ["Embedded Systems", "ARM", "RTOS", "C Programming", "Professional"]
@@ -378,7 +285,7 @@ export const programs: Program[] = [
         duration: "8 Weeks",
         level: "Beginner",
         mode: "Offline",
-        price: 7999,
+        price: 3000,
         image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=1200",
         description: "Introduce young minds to robotics, coding, and innovation. Fun, hands-on learning designed specifically for kids aged 10-14.",
         features: [
@@ -408,61 +315,18 @@ export const programs: Program[] = [
         enrolled: 567,
         rating: 5.0,
         reviews: 245,
-        startDate: "2026-02-12",
         spots: 10,
         certificate: true,
         tags: ["Kids", "Robotics", "Coding", "STEM", "Education"]
     },
     {
-        id: "prog-010",
-        title: "Professional Mentorship Program",
-        category: "Mentorship",
-        duration: "12 Weeks",
-        level: "All Levels",
-        mode: "Hybrid",
-        price: 20000,
-        image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1200",
-        description: "Get personalized 1-on-1 mentorship from industry experts. Customize your learning path and accelerate your career in robotics and embedded systems.",
-        features: [
-            "1-on-1 Weekly Sessions",
-            "Customized Learning Path",
-            "Resume & Portfolio Review",
-            "Interview Preparation",
-            "Industry Connections",
-            "Flexible Schedule",
-            "Career Guidance"
-        ],
-        curriculum: [
-            "Goals & Skills Assessment",
-            "Personalized Learning Roadmap",
-            "Technical Skills Development",
-            "Project Portfolio Building",
-            "Resume & LinkedIn Optimization",
-            "Mock Interviews",
-            "Networking Strategies",
-            "Career Transition Support"
-        ],
-        instructor: {
-            name: "Vishal Nath",
-            avatar: "/assets/authors/vishal-nath.jpeg",
-            role: "Electronics Engineer",
-            experience: "12+ years in Tech Industry"
-        },
-        enrolled: 178,
-        rating: 5.0,
-        reviews: 95,
-        certificate: false,
-        tags: ["Mentorship", "Career", "1-on-1", "Professional Development"]
-    },
-    {
         id: "prog-011",
         title: "Website Designing and Building Masterclass",
         category: "Course",
-        duration: "6 Weeks",
+        duration: "4 Weeks",
         level: "Beginner",
         mode: "Online",
-        price: 8999,
-        discount: 15,
+        price: 6000,
         image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=1200",
         description: "Learn to design and build modern, responsive websites from scratch using HTML, CSS, JavaScript, and popular frameworks.",
         features: [
@@ -492,7 +356,6 @@ export const programs: Program[] = [
         enrolled: 1245,
         rating: 4.9,
         reviews: 324,
-        startDate: "2026-02-25",
         certificate: true,
         tags: ["Web Design", "HTML/CSS", "JavaScript", "React", "UI/UX"]
     },
@@ -500,10 +363,10 @@ export const programs: Program[] = [
         id: "prog-012",
         title: "Cybersecurity Basics & Ethical Hacking",
         category: "Course",
-        duration: "4 Weeks",
+        duration: "5 Weeks",
         level: "Beginner",
         mode: "Online",
-        price: 6999,
+        price: 8000,
         image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1200",
         description: "Understand the essentials of cybersecurity. Learn how to protect systems, networks, and data from digital attacks.",
         features: [
@@ -533,9 +396,122 @@ export const programs: Program[] = [
         enrolled: 892,
         rating: 4.8,
         reviews: 145,
-        startDate: "2026-03-05",
         certificate: true,
         tags: ["Cybersecurity", "Network Security", "Ethical Hacking", "InfoSec"]
+    },
+    {
+        id: "prog-ai-science",
+        title: "AI for Science",
+        category: "Course",
+        level: "Beginner",
+        mode: "Offline",
+        price: 500,
+        pricingModel: "monthly",
+        image: "/images/ai_for_science_course.png",
+        description: "Explore how Artificial Intelligence is revolutionizing the scientific method. Learn how machine learning accelerates drug discovery, predicts protein folding, models climate change, and automates experimental data analysis.",
+        features: [
+            "Data Analysis with AI",
+            "Biology & Physics AI Models",
+            "Simulating Chemical Reactions",
+            "Climate Data Modeling",
+            "Offline Lab Access",
+            "Certificate of Completion"
+        ],
+        curriculum: [
+            "Introduction to AI in Science",
+            "Machine Learning in Physics",
+            "AI for Biological Sequencing",
+            "Automated Chemical Discovery",
+            "Analyzing Telescopic & Genomic Data",
+            "Scientific Case Studies"
+        ],
+        instructor: {
+            name: "Expert Faculty",
+            avatar: "/assets/authors/sagarika-saikia.png",
+            role: "AI Scientist",
+            experience: "10+ years in Research & Development"
+        },
+        enrolled: 120,
+        rating: 4.9,
+        reviews: 45,
+        certificate: true,
+        tags: ["AI", "Science", "Machine Learning", "Data Analysis"]
+    },
+    {
+        id: "prog-ai-arts",
+        title: "AI for Arts",
+        category: "Course",
+        level: "Beginner",
+        mode: "Offline",
+        price: 500,
+        pricingModel: "monthly",
+        image: "/images/ai_for_arts_course.png",
+        description: "Discover the intersection of artificial intelligence and human creativity. See how AI algorithms are creating award-winning digital paintings, generating narrative storylines, synthesizing music, and pushing the boundaries of traditional arts.",
+        features: [
+            "Generative AI for Images",
+            "Text-to-Art Prompt Engineering",
+            "AI Assisted Music Generation",
+            "Storytelling & Scripting bots",
+            "Offline Studio Access",
+            "Certificate of Completion"
+        ],
+        curriculum: [
+            "Introduction to Generative AI",
+            "Mastering Image Generators (Midjourney/DALL-E)",
+            "AI in Graphic Design",
+            "Synthesizing Audio and Voice",
+            "Ethics of AI in the Art World",
+            "Final Creative Portfolio"
+        ],
+        instructor: {
+            name: "Expert Faculty",
+            avatar: "/assets/authors/sagarika-saikia.png",
+            role: "Digital Artist & AI Prompt Engineer",
+            experience: "8+ years in Digital Media"
+        },
+        enrolled: 154,
+        rating: 4.8,
+        reviews: 62,
+        certificate: true,
+        tags: ["AI", "Arts", "Generative AI", "Design"]
+    },
+    {
+        id: "prog-ai-commerce",
+        title: "AI for Commerce",
+        category: "Course",
+        level: "Beginner",
+        mode: "Offline",
+        price: 500,
+        pricingModel: "monthly",
+        image: "/images/ai_for_commerce_course.png",
+        description: "Learn how AI automates financial workflows, predicts market trends, and personalizes e-commerce experiences. Uncover how big data and AI algorithms are transforming accounting, trading, and modern business logistics.",
+        features: [
+            "Financial Trend Prediction",
+            "Automated Trading Algorithms",
+            "Customer Behavior Analytics",
+            "AI in Accounting & Audits",
+            "Offline Business Lab Access",
+            "Certificate of Completion"
+        ],
+        curriculum: [
+            "AI Basics in Business",
+            "Predictive Market Analysis",
+            "Chatbots and Customer Service",
+            "E-commerce Personalization Engines",
+            "Supply Chain Optimization",
+            "Capstone Business Proposal"
+        ],
+        instructor: {
+            name: "Expert Faculty",
+            avatar: "/assets/authors/sagarika-saikia.png",
+            role: "Financial Analyst",
+            experience: "12+ years in FinTech & E-commerce"
+        },
+        enrolled: 210,
+        rating: 4.9,
+        reviews: 88,
+        certificate: true,
+        tags: ["AI", "Commerce", "Finance", "Business"]
     }
 ];
 

@@ -129,19 +129,19 @@ const ProgramsPage = () => {
                             className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto"
                         >
                             <div className="bg-white/10 dark:bg-background/80 backdrop-blur-md border border-white/20 dark:border-border rounded-lg p-4">
-                                <div className="text-3xl font-bold text-white dark:text-primary">{programs.length}+</div>
+                                <div className="text-3xl font-bold text-white dark:text-primary">{programs.length}</div>
                                 <div className="text-sm text-white/80 dark:text-muted-foreground">Courses</div>
                             </div>
                             <div className="bg-white/10 dark:bg-background/80 backdrop-blur-md border border-white/20 dark:border-border rounded-lg p-4">
-                                <div className="text-3xl font-bold text-white dark:text-primary">6K+</div>
+                                <div className="text-3xl font-bold text-white dark:text-primary">50+</div>
                                 <div className="text-sm text-white/80 dark:text-muted-foreground">Students</div>
                             </div>
                             <div className="bg-white/10 dark:bg-background/80 backdrop-blur-md border border-white/20 dark:border-border rounded-lg p-4">
-                                <div className="text-3xl font-bold text-white dark:text-primary">4.8</div>
+                                <div className="text-3xl font-bold text-white dark:text-primary">5.0</div>
                                 <div className="text-sm text-white/80 dark:text-muted-foreground">Avg Rating</div>
                             </div>
                             <div className="bg-white/10 dark:bg-background/80 backdrop-blur-md border border-white/20 dark:border-border rounded-lg p-4">
-                                <div className="text-3xl font-bold text-white dark:text-primary">98%</div>
+                                <div className="text-3xl font-bold text-white dark:text-primary">100%</div>
                                 <div className="text-sm text-white/80 dark:text-muted-foreground">Completion</div>
                             </div>
                         </motion.div>
@@ -265,10 +265,12 @@ const ProgramsPage = () => {
 
                                         <CardContent className="flex-1 space-y-3">
                                             <div className="grid grid-cols-2 gap-2 text-xs text-muted-foreground">
-                                                <div className="flex items-center gap-1">
-                                                    <Clock className="w-3 h-3 text-primary" />
-                                                    <span>{program.duration}</span>
-                                                </div>
+                                                {program.duration && (
+                                                    <div className="flex items-center gap-1">
+                                                        <Clock className="w-3 h-3 text-primary" />
+                                                        <span>{program.duration}</span>
+                                                    </div>
+                                                )}
                                                 <div className="flex items-center gap-1">
                                                     <MapPin className="w-3 h-3 text-primary" />
                                                     <span>{program.mode}</span>
@@ -309,7 +311,7 @@ const ProgramsPage = () => {
                                                     </span>
                                                 )}
                                                 <span className="text-xl font-bold text-primary">
-                                                    ₹{discountedPrice.toLocaleString('en-IN')}
+                                                    ₹{discountedPrice.toLocaleString('en-IN')}{program.pricingModel === "monthly" ? " / month" : ""}
                                                 </span>
                                             </div>
                                             <Button
@@ -352,11 +354,13 @@ const ProgramsPage = () => {
 
                             {/* Key Info */}
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                <div className="text-center p-3 bg-muted/50 rounded-lg">
-                                    <Clock className="w-5 h-5 mx-auto mb-1 text-primary" />
-                                    <div className="text-xs text-muted-foreground">Duration</div>
-                                    <div className="font-semibold">{selectedProgram?.duration}</div>
-                                </div>
+                                {selectedProgram?.duration && (
+                                    <div className="text-center p-3 bg-muted/50 rounded-lg">
+                                        <Clock className="w-5 h-5 mx-auto mb-1 text-primary" />
+                                        <div className="text-xs text-muted-foreground">Duration</div>
+                                        <div className="font-semibold">{selectedProgram.duration}</div>
+                                    </div>
+                                )}
                                 <div className="text-center p-3 bg-muted/50 rounded-lg">
                                     <MapPin className="w-5 h-5 mx-auto mb-1 text-primary" />
                                     <div className="text-xs text-muted-foreground">Mode</div>
@@ -450,7 +454,7 @@ const ProgramsPage = () => {
                                 </span>
                             )}
                             <span className="text-2xl font-bold text-primary">
-                                ₹{selectedProgram && calculateDiscountedPrice(selectedProgram.price, selectedProgram.discount).toLocaleString('en-IN')}
+                                ₹{selectedProgram && calculateDiscountedPrice(selectedProgram.price, selectedProgram.discount).toLocaleString('en-IN')}{selectedProgram?.pricingModel === "monthly" ? " / month" : ""}
                             </span>
                         </div>
                         <Button

@@ -99,8 +99,8 @@ export function CTASection() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg" variant="secondary" className="gap-2">
-              <Link to="/programs">
-                Get Started Free <ArrowRight className="w-4 h-4" />
+              <Link to="/projects">
+                Technology Lab Setup <ArrowRight className="w-4 h-4" />
               </Link>
             </Button>
             <Button

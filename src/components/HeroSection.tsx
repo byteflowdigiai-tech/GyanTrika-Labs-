@@ -4,7 +4,24 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import roboticArm from "@/assets/robotic-arm.jpg";
 import darkModeRobot from "@/assets/dark-mode-robot.jpg";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+
+const SpinOnClick = ({ children }: { children: React.ReactNode }) => {
+  const [spin, setSpin] = useState(0);
+  return (
+    <motion.div
+      animate={{ rotate: spin }}
+      transition={{ duration: 0.6, type: "spring", bounce: 0.4 }}
+      onClick={(e) => {
+        e.stopPropagation();
+        setSpin(s => s + 360);
+      }}
+      className="cursor-pointer flex items-center justify-center w-full h-full"
+    >
+      {children}
+    </motion.div>
+  );
+};
 
 const CounterItem = ({ icon: Icon, value, label }: { icon: any, value: string, label: string }) => {
   const numericValue = parseInt(value);
@@ -116,69 +133,69 @@ export function HeroSection() {
       </motion.div>
 
       {/* Floating Decorative Elements inspired by Image 1 and to fill empty space */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none overflow-hidden z-20">
         {/* Floating Code Icon (Left Top) */}
         <motion.div
-          className="absolute left-[5%] sm:left-[15%] top-[12%] sm:top-[15%] p-2 sm:p-3 rounded-lg sm:rounded-xl border border-primary/20 bg-primary/5 backdrop-blur-md flex items-center justify-center shadow-lg"
+          className="absolute left-[5%] sm:left-[15%] top-[12%] sm:top-[15%] p-2 sm:p-3 rounded-lg sm:rounded-xl border border-primary/20 bg-primary/5 backdrop-blur-md flex items-center justify-center shadow-lg pointer-events-auto"
           animate={{ y: [0, 20, 0], x: [0, 15, 0] }}
           transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
         >
-          <Code2 className="w-6 h-6 text-primary/40" />
+          <SpinOnClick><Code2 className="w-6 h-6 text-primary/40" /></SpinOnClick>
         </motion.div>
 
         {/* Floating Terminal Icon (Left Middle) */}
         <motion.div
-          className="absolute left-[3%] sm:left-[8%] top-[35%] sm:top-[40%] p-2 sm:p-3 rounded-lg sm:rounded-xl border border-primary/20 bg-primary/5 backdrop-blur-md flex items-center justify-center shadow-lg"
+          className="absolute left-[3%] sm:left-[8%] top-[35%] sm:top-[40%] p-2 sm:p-3 rounded-lg sm:rounded-xl border border-primary/20 bg-primary/5 backdrop-blur-md flex items-center justify-center shadow-lg pointer-events-auto"
           animate={{ scale: [1, 1.1, 1], y: [0, -15, 0] }}
           transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
         >
-          <Terminal className="w-7 h-7 text-primary/40" />
+          <SpinOnClick><Terminal className="w-7 h-7 text-primary/40" /></SpinOnClick>
         </motion.div>
 
         {/* Floating Braces Icon (Left Bottom Area) */}
         <motion.div
-          className="absolute left-[10%] sm:left-[20%] bottom-[30%] sm:bottom-[35%] p-2 sm:p-3 rounded-lg sm:rounded-xl border border-primary/20 bg-primary/5 backdrop-blur-md flex items-center justify-center shadow-lg"
+          className="absolute left-[10%] sm:left-[20%] bottom-[30%] sm:bottom-[35%] p-2 sm:p-3 rounded-lg sm:rounded-xl border border-primary/20 bg-primary/5 backdrop-blur-md flex items-center justify-center shadow-lg pointer-events-auto"
           animate={{ rotate: [0, 15, -15, 0] }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         >
-          <Braces className="w-6 h-6 text-primary/40" />
+          <SpinOnClick><Braces className="w-6 h-6 text-primary/40" /></SpinOnClick>
         </motion.div>
 
         {/* Floating Database Icon (Right Top Area) */}
         <motion.div
-          className="absolute right-[25%] sm:right-[30%] top-[8%] sm:top-[10%] p-1.5 sm:p-2 rounded-md sm:rounded-lg border border-primary/20 bg-primary/5 backdrop-blur-md flex items-center justify-center shadow-sm"
+          className="absolute right-[25%] sm:right-[30%] top-[8%] sm:top-[10%] p-1.5 sm:p-2 rounded-md sm:rounded-lg border border-primary/20 bg-primary/5 backdrop-blur-md flex items-center justify-center shadow-sm pointer-events-auto"
           animate={{ opacity: [0.3, 0.6, 0.3] }}
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
         >
-          <Database className="w-5 h-5 text-primary/30" />
+          <SpinOnClick><Database className="w-5 h-5 text-primary/30" /></SpinOnClick>
         </motion.div>
 
         {/* Original Floating Icons */}
         {/* Floating Robot Icon (Right Side) */}
         <motion.div
-          className="absolute right-[8%] sm:right-[12%] top-[18%] sm:top-[22%] p-2 sm:p-3 rounded-xl sm:rounded-2xl border border-primary/20 bg-primary/5 backdrop-blur-md flex items-center justify-center shadow-lg"
+          className="absolute right-[8%] sm:right-[12%] top-[18%] sm:top-[22%] p-2 sm:p-3 rounded-xl sm:rounded-2xl border border-primary/20 bg-primary/5 backdrop-blur-md flex items-center justify-center shadow-lg pointer-events-auto"
           animate={{ y: [0, -25, 0], rotate: [0, 8, 0] }}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
         >
-          <Bot className="w-8 h-8 text-primary/60" />
+          <SpinOnClick><Bot className="w-8 h-8 text-primary/60" /></SpinOnClick>
         </motion.div>
 
         {/* Floating Box Icon (Bottom Right) */}
         <motion.div
-          className="absolute right-[12%] sm:right-[18%] bottom-[15%] sm:bottom-[20%] p-2 sm:p-3 rounded-xl sm:rounded-2xl border border-primary/20 bg-primary/5 backdrop-blur-md flex items-center justify-center shadow-lg -rotate-12"
+          className="absolute right-[12%] sm:right-[18%] bottom-[15%] sm:bottom-[20%] p-2 sm:p-3 rounded-xl sm:rounded-2xl border border-primary/20 bg-primary/5 backdrop-blur-md flex items-center justify-center shadow-lg -rotate-12 pointer-events-auto"
           animate={{ y: [0, 20, 0], rotate: [-12, -4, -12] }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
         >
-          <Box className="w-8 h-8 text-primary/60" />
+          <SpinOnClick><Box className="w-8 h-8 text-primary/60" /></SpinOnClick>
         </motion.div>
 
         {/* Floating Network Icon (Bottom Left) */}
         <motion.div
-          className="absolute left-[8%] sm:left-[12%] bottom-[20%] sm:bottom-[25%] p-2 sm:p-3 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-md flex items-center justify-center shadow-lg"
+          className="absolute left-[8%] sm:left-[12%] bottom-[20%] sm:bottom-[25%] p-2 sm:p-3 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-md flex items-center justify-center shadow-lg pointer-events-auto"
           animate={{ scale: [1, 1.15, 1], rotate: [0, 360] }}
           transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
         >
-          <Network className="w-8 h-8 text-primary/60" />
+          <SpinOnClick><Network className="w-8 h-8 text-primary/60" /></SpinOnClick>
         </motion.div>
 
         {/* Decorative Glowing Nodes */}
@@ -230,8 +247,8 @@ export function HeroSection() {
         ))}
       </div>
 
-      <div className="container relative z-10 pt-10">
-        <div className="max-w-4xl mx-auto text-center">
+      <div className="container relative z-10 pt-10 pointer-events-none">
+        <div className="max-w-4xl mx-auto text-center pointer-events-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -244,13 +261,13 @@ export function HeroSection() {
           </motion.div>
 
           <motion.h1
-            className="font-display text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-[1.1] tracking-tight text-primary"
+            className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-8 leading-[1.1] tracking-tight text-primary max-w-6xl mx-auto"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            Build the Future with{" "}
-            <span className="text-gradient">Robotics & AI</span>
+            Build Future Skills with <br className="hidden md:block" />
+            <span className="text-gradient">AI, Robotics and Experiential Learning</span>
           </motion.h1>
 
           <motion.p
@@ -259,7 +276,7 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Best Robotics & AI Training Institute in Guwahati, Assam — Hands-on learning in Robotics, AI, IoT, PCB Design & 3D Printing for kids and students.
+            We transform schools into innovation ecosystems. Our courses are NEP 2020 aligned, industry-driven, student-focused. We provide future-ready lab infrastructure for progressive schools.
           </motion.p>
 
           <motion.div
@@ -275,12 +292,12 @@ export function HeroSection() {
                 </Link>
               </Button>
               <Button asChild variant="outline" size="lg" className="h-14 px-8 text-lg border-2">
-                <Link to="/projects/robotics">Explore Projects</Link>
+                <Link to="/projects">Explore Labs</Link>
               </Button>
             </div>
 
             <p className="text-sm text-muted-foreground font-medium bg-secondary/30 px-4 py-2 rounded-full border border-border/50">
-              Trusted by 250+ students | 15+ real-world projects
+              Trusted by 2000+ students | 15+ real-world projects
             </p>
           </motion.div>
 
@@ -294,7 +311,7 @@ export function HeroSection() {
             {[
               { icon: Bot, value: "15+", label: "Projects" },
               { icon: Lightbulb, value: "8+", label: "Courses" },
-              { icon: Cpu, value: "250+", label: "Students" },
+              { icon: Cpu, value: "2000+", label: "Students" },
             ].map((stat, i) => (
               <CounterItem
                 key={i}

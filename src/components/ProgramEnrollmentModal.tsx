@@ -96,7 +96,7 @@ export function ProgramEnrollmentModal({
                 email: formData.email,   // matches template {{email}}
                 phone: formData.contactNo,
                 title: `Enrollment: ${program?.title}`,
-                message: `Program: ${program?.title}\nPrice: ₹${price}\nTransaction ID: ${formData.transactionId}\nCategory: ${program?.category}`,
+                message: `Program: ${program?.title}\nPrice: ₹${price}${program?.pricingModel === "monthly" ? " / month" : ""}\nTransaction ID: ${formData.transactionId}\nCategory: ${program?.category}`,
             };
 
             await emailjs.send(
@@ -253,7 +253,7 @@ export function ProgramEnrollmentModal({
                                         <div className="inline-block bg-primary/10 px-6 py-2 rounded-full border border-primary/20">
                                             <span className="text-xs font-semibold text-primary uppercase tracking-wider block mb-0.5">Final Amount to Pay</span>
                                             <p className="font-bold text-primary text-2xl">
-                                                ₹{price.toLocaleString('en-IN')}
+                                                ₹{price.toLocaleString('en-IN')}{program?.pricingModel === "monthly" ? " / month" : ""}
                                             </p>
                                         </div>
                                     </div>
