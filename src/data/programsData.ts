@@ -427,7 +427,7 @@ export const programs: Program[] = [
         ],
         instructor: {
             name: "Tushardri Paul",
-            avatar: "/assets/authors/sagarika-saikia.png",
+            avatar: "/assets/authors/tushardri-paul.jpg",
             role: "AI Scientist",
             experience: "10+ years in Research & Development"
         },
@@ -465,7 +465,7 @@ export const programs: Program[] = [
         ],
         instructor: {
             name: "Tushardri Paul",
-            avatar: "/assets/authors/sagarika-saikia.png",
+            avatar: "/assets/authors/tushardri-paul.jpg",
             role: "Digital Artist & AI Prompt Engineer",
             experience: "8+ years in Digital Media"
         },
@@ -503,7 +503,7 @@ export const programs: Program[] = [
         ],
         instructor: {
             name: "Tushardri Paul",
-            avatar: "/assets/authors/sagarika-saikia.png",
+            avatar: "/assets/authors/tushardri-paul.jpg",
             role: "Financial Analyst",
             experience: "12+ years in FinTech & E-commerce"
         },
