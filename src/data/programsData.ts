@@ -407,7 +407,7 @@ export const programs: Program[] = [
         mode: "Offline",
         price: 500,
         pricingModel: "monthly",
-        image: "/images/ai_for_science_course.png",
+        image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?q=80&w=2070&auto=format&fit=crop",
         description: "Explore how Artificial Intelligence is revolutionizing the scientific method. Learn how machine learning accelerates drug discovery, predicts protein folding, models climate change, and automates experimental data analysis.",
         features: [
             "Data Analysis with AI",
@@ -426,7 +426,7 @@ export const programs: Program[] = [
             "Scientific Case Studies"
         ],
         instructor: {
-            name: "Expert Faculty",
+            name: "Tushardri Paul",
             avatar: "/assets/authors/sagarika-saikia.png",
             role: "AI Scientist",
             experience: "10+ years in Research & Development"
@@ -445,7 +445,7 @@ export const programs: Program[] = [
         mode: "Offline",
         price: 500,
         pricingModel: "monthly",
-        image: "/images/ai_for_arts_course.png",
+        image: "https://images.unsplash.com/photo-1547891654-e66ed7ebb968?q=80&w=2070&auto=format&fit=crop",
         description: "Discover the intersection of artificial intelligence and human creativity. See how AI algorithms are creating award-winning digital paintings, generating narrative storylines, synthesizing music, and pushing the boundaries of traditional arts.",
         features: [
             "Generative AI for Images",
@@ -464,7 +464,7 @@ export const programs: Program[] = [
             "Final Creative Portfolio"
         ],
         instructor: {
-            name: "Expert Faculty",
+            name: "Tushardri Paul",
             avatar: "/assets/authors/sagarika-saikia.png",
             role: "Digital Artist & AI Prompt Engineer",
             experience: "8+ years in Digital Media"
@@ -483,7 +483,7 @@ export const programs: Program[] = [
         mode: "Offline",
         price: 500,
         pricingModel: "monthly",
-        image: "/images/ai_for_commerce_course.png",
+        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
         description: "Learn how AI automates financial workflows, predicts market trends, and personalizes e-commerce experiences. Uncover how big data and AI algorithms are transforming accounting, trading, and modern business logistics.",
         features: [
             "Financial Trend Prediction",
@@ -502,7 +502,7 @@ export const programs: Program[] = [
             "Capstone Business Proposal"
         ],
         instructor: {
-            name: "Expert Faculty",
+            name: "Tushardri Paul",
             avatar: "/assets/authors/sagarika-saikia.png",
             role: "Financial Analyst",
             experience: "12+ years in FinTech & E-commerce"
