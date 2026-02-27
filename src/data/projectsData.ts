@@ -195,7 +195,7 @@ export const projects: Project[] = [
         title: "Composite Skills Lab – Package 3 – Digital Fabrication & Laser Cutting",
         category: "Composite Skills Lab",
         description: "Merge precision engineering with artistic design. This digital fabrication package introduces subtractive manufacturing.\n\nFeaturing laser cutters, desktop CNC routers, and engraving tools, students can cut and engrave acrylic, wood, and soft metals to create precision parts and artistic pieces.",
-        image: "https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?q=80&w=2070&auto=format&fit=crop",
+        image: "/images/laser_cutting_machine.png",
         difficulty: "Advanced",
         duration: "N/A",
         components: ["Laser Cutters", "CNC Routers", "Engraving Materials"]
