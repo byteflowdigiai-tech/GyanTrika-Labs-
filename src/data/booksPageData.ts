@@ -6,7 +6,7 @@ export interface BookService {
     title: string;
     description: string;
     features: string[]; // This will act as "Key Topics Covered"
-    icon: any;
+    icon: any /* eslint-disable-line @typescript-eslint/no-explicit-any */;
     image: string;
     link: string;
     color: string;

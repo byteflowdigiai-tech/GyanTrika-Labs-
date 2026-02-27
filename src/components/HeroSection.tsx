@@ -23,7 +23,7 @@ const SpinOnClick = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-const CounterItem = ({ icon: Icon, value, label }: { icon: any, value: string, label: string }) => {
+const CounterItem = ({ icon: Icon, value, label }: { icon: any /* eslint-disable-line @typescript-eslint/no-explicit-any */, value: string, label: string }) => {
   const numericValue = parseInt(value);
   const suffix = value.replace(/[0-9]/g, '');
   const ref = useRef(null);

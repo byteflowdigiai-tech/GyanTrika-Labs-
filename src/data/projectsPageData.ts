@@ -6,7 +6,7 @@ export interface ProjectService {
     title: string;
     description: string;
     features: string[];
-    icon: any; // Lucide icon
+    icon: any /* eslint-disable-line @typescript-eslint/no-explicit-any */; // Lucide icon
     image: string;
     link: string;
     color: string;

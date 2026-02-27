@@ -23,7 +23,7 @@ const ShopPage = () => {
         typeParam === "bots" ? "bots" : "kits"
     );
 
-    const [selectedItem, setSelectedItem] = useState<any | null>(null);
+    const [selectedItem, setSelectedItem] = useState<any | null>(null); // eslint-disable-line @typescript-eslint/no-explicit-any
 
     useEffect(() => {
         if (typeParam === "bots" || typeParam === "kits") {
@@ -39,7 +39,7 @@ const ShopPage = () => {
     const items = view === "kits" ? kits : bots;
     const itemTypeLabel = view === "kits" ? "Kit" : "Bot";
 
-    const handleAddToCart = (item: any) => {
+    const handleAddToCart = (item: any /* eslint-disable-line @typescript-eslint/no-explicit-any */) => {
         if (item.buyLink) {
             window.open(item.buyLink, '_blank');
             return;

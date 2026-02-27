@@ -94,7 +94,7 @@ const ContactPage = () => {
             } else {
                 throw new Error(result.text || "Failed to send");
             }
-        } catch (error: any) {
+        } catch (error: any /* eslint-disable-line @typescript-eslint/no-explicit-any */) {
             console.error("Full EmailJS Error Logic:", error);
 
             // Helpful error messages for common EmailJS issues

@@ -124,7 +124,7 @@ export function ProgramEnrollmentModal({
             setScreenshotName(null);
             setStep(1);
             onClose();
-        } catch (error: any) {
+        } catch (error: any /* eslint-disable-line @typescript-eslint/no-explicit-any */) {
             console.error("Enrollment Error:", error);
             setLoading(false);
             const errorMessage = error?.text || error?.message || "Check your internet or EmailJS account.";

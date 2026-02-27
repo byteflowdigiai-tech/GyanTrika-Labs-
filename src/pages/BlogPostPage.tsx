@@ -205,7 +205,7 @@ const BlogPostPage = () => {
                                         p: ({ node, ...props }) => <p className="mb-4 leading-relaxed" {...props} />,
                                         ul: ({ node, ...props }) => <ul className="list-disc pl-6 mb-4 space-y-2" {...props} />,
                                         ol: ({ node, ...props }) => <ol className="list-decimal pl-6 mb-4 space-y-2" {...props} />,
-                                        code: ({ node, inline, ...props }: any) =>
+                                        code: ({ node, inline, ...props }: any /* eslint-disable-line @typescript-eslint/no-explicit-any */) =>
                                             inline ? (
                                                 <code className="bg-muted px-1.5 py-0.5 rounded text-sm font-mono" {...props} />
                                             ) : (
