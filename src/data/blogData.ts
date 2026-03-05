@@ -489,7 +489,7 @@ Robotics is no longer reserved for experts. With the right projects and determin
         author: {
             name: "Sagarika Saikia",
             avatar: "/assets/authors/sagarika-saikia.png",
-            role: "Technology Engineer"
+            role: "Senior Full Stack developer and designer"
         },
         category: "Projects",
         tags: ["Robotics Projects for Students", "STEM Education", "Engineering Portfolio", "Student Robotics 2026", "DIY Robotics"],
@@ -579,7 +579,7 @@ As more schools adopt 3D printing, learning will move beyond textbooks and scree
         author: {
             name: "injamamul Islam",
             avatar: "/assets/authors/injamamul-islam.jpg",
-            role: "Junior Engineer"
+            role: "Senior Full Stack Developer"
         },
         category: "Education",
         tags: ["3D Printing Education", "Classroom Technology", "Maker Education", "STEM Learning", "3D Printing Benefits"],
@@ -998,7 +998,7 @@ As technology continues to evolve, AI agents will become trusted partners—help
         author: {
             name: "Sagarika Saikia",
             avatar: "/assets/authors/sagarika-saikia.png",
-            role: "AI Researcher"
+            role: "Senior Full Stack developer and designer"
         },
         category: "AI",
         tags: ["AI Agents Guide", "Autonomous Intelligence", "Automation Future", "LLM Agents", "Intelligent Systems 2026"],

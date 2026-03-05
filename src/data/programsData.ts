@@ -29,6 +29,120 @@ export interface Program {
 
 export const programs: Program[] = [
     {
+        id: "prog-ai-science",
+        title: "AI for Science",
+        category: "Course",
+        level: "Beginner",
+        mode: "Offline",
+        price: 500,
+        pricingModel: "monthly",
+        image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?q=80&w=2070&auto=format&fit=crop",
+        description: "Explore how Artificial Intelligence is revolutionizing the scientific method. Learn how machine learning accelerates drug discovery, predicts protein folding, models climate change, and automates experimental data analysis.",
+        features: [
+            "Data Analysis with AI",
+            "Biology & Physics AI Models",
+            "Simulating Chemical Reactions",
+            "Climate Data Modeling",
+            "Offline Lab Access",
+            "Certificate of Completion"
+        ],
+        curriculum: [
+            "Introduction to AI in Science",
+            "Machine Learning in Physics",
+            "AI for Biological Sequencing",
+            "Automated Chemical Discovery",
+            "Analyzing Telescopic & Genomic Data",
+            "Scientific Case Studies"
+        ],
+        instructor: {
+            name: "Tushardri Paul",
+            avatar: "/assets/authors/tushardri-paul.jpg",
+            role: "AI and Data Engineer",
+            experience: "10+ years in Research & Development"
+        },
+        enrolled: 120,
+        rating: 4.9,
+        reviews: 45,
+        certificate: true,
+        tags: ["AI", "Science", "Machine Learning", "Data Analysis"]
+    },
+    {
+        id: "prog-ai-arts",
+        title: "AI for Arts",
+        category: "Course",
+        level: "Beginner",
+        mode: "Offline",
+        price: 500,
+        pricingModel: "monthly",
+        image: "https://images.unsplash.com/photo-1547891654-e66ed7ebb968?q=80&w=2070&auto=format&fit=crop",
+        description: "Discover the intersection of artificial intelligence and human creativity. See how AI algorithms are creating award-winning digital paintings, generating narrative storylines, synthesizing music, and pushing the boundaries of traditional arts.",
+        features: [
+            "Generative AI for Images",
+            "Text-to-Art Prompt Engineering",
+            "AI Assisted Music Generation",
+            "Storytelling & Scripting bots",
+            "Offline Studio Access",
+            "Certificate of Completion"
+        ],
+        curriculum: [
+            "Introduction to Generative AI",
+            "Mastering Image Generators (Midjourney/DALL-E)",
+            "AI in Graphic Design",
+            "Synthesizing Audio and Voice",
+            "Ethics of AI in the Art World",
+            "Final Creative Portfolio"
+        ],
+        instructor: {
+            name: "Tushardri Paul",
+            avatar: "/assets/authors/tushardri-paul.jpg",
+            role: "AI and Data Engineer",
+            experience: "8+ years in Digital Media"
+        },
+        enrolled: 154,
+        rating: 4.8,
+        reviews: 62,
+        certificate: true,
+        tags: ["AI", "Arts", "Generative AI", "Design"]
+    },
+    {
+        id: "prog-ai-commerce",
+        title: "AI for Commerce",
+        category: "Course",
+        level: "Beginner",
+        mode: "Offline",
+        price: 500,
+        pricingModel: "monthly",
+        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
+        description: "Learn how AI automates financial workflows, predicts market trends, and personalizes e-commerce experiences. Uncover how big data and AI algorithms are transforming accounting, trading, and modern business logistics.",
+        features: [
+            "Financial Trend Prediction",
+            "Automated Trading Algorithms",
+            "Customer Behavior Analytics",
+            "AI in Accounting & Audits",
+            "Offline Business Lab Access",
+            "Certificate of Completion"
+        ],
+        curriculum: [
+            "AI Basics in Business",
+            "Predictive Market Analysis",
+            "Chatbots and Customer Service",
+            "E-commerce Personalization Engines",
+            "Supply Chain Optimization",
+            "Capstone Business Proposal"
+        ],
+        instructor: {
+            name: "Tushardri Paul",
+            avatar: "/assets/authors/tushardri-paul.jpg",
+            role: "AI and Data Engineer",
+            experience: "12+ years in FinTech & E-commerce"
+        },
+        enrolled: 210,
+        rating: 4.9,
+        reviews: 88,
+        certificate: true,
+        tags: ["AI", "Commerce", "Finance", "Business"]
+    },
+    {
         id: "prog-001",
         title: "Arduino Robotics Bootcamp",
         category: "Bootcamp",
@@ -182,9 +296,9 @@ export const programs: Program[] = [
             "Print & Take Home"
         ],
         instructor: {
-            name: "injamamul Islam",
-            avatar: "/assets/authors/injamamul-islam.jpg",
-            role: "Junior Engineer",
+            name: "Vishal Nath",
+            avatar: "/assets/authors/vishal-nath.jpeg",
+            role: "Electronics Engineer",
             experience: "6+ years in 3D Printing & Education"
         },
         enrolled: 324,
@@ -225,7 +339,7 @@ export const programs: Program[] = [
         instructor: {
             name: "Tushardri Paul",
             avatar: "/assets/authors/tushardri-paul.jpg",
-            role: "Robotics & AI Specialist",
+            role: "AI and Data Engineer",
             experience: "9+ years in Software Development"
         },
         enrolled: 2156,
@@ -350,7 +464,7 @@ export const programs: Program[] = [
         instructor: {
             name: "Sagarika Saikia And Injamamul Islam",
             avatar: "/assets/authors/sagarika-saikia.png",
-            role: "Full Stack Developer & Designer",
+            role: "Senior Full Stack developer and designer",
             experience: "9+ years in Web Development"
         },
         enrolled: 1245,
@@ -390,7 +504,7 @@ export const programs: Program[] = [
         instructor: {
             name: "Sagarika Saikia",
             avatar: "/assets/authors/sagarika-saikia.png",
-            role: "Technology Engineer",
+            role: "Senior Full Stack developer and designer",
             experience: "8+ years in Network Security"
         },
         enrolled: 892,
@@ -398,120 +512,6 @@ export const programs: Program[] = [
         reviews: 145,
         certificate: true,
         tags: ["Cybersecurity", "Network Security", "Ethical Hacking", "InfoSec"]
-    },
-    {
-        id: "prog-ai-science",
-        title: "AI for Science",
-        category: "Course",
-        level: "Beginner",
-        mode: "Offline",
-        price: 500,
-        pricingModel: "monthly",
-        image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?q=80&w=2070&auto=format&fit=crop",
-        description: "Explore how Artificial Intelligence is revolutionizing the scientific method. Learn how machine learning accelerates drug discovery, predicts protein folding, models climate change, and automates experimental data analysis.",
-        features: [
-            "Data Analysis with AI",
-            "Biology & Physics AI Models",
-            "Simulating Chemical Reactions",
-            "Climate Data Modeling",
-            "Offline Lab Access",
-            "Certificate of Completion"
-        ],
-        curriculum: [
-            "Introduction to AI in Science",
-            "Machine Learning in Physics",
-            "AI for Biological Sequencing",
-            "Automated Chemical Discovery",
-            "Analyzing Telescopic & Genomic Data",
-            "Scientific Case Studies"
-        ],
-        instructor: {
-            name: "Tushardri Paul",
-            avatar: "/assets/authors/tushardri-paul.jpg",
-            role: "AI Scientist",
-            experience: "10+ years in Research & Development"
-        },
-        enrolled: 120,
-        rating: 4.9,
-        reviews: 45,
-        certificate: true,
-        tags: ["AI", "Science", "Machine Learning", "Data Analysis"]
-    },
-    {
-        id: "prog-ai-arts",
-        title: "AI for Arts",
-        category: "Course",
-        level: "Beginner",
-        mode: "Offline",
-        price: 500,
-        pricingModel: "monthly",
-        image: "https://images.unsplash.com/photo-1547891654-e66ed7ebb968?q=80&w=2070&auto=format&fit=crop",
-        description: "Discover the intersection of artificial intelligence and human creativity. See how AI algorithms are creating award-winning digital paintings, generating narrative storylines, synthesizing music, and pushing the boundaries of traditional arts.",
-        features: [
-            "Generative AI for Images",
-            "Text-to-Art Prompt Engineering",
-            "AI Assisted Music Generation",
-            "Storytelling & Scripting bots",
-            "Offline Studio Access",
-            "Certificate of Completion"
-        ],
-        curriculum: [
-            "Introduction to Generative AI",
-            "Mastering Image Generators (Midjourney/DALL-E)",
-            "AI in Graphic Design",
-            "Synthesizing Audio and Voice",
-            "Ethics of AI in the Art World",
-            "Final Creative Portfolio"
-        ],
-        instructor: {
-            name: "Tushardri Paul",
-            avatar: "/assets/authors/tushardri-paul.jpg",
-            role: "Digital Artist & AI Prompt Engineer",
-            experience: "8+ years in Digital Media"
-        },
-        enrolled: 154,
-        rating: 4.8,
-        reviews: 62,
-        certificate: true,
-        tags: ["AI", "Arts", "Generative AI", "Design"]
-    },
-    {
-        id: "prog-ai-commerce",
-        title: "AI for Commerce",
-        category: "Course",
-        level: "Beginner",
-        mode: "Offline",
-        price: 500,
-        pricingModel: "monthly",
-        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
-        description: "Learn how AI automates financial workflows, predicts market trends, and personalizes e-commerce experiences. Uncover how big data and AI algorithms are transforming accounting, trading, and modern business logistics.",
-        features: [
-            "Financial Trend Prediction",
-            "Automated Trading Algorithms",
-            "Customer Behavior Analytics",
-            "AI in Accounting & Audits",
-            "Offline Business Lab Access",
-            "Certificate of Completion"
-        ],
-        curriculum: [
-            "AI Basics in Business",
-            "Predictive Market Analysis",
-            "Chatbots and Customer Service",
-            "E-commerce Personalization Engines",
-            "Supply Chain Optimization",
-            "Capstone Business Proposal"
-        ],
-        instructor: {
-            name: "Tushardri Paul",
-            avatar: "/assets/authors/tushardri-paul.jpg",
-            role: "Financial Analyst",
-            experience: "12+ years in FinTech & E-commerce"
-        },
-        enrolled: 210,
-        rating: 4.9,
-        reviews: 88,
-        certificate: true,
-        tags: ["AI", "Commerce", "Finance", "Business"]
     }
 ];
 
