@@ -75,12 +75,7 @@ const CourseDetails = () => {
                                     <Clock className="w-5 h-5 text-muted-foreground" />
                                     <span>{course.duration}</span>
                                 </div>
-                                <div className="flex items-center gap-1.5">
-                                    <div className="w-6 h-6 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xs font-bold">
-                                        {course.instructor.charAt(0)}
-                                    </div>
-                                    <span>Created by <span className="font-medium text-primary underline underline-offset-4">{course.instructor}</span></span>
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -149,28 +144,6 @@ const CourseDetails = () => {
                                     </AccordionItem>
                                 ))}
                             </Accordion>
-                        </section>
-
-                        <Separator />
-
-                        {/* Instructor */}
-                        <section>
-                            <h2 className="text-2xl font-bold mb-6">Your Instructor</h2>
-                            <div className="flex gap-4 items-start">
-                                <div className="w-20 h-20 rounded-full bg-muted overflow-hidden shrink-0">
-                                    {/* Placeholder for instructor image based on name */}
-                                    <div className="w-full h-full flex items-center justify-center bg-primary/10 text-primary text-2xl font-bold">
-                                        {course.instructor.charAt(0)}
-                                    </div>
-                                </div>
-                                <div>
-                                    <h3 className="text-xl font-bold">{course.instructor}</h3>
-                                    <p className="text-primary font-medium mb-2">{course.role}</p>
-                                    <p className="text-sm text-muted-foreground">
-                                        Experienced professional with a passion for teaching. dedicated to helping students achieve their goals in technology and engineering.
-                                    </p>
-                                </div>
-                            </div>
                         </section>
 
                     </div>

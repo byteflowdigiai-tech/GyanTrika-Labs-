@@ -283,17 +283,7 @@ const ProgramsPage = () => {
                                                 )}
                                             </div>
 
-                                            <div className="flex items-center gap-2">
-                                                <img
-                                                    src={program.instructor.avatar}
-                                                    alt={program.instructor.name}
-                                                    className="w-8 h-8 rounded-full object-cover ring-2 ring-border"
-                                                />
-                                                <div className="flex-1 min-w-0">
-                                                    <p className="text-xs font-medium truncate">{program.instructor.name}</p>
-                                                    <p className="text-xs text-muted-foreground truncate">{program.instructor.role}</p>
-                                                </div>
-                                            </div>
+
 
                                             {program.certificate && (
                                                 <div className="flex items-center gap-1 text-xs text-green-600 dark:text-green-400">
@@ -422,26 +412,7 @@ const ProgramsPage = () => {
                                 </ul>
                             </div>
 
-                            <Separator />
 
-                            {/* Instructor */}
-                            <div>
-                                <h3 className="font-semibold mb-3">Your Instructor</h3>
-                                <div className="flex items-start gap-4">
-                                    <img
-                                        src={selectedProgram?.instructor.avatar}
-                                        alt={selectedProgram?.instructor.name}
-                                        className="w-16 h-16 rounded-full object-cover ring-2 ring-primary/20"
-                                    />
-                                    <div>
-                                        <p className="font-semibold">{selectedProgram?.instructor.name}</p>
-                                        <p className="text-sm text-muted-foreground">{selectedProgram?.instructor.role}</p>
-                                        <p className="text-xs text-muted-foreground mt-1">
-                                            {selectedProgram?.instructor.experience}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </ScrollArea>
 

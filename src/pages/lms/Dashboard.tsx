@@ -170,7 +170,6 @@ const Dashboard = () => {
                                                         <div className="flex justify-between items-start">
                                                             <h3 className="font-semibold text-lg line-clamp-1 group-hover:text-primary transition-colors">{course.title}</h3>
                                                         </div>
-                                                        <p className="text-sm text-muted-foreground mt-1 mb-3">{course.instructor}</p>
                                                     </div>
                                                     <div>
                                                         <div className="flex justify-between text-xs mb-1.5">
