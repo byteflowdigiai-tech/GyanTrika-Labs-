@@ -16,7 +16,7 @@ export const Header = () => {
         { name: 'Home', path: '/' },
         { name: 'LMS', path: '/lms' },
         { name: 'Shop', path: '/shop' },
-        { name: 'Technology Lab Setup', path: '/projects' },
+        { name: 'Technology Lab Setup', path: '/technology-lab-setup' },
         { name: 'Blogs', path: '/blogs' },
         { name: 'Learning Materials', path: '/books' },
         { name: 'Our Courses', path: '/programs' },
@@ -37,13 +37,13 @@ export const Header = () => {
             <div className="w-full px-6 md:px-8">
                 <div className="flex h-32 items-center justify-between">
                     {/* Logo */}
-                    <a href="https://gyantrika.com/" className="flex items-center flex-shrink-0" target="_blank" rel="noopener noreferrer">
+                    <Link to="/" className="flex items-center flex-shrink-0">
                         <img
                             src={isDark ? logoDark : logoLight}
                             alt="GyanTrika Labs"
                             className="h-28 w-auto object-contain mix-blend-multiply dark:mix-blend-screen dark:invert"
                         />
-                    </a>
+                    </Link>
 
                     {/* Desktop Navigation */}
                     <nav className="hidden lg:flex items-center gap-4">

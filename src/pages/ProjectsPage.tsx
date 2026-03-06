@@ -381,7 +381,7 @@ const ProjectsPage = () => {
                     <Button
                         variant="ghost"
                         className="gap-2 text-white/80 hover:text-white hover:bg-white/10 pl-3 pr-4 rounded-full"
-                        onClick={() => navigate("/projects")}
+                        onClick={() => navigate("/technology-lab-setup")}
                     >
                         <ArrowLeft className="w-4 h-4" /> Back to Services
                     </Button>
@@ -475,7 +475,7 @@ const ProjectsPage = () => {
                         </div>
                         <h3 className="text-xl font-semibold mb-2">No Projects Found</h3>
                         <p className="text-muted-foreground mb-6">We haven't added any public projects for this category yet.</p>
-                        <Button onClick={() => navigate("/projects")}>Browse Other Categories</Button>
+                        <Button onClick={() => navigate("/technology-lab-setup")}>Browse Other Categories</Button>
                     </div>
                 )}
             </main>

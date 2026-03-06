@@ -8,31 +8,31 @@ const features = [
     icon: Lightbulb,
     title: "STEM & Tinkering Lab",
     description: "Complete Atal Tinkering Lab setup as per NITI AAYOG specifications.",
-    href: "/projects/stem-tinkering",
+    href: "/technology-lab-setup/stem-tinkering",
   },
   {
     icon: Bot,
     title: "AI & Robotics Lab",
     description: "Advanced facility for designing autonomous systems and robotic arms.",
-    href: "/projects/ai-robotics",
+    href: "/technology-lab-setup/ai-robotics",
   },
   {
     icon: CircuitBoard,
     title: "Embedded Systems & Electronics Lab",
     description: "Deep dive into circuit design, microcontrollers, and IoT connectivity.",
-    href: "/projects/embedded-electronics",
+    href: "/technology-lab-setup/embedded-electronics",
   },
   {
     icon: Rocket,
     title: "Astronomy Lab",
     description: "Explore the cosmos with varied telescopes and space science equipment.",
-    href: "/projects/astronomy",
+    href: "/technology-lab-setup/astronomy",
   },
   {
     icon: Layers,
     title: "Composite Skills Lab",
     description: "Multidisciplinary hub integrating 3D printing, carpentry, and fabrication.",
-    href: "/projects/composite-skills",
+    href: "/technology-lab-setup/composite-skills",
   },
 ];
 

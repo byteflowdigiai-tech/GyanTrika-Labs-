@@ -39,11 +39,11 @@ export function Footer() {
                     <div>
                         <h4 className="font-display font-semibold mb-4">Lab Setups</h4>
                         <ul className="space-y-2 text-sm">
-                            <li><Link to="/projects/stem-tinkering" className="text-muted-foreground hover:text-primary transition-colors">STEM & Tinkering Lab</Link></li>
-                            <li><Link to="/projects/ai-robotics" className="text-muted-foreground hover:text-primary transition-colors">AI & Robotics Lab</Link></li>
-                            <li><Link to="/projects/embedded-electronics" className="text-muted-foreground hover:text-primary transition-colors">Embedded Systems Lab</Link></li>
-                            <li><Link to="/projects/astronomy" className="text-muted-foreground hover:text-primary transition-colors">Astronomy Lab</Link></li>
-                            <li><Link to="/projects/composite-skills" className="text-muted-foreground hover:text-primary transition-colors">Composite Skills Lab</Link></li>
+                            <li><Link to="/technology-lab-setup/stem-tinkering" className="text-muted-foreground hover:text-primary transition-colors">STEM & Tinkering Lab</Link></li>
+                            <li><Link to="/technology-lab-setup/ai-robotics" className="text-muted-foreground hover:text-primary transition-colors">AI & Robotics Lab</Link></li>
+                            <li><Link to="/technology-lab-setup/embedded-electronics" className="text-muted-foreground hover:text-primary transition-colors">Embedded Systems Lab</Link></li>
+                            <li><Link to="/technology-lab-setup/astronomy" className="text-muted-foreground hover:text-primary transition-colors">Astronomy Lab</Link></li>
+                            <li><Link to="/technology-lab-setup/composite-skills" className="text-muted-foreground hover:text-primary transition-colors">Composite Skills Lab</Link></li>
                         </ul>
                     </div>
 

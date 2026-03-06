@@ -26,7 +26,7 @@ export const projectServices: ProjectService[] = [
         ],
         icon: Lightbulb,
         image: "/images/STEM & Tinkering LAb.png",
-        link: "/projects/stem-tinkering",
+        link: "/technology-lab-setup/stem-tinkering",
         color: "from-yellow-500 to-orange-500",
         hoverImage: "/images/STEM & Tinkering Lab 2.png"
     },
@@ -42,7 +42,7 @@ export const projectServices: ProjectService[] = [
         ],
         icon: Bot,
         image: "/images/bot-workbench.png",
-        link: "/projects/ai-robotics",
+        link: "/technology-lab-setup/ai-robotics",
         color: "from-blue-500 to-cyan-500",
         hoverImage: "/images/robotics-hover-new.png"
     },
@@ -58,7 +58,7 @@ export const projectServices: ProjectService[] = [
         ],
         icon: CircuitBoard,
         image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop",
-        link: "/projects/embedded-electronics",
+        link: "/technology-lab-setup/embedded-electronics",
         color: "from-emerald-500 to-green-500",
         hoverImage: "/images/Electronics Lab.png"
     },
@@ -74,7 +74,7 @@ export const projectServices: ProjectService[] = [
         ],
         icon: Rocket,
         image: "https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?q=80&w=2070&auto=format&fit=crop",
-        link: "/projects/astronomy",
+        link: "/technology-lab-setup/astronomy",
         color: "from-indigo-500 to-violet-500",
         hoverImage: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop"
     },
@@ -90,7 +90,7 @@ export const projectServices: ProjectService[] = [
         ],
         icon: Layers,
         image: "/images/composite_lab_3d_printing.png",
-        link: "/projects/composite-skills",
+        link: "/technology-lab-setup/composite-skills",
         color: "from-pink-500 to-rose-500",
         hoverImage: "/images/composite_lab_details.png"
     }

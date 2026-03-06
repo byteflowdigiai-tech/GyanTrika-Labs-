@@ -292,7 +292,7 @@ export function HeroSection() {
                 </Link>
               </Button>
               <Button asChild variant="outline" size="lg" className="h-14 px-8 text-lg border-2">
-                <Link to="/projects">Explore Labs</Link>
+                <Link to="/technology-lab-setup">Explore Labs</Link>
               </Button>
             </div>
 
