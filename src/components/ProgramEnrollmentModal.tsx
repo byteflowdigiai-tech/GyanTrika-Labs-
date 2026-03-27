@@ -38,6 +38,8 @@ export function ProgramEnrollmentModal({
     });
     const [screenshot, setScreenshot] = useState<File | null>(null);
     const [screenshotName, setScreenshotName] = useState<string | null>(null);
+    const [screenshotError, setScreenshotError] = useState<string | null>(null);
+    const MAX_SCREENSHOT_SIZE = 100 * 1024; // 100 KB
 
     useEffect(() => {
         if (program) {
@@ -59,8 +61,18 @@ export function ProgramEnrollmentModal({
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.files && e.target.files[0]) {
-            setScreenshot(e.target.files[0]);
-            setScreenshotName(e.target.files[0].name);
+            const file = e.target.files[0];
+            if (file.size > MAX_SCREENSHOT_SIZE) {
+                setScreenshotError(`File too large (${(file.size / 1024).toFixed(0)} KB). Maximum allowed size is 100 KB.`);
+                setScreenshot(null);
+                setScreenshotName(null);
+                // Reset input so the same file can be re-selected after compression
+                e.target.value = "";
+                return;
+            }
+            setScreenshotError(null);
+            setScreenshot(file);
+            setScreenshotName(file.name);
         }
     };
 
@@ -73,6 +85,15 @@ export function ProgramEnrollmentModal({
         }
         setStep(2);
     };
+
+    // Convert a File to a Base64 data URL
+    const toBase64 = (file: File): Promise<string> =>
+        new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = () => resolve(reader.result as string);
+            reader.onerror = reject;
+            reader.readAsDataURL(file);
+        });
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -91,12 +112,17 @@ export function ProgramEnrollmentModal({
         setLoading(true);
 
         try {
+            // Convert screenshot to Base64 so EmailJS can send it inline
+            const screenshotBase64 = await toBase64(screenshot);
+
             const templateParams = {
-                name: formData.fullName, // matches template {{name}}
-                email: formData.email,   // matches template {{email}}
+                name: formData.fullName,
+                email: formData.email,
                 phone: formData.contactNo,
                 title: `Enrollment: ${program?.title}`,
                 message: `Program: ${program?.title}\nPrice: ₹${price}${program?.pricingModel === "monthly" ? " / month" : ""}\nTransaction ID: ${formData.transactionId}\nCategory: ${program?.category}`,
+                screenshot_url: screenshotBase64, // Base64 image — add {{screenshot_url}} in EmailJS template
+                screenshot_name: screenshot.name,
             };
 
             await emailjs.send(
@@ -278,15 +304,27 @@ export function ProgramEnrollmentModal({
                                 <div className="grid gap-2 mt-4">
                                     <Label htmlFor="screenshot" className="text-sm font-semibold text-foreground">Upload Payment Screenshot *</Label>
                                     <div
-                                        className="border-2 border-dashed rounded-lg p-5 flex flex-col items-center justify-center text-center hover:bg-muted/50 transition-colors cursor-pointer bg-background"
+                                        className={`border-2 border-dashed rounded-lg p-5 flex flex-col items-center justify-center text-center transition-colors cursor-pointer ${
+                                            screenshotError
+                                                ? "border-red-400 bg-red-50 dark:bg-red-950/20 hover:bg-red-100/50"
+                                                : screenshotName
+                                                ? "border-green-400 bg-green-50 dark:bg-green-950/20 hover:bg-green-100/50"
+                                                : "border-dashed hover:bg-muted/50 bg-background"
+                                        }`}
                                         onClick={() => document.getElementById('screenshot-upload')?.click()}
                                     >
-                                        <UploadCloud className="w-8 h-8 text-primary/60 mb-2" />
-                                        <p className="text-sm font-medium">
+                                        <UploadCloud className={`w-8 h-8 mb-2 ${
+                                            screenshotError ? "text-red-400" : screenshotName ? "text-green-500" : "text-primary/60"
+                                        }`} />
+                                        <p className={`text-sm font-medium ${
+                                            screenshotError ? "text-red-600 dark:text-red-400" : ""
+                                        }`}>
                                             {screenshotName ? screenshotName : "Click to upload payment screenshot"}
                                         </p>
-                                        <p className="text-xs text-muted-foreground mt-1">
-                                            {screenshotName ? "Click to change" : "PNG, JPG up to 2MB"}
+                                        <p className={`text-xs mt-1 ${
+                                            screenshotError ? "text-red-500" : "text-muted-foreground"
+                                        }`}>
+                                            {screenshotName ? "✓ Ready to submit" : "PNG, JPG — max 100 KB"}
                                         </p>
                                         <input
                                             id="screenshot-upload"
@@ -297,6 +335,17 @@ export function ProgramEnrollmentModal({
                                             onChange={handleFileChange}
                                         />
                                     </div>
+                                    {/* Inline size-limit warning */}
+                                    {screenshotError && (
+                                        <div className="flex items-start gap-2 bg-red-50 dark:bg-red-950/30 border border-red-300 dark:border-red-700 rounded-lg px-3 py-2.5 mt-1">
+                                            <span className="text-red-500 text-base leading-none mt-0.5">⚠️</span>
+                                            <div>
+                                                <p className="text-xs font-semibold text-red-600 dark:text-red-400">File size limit exceeded</p>
+                                                <p className="text-xs text-red-500 dark:text-red-400 mt-0.5">{screenshotError}</p>
+                                                <p className="text-xs text-red-400 mt-0.5">Please compress your image and try again.</p>
+                                            </div>
+                                        </div>
+                                    )}
                                 </div>
                             </div>
 
