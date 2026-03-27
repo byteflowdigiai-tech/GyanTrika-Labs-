@@ -301,7 +301,8 @@ const ProgramsPage = () => {
                                                     </span>
                                                 )}
                                                 <span className="text-xl font-bold text-primary">
-                                                    ₹{discountedPrice.toLocaleString('en-IN')}{program.pricingModel === "monthly" ? " / month" : ""}
+                                                    ₹{discountedPrice.toLocaleString('en-IN')}
+                                                    {program.pricingModel === "monthly" ? " / month" : program.pricingModel === "registration" ? " (Registration Fees)" : ""}
                                                 </span>
                                             </div>
                                             <Button
@@ -425,7 +426,8 @@ const ProgramsPage = () => {
                                 </span>
                             )}
                             <span className="text-2xl font-bold text-primary">
-                                ₹{selectedProgram && calculateDiscountedPrice(selectedProgram.price, selectedProgram.discount).toLocaleString('en-IN')}{selectedProgram?.pricingModel === "monthly" ? " / month" : ""}
+                                ₹{selectedProgram && calculateDiscountedPrice(selectedProgram.price, selectedProgram.discount).toLocaleString('en-IN')}
+                                {selectedProgram?.pricingModel === "monthly" ? " / month" : selectedProgram?.pricingModel === "registration" ? " (Registration Fees)" : ""}
                             </span>
                         </div>
                         <Button

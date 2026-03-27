@@ -6,7 +6,7 @@ export interface Program {
     level: "Beginner" | "Intermediate" | "Advanced" | "All Levels";
     mode: "Online" | "Offline" | "Hybrid";
     price: number;
-    pricingModel?: "monthly" | "one-time";
+    pricingModel?: "monthly" | "one-time" | "registration";
     discount?: number;
     image: string;
     description: string;
@@ -35,7 +35,7 @@ export const programs: Program[] = [
         level: "Beginner",
         mode: "Offline",
         price: 150,
-        pricingModel: "monthly",
+        pricingModel: "registration",
         image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?q=80&w=2070&auto=format&fit=crop",
         description: "Explore how Artificial Intelligence is revolutionizing the scientific method. Learn how machine learning accelerates drug discovery, predicts protein folding, models climate change, and automates experimental data analysis.",
         features: [
@@ -73,7 +73,7 @@ export const programs: Program[] = [
         level: "Beginner",
         mode: "Offline",
         price: 150,
-        pricingModel: "monthly",
+        pricingModel: "registration",
         image: "https://images.unsplash.com/photo-1547891654-e66ed7ebb968?q=80&w=2070&auto=format&fit=crop",
         description: "Discover the intersection of artificial intelligence and human creativity. See how AI algorithms are creating award-winning digital paintings, generating narrative storylines, synthesizing music, and pushing the boundaries of traditional arts.",
         features: [
@@ -111,7 +111,7 @@ export const programs: Program[] = [
         level: "Beginner",
         mode: "Offline",
         price: 150,
-        pricingModel: "monthly",
+        pricingModel: "registration",
         image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
         description: "Learn how AI automates financial workflows, predicts market trends, and personalizes e-commerce experiences. Uncover how big data and AI algorithms are transforming accounting, trading, and modern business logistics.",
         features: [
