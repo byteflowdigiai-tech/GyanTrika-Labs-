@@ -19,7 +19,7 @@ export const Header = () => {
         { name: 'Technology Lab Setup', path: '/technology-lab-setup' },
         { name: 'Blogs', path: '/blogs' },
         { name: 'Learning Materials', path: '/books' },
-        { name: 'Our Courses', path: '/programs' },
+        { name: 'Our Courses', path: '/courses' },
         { name: 'NEET/JEE', path: '/neet-jee' },
         { name: 'About', path: '/about' },
         { name: 'Contact', path: '/contact' },

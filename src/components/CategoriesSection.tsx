@@ -41,7 +41,7 @@ const categories = [
     title: "Our Courses",
     description: "Structured learning programs and certification courses.",
     icon: Code,
-    href: "/programs",
+    href: "/courses",
   },
 
   {

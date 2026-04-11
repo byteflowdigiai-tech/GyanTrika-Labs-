@@ -21,7 +21,11 @@ import ShopPage from "./pages/ShopPage";
 import ProjectsPage from "./pages/ProjectsPage";
 import BlogPage from "./pages/BlogPage";
 import BlogPostPage from "./pages/BlogPostPage";
-import ProgramsPage from "./pages/ProgramsPage";
+import CoursesStreamPage from "./pages/CoursesStreamPage";
+import CourseListingPage from "./pages/CourseListingPage";
+import CourseDetailPage from "./pages/CourseDetailPage";
+import ApplyPage from "./pages/ApplyPage";
+import ApplySuccessPage from "./pages/ApplySuccessPage";
 import BooksPage from "./pages/BooksPage";
 import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
@@ -66,9 +70,16 @@ const App = () => (
               <Route path="/technology-lab-setup" element={<ProjectsPage />} />
               <Route path="/technology-lab-setup/:category" element={<ProjectsPage />} />
 
+              {/* Course & Apply Routes */}
+              <Route path="/courses" element={<CoursesStreamPage />} />
+              <Route path="/courses/:stream" element={<CourseListingPage />} />
+              <Route path="/courses/:stream/:courseId" element={<CourseDetailPage />} />
+              <Route path="/apply" element={<ApplyPage />} />
+              <Route path="/apply/:courseId" element={<ApplyPage />} />
+              <Route path="/apply/success" element={<ApplySuccessPage />} />
+              
               <Route path="/books" element={<BooksPage />} />
               <Route path="/books/:category" element={<BooksPage />} />
-              <Route path="/programs" element={<ProgramsPage />} />
               <Route path="/neet-jee" element={<NeetJeePage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/contact" element={<ContactPage />} />

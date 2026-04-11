@@ -287,8 +287,8 @@ export function HeroSection() {
           >
             <div className="flex flex-col sm:flex-row gap-4 justify-center w-full">
               <Button asChild size="lg" className="h-14 px-8 text-lg gap-2 glow-effect">
-                <Link to="/lms">
-                  Start Learning <ArrowRight className="w-5 h-5" />
+                <Link to="/courses">
+                  Explore AI Courses <ArrowRight className="w-5 h-5" />
                 </Link>
               </Button>
               <Button asChild variant="outline" size="lg" className="h-14 px-8 text-lg border-2">

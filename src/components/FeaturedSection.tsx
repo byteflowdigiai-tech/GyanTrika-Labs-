@@ -54,7 +54,7 @@ export function FeaturedSection() {
               At GyanTrika Labs, we believe in learning by doing. Our curriculum combines theoretical knowledge with practical projects, ensuring students gain real-world skills that matter in today's tech-driven world.
             </p>
             <Button asChild className="gap-2">
-              <Link to="/programs">
+              <Link to="/courses">
                 View Our courses <ArrowRight className="w-4 h-4" />
               </Link>
             </Button>
