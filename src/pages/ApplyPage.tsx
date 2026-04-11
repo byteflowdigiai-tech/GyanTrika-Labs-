@@ -132,10 +132,11 @@ export default function ApplyPage() {
             // Navigate to success
             navigate("/apply/success");
             
-        } catch (error: any) {
+        } catch (error: unknown) {
             console.error("Enrollment Error:", error);
             setLoading(false);
-            const errorMessage = error?.text || error?.message || "Check your internet or EmailJS account.";
+            const err = error as { text?: string; message?: string };
+            const errorMessage = err?.text || err?.message || "Check your internet or EmailJS account.";
             toast.error(`Error: ${errorMessage}`, { id: toastId });
         }
     };
