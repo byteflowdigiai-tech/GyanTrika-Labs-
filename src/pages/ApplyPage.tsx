@@ -241,8 +241,12 @@ export default function ApplyPage() {
                                                                 <p className="font-semibold text-foreground">{selectedCourse.terms} Phases</p>
                                                             </div>
                                                             <div>
-                                                                <span className="text-xs text-primary/80 uppercase font-bold tracking-wider block mb-1">Total Fee</span>
-                                                                <p className="font-bold text-primary text-2xl">{selectedCourse.fee}</p>
+                                                                <span className="text-xs text-primary/80 uppercase font-bold tracking-wider block mb-1">Registration Fee</span>
+                                                                <p className="font-bold text-primary text-2xl">{selectedCourse.registrationFee}</p>
+                                                            </div>
+                                                            <div className="sm:col-span-2 bg-muted/40 rounded-lg px-4 py-3 border">
+                                                                <span className="text-xs text-muted-foreground uppercase font-bold tracking-wider block mb-1">Monthly Tuition</span>
+                                                                <p className="font-semibold text-foreground">{selectedCourse.monthlyFee} — paid after registration</p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -284,13 +288,12 @@ export default function ApplyPage() {
 
                                                     <div className="text-center space-y-3 max-w-[400px]">
                                                         <p className="text-sm text-muted-foreground px-4">
-                                                            Scan the official HDFC SmartHub QR code to pay using any UPI app like GPay, PhonePe, or Paytm.
+                                                            Scan the official HDFC SmartHub QR code to pay the registration fee using any UPI app like GPay, PhonePe, or Paytm.
                                                         </p>
-                                                        <div className="inline-block bg-primary/10 px-6 py-2 rounded-full border border-primary/20">
-                                                            <span className="text-xs font-semibold text-primary uppercase block mb-0.5">Final Amount to Pay</span>
-                                                            <p className="font-bold text-primary text-2xl">
-                                                                {selectedCourse?.fee}
-                                                            </p>
+                                                        <div className="inline-block bg-primary/10 px-6 py-3 rounded-xl border border-primary/20">
+                                                            <span className="text-xs font-semibold text-primary uppercase block mb-0.5">Registration Fee to Pay Now</span>
+                                                            <p className="font-bold text-primary text-3xl">{selectedCourse?.registrationFee}</p>
+                                                            <p className="text-xs text-muted-foreground mt-1">Then {selectedCourse?.monthlyFee} after joining</p>
                                                         </div>
                                                     </div>
                                                 </div>
