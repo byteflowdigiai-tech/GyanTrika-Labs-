@@ -1,11 +1,19 @@
+import { useState } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { motion } from "framer-motion";
-import { GraduationCap, Code, TestTube, Palette, Briefcase, ArrowRight } from "lucide-react";
+import { GraduationCap, Code, TestTube, Palette, Briefcase, ArrowRight, Clock, BookOpen, ChevronRight, SlidersHorizontal } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { courses } from "@/data/courses";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default function CoursesStreamPage() {
     const navigate = useNavigate();
+    const [selectedLevel, setSelectedLevel] = useState("All");
+    const [selectedStream, setSelectedStream] = useState("All");
 
     const streams = [
         {
@@ -41,6 +49,32 @@ export default function CoursesStreamPage() {
             color: "from-purple-500/20 to-purple-900/40"
         }
     ];
+
+    const streamLabels: Record<string, string> = {
+        technology: "Technology",
+        science: "Science",
+        commerce: "Commerce",
+        arts: "Arts"
+    };
+
+    const getLevelColor = (level: string) => {
+        switch (level) {
+            case "School": return "bg-green-500";
+            case "UG": return "bg-blue-500";
+            case "PG": return "bg-purple-500";
+            case "Diploma": return "bg-orange-500";
+            default: return "bg-gray-500";
+        }
+    };
+
+    const allLevels = ["All", "School", "UG", "PG", "Diploma"];
+    const allStreamFilters = ["All", "Technology", "Science", "Commerce", "Arts"];
+
+    const filteredCourses = courses.filter(course => {
+        const levelMatch = selectedLevel === "All" || course.level === selectedLevel;
+        const streamMatch = selectedStream === "All" || streamLabels[course.stream] === selectedStream;
+        return levelMatch && streamMatch;
+    });
 
     const containerVariants = {
         hidden: { opacity: 0 },
@@ -89,12 +123,14 @@ export default function CoursesStreamPage() {
                 </div>
             </section>
 
-            <main className="flex-1 container py-16 px-4">
+            <main className="flex-1 container py-16 px-4 space-y-20">
+
+                {/* Stream Cards */}
                 <motion.div
                     variants={containerVariants}
                     initial="hidden"
                     animate="visible"
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-5xl mx-auto"
+                    className="grid grid-cols-2 lg:grid-cols-4 gap-3 max-w-6xl mx-auto"
                 >
                     {streams.map((stream) => (
                         <motion.div
@@ -102,29 +138,167 @@ export default function CoursesStreamPage() {
                             variants={itemVariants}
                             whileHover={{ scale: 1.02 }}
                             onClick={() => navigate(`/courses/${stream.id}`)}
-                            className="relative group cursor-pointer overflow-hidden rounded-2xl border bg-card text-card-foreground shadow-sm transition-all hover:shadow-xl"
+                            className="relative group cursor-pointer overflow-hidden rounded-xl border bg-card text-card-foreground shadow-sm transition-all hover:shadow-xl"
                         >
                             <div className="absolute inset-0 z-0">
                                 <img src={stream.image} alt={stream.title} className="w-full h-full object-cover opacity-20 group-hover:opacity-30 group-hover:scale-105 transition-all duration-500" />
                                 <div className={`absolute inset-0 bg-gradient-to-br ${stream.color} mix-blend-multiply opacity-80`} />
                             </div>
-                            <div className="relative z-10 p-8 h-full flex flex-col justify-end min-h-[280px]">
-                                <div className="mb-auto bg-background/80 dark:bg-background/40 backdrop-blur-md w-fit p-4 rounded-xl border border-white/20">
-                                    {stream.icon}
+                            <div className="relative z-10 p-4 h-full flex flex-col justify-end min-h-[140px] md:min-h-[180px]">
+                                <div className="mb-auto bg-background/80 dark:bg-background/40 backdrop-blur-md w-fit p-2.5 rounded-lg border border-white/20">
+                                    <div className="[&>svg]:w-7 [&>svg]:h-7">{stream.icon}</div>
                                 </div>
-                                <h3 className="text-2xl sm:text-3xl font-bold mt-6 mb-2 text-white drop-shadow-md">{stream.title}</h3>
-                                <p className="text-white/90 text-sm sm:text-lg font-medium drop-shadow">{stream.description}</p>
-                                
-                                {/* Visible CTA Button */}
-                                <div className="mt-8">
-                                    <div className="inline-flex items-center justify-center rounded-full bg-white/10 border border-white/20 backdrop-blur-md px-6 py-2.5 text-sm font-bold text-white transition-all group-hover:bg-white group-hover:text-primary group-hover:shadow-lg">
-                                        Explore Courses <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                <h3 className="text-lg font-bold mt-4 mb-1 text-white drop-shadow-md">{stream.title}</h3>
+                                <p className="text-white/80 text-xs font-medium drop-shadow line-clamp-2">{stream.description}</p>
+                                <div className="mt-4">
+                                    <div className="inline-flex items-center justify-center rounded-full bg-white/10 border border-white/20 backdrop-blur-md px-4 py-1.5 text-xs font-bold text-white transition-all group-hover:bg-white group-hover:text-primary group-hover:shadow-lg">
+                                        Explore <ArrowRight className="ml-1.5 w-3 h-3 group-hover:translate-x-1 transition-transform" />
                                     </div>
                                 </div>
                             </div>
                         </motion.div>
                     ))}
                 </motion.div>
+
+                {/* All Courses Section with Filters */}
+                <div>
+                    <div className="mb-8">
+                        <div className="flex items-center gap-3 mb-2">
+                            <SlidersHorizontal className="w-5 h-5 text-primary" />
+                            <h2 className="text-2xl font-display font-bold">Browse All Courses</h2>
+                        </div>
+                        <p className="text-muted-foreground">Filter by stream or education level to find your perfect course.</p>
+                    </div>
+
+                    {/* Filter Bar */}
+                    <div className="flex flex-col sm:flex-row flex-wrap gap-4 mb-8 p-4 bg-muted/30 rounded-xl border">
+                        <div className="flex flex-col gap-1.5">
+                            <span className="text-[10px] font-bold uppercase text-muted-foreground tracking-wider">By Level</span>
+                            <Tabs value={selectedLevel} onValueChange={setSelectedLevel}>
+                                <TabsList className="bg-muted/50 h-auto flex flex-wrap gap-1 py-1 px-1">
+                                    {allLevels.map(level => (
+                                        <TabsTrigger
+                                            key={level}
+                                            value={level}
+                                            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground text-xs py-1.5 px-3"
+                                        >
+                                            {level}
+                                        </TabsTrigger>
+                                    ))}
+                                </TabsList>
+                            </Tabs>
+                        </div>
+
+                        <div className="sm:border-l sm:pl-4 flex flex-col gap-1.5">
+                            <span className="text-[10px] font-bold uppercase text-muted-foreground tracking-wider">By Stream</span>
+                            <Tabs value={selectedStream} onValueChange={setSelectedStream}>
+                                <TabsList className="bg-muted/50 h-auto flex flex-wrap gap-1 py-1 px-1">
+                                    {allStreamFilters.map(s => (
+                                        <TabsTrigger
+                                            key={s}
+                                            value={s}
+                                            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground text-xs py-1.5 px-3"
+                                        >
+                                            {s}
+                                        </TabsTrigger>
+                                    ))}
+                                </TabsList>
+                            </Tabs>
+                        </div>
+
+                        <div className="sm:ml-auto flex items-end">
+                            <span className="text-sm text-muted-foreground">{filteredCourses.length} {filteredCourses.length === 1 ? "course" : "courses"} found</span>
+                        </div>
+                    </div>
+
+                    {/* Course Grid */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {filteredCourses.length > 0 ? filteredCourses.map((course) => (
+                            <motion.div
+                                key={course.id}
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                whileHover={{ y: -5 }}
+                            >
+                                <Card className="h-full flex flex-col overflow-hidden hover:shadow-xl transition-all duration-300 border-border/50 hover:border-primary/50 group">
+                                    <CardHeader className="space-y-4 pb-4 bg-muted/10 border-b relative">
+                                        <div className="absolute top-4 right-4">
+                                            <Badge className={`${getLevelColor(course.level)} text-white shadow-sm`}>
+                                                {course.level}
+                                            </Badge>
+                                        </div>
+                                        <div>
+                                            <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                                                <GraduationCap className="w-6 h-6 text-primary" />
+                                            </div>
+                                            <CardTitle className="text-xl group-hover:text-primary transition-colors">
+                                                {course.title}
+                                            </CardTitle>
+                                        </div>
+                                        <p className="text-sm font-medium text-muted-foreground line-clamp-2 min-h-[40px]">
+                                            {course.tagline}
+                                        </p>
+                                    </CardHeader>
+
+                                    <CardContent className="flex-1 pt-6 space-y-5">
+                                        <div className="grid grid-cols-2 gap-y-4 text-sm">
+                                            <div className="flex items-center gap-2">
+                                                <Clock className="w-4 h-4 text-primary" />
+                                                <div className="flex flex-col">
+                                                    <span className="text-[10px] uppercase font-bold text-muted-foreground/70">Duration</span>
+                                                    <span className="font-medium text-foreground">{course.duration}</span>
+                                                </div>
+                                            </div>
+                                            <div className="flex items-center gap-2">
+                                                <BookOpen className="w-4 h-4 text-primary" />
+                                                <div className="flex flex-col">
+                                                    <span className="text-[10px] uppercase font-bold text-muted-foreground/70">Terms / Sems</span>
+                                                    <span className="font-medium text-foreground">{course.terms} Phases</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div className="border-t pt-4">
+                                            <span className="text-[10px] uppercase font-bold text-muted-foreground/70 block mb-2">What You'll Learn</span>
+                                            <ul className="space-y-1.5">
+                                                {course.skillsGained.slice(0, 3).map((skill, i) => (
+                                                    <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
+                                                        <ChevronRight className="w-3.5 h-3.5 text-primary shrink-0 mt-0.5" />
+                                                        <span>{skill}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+
+                                        <div className="border-t pt-4">
+                                            <span className="text-[10px] uppercase font-bold text-muted-foreground/70 block mb-2">Career Outcomes</span>
+                                            <p className="text-sm text-muted-foreground">{course.careerOutcomes.slice(0, 2).join(" · ")}</p>
+                                        </div>
+                                    </CardContent>
+
+                                    <CardFooter className="border-t bg-muted/5 p-4">
+                                        <Button
+                                            onClick={() => navigate(`/courses/${course.stream}/${course.id}`)}
+                                            className="w-full rounded-full justify-center group-hover:bg-primary/90"
+                                        >
+                                            View Details <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                                        </Button>
+                                    </CardFooter>
+                                </Card>
+                            </motion.div>
+                        )) : (
+                            <div className="col-span-full text-center py-16 bg-muted/20 rounded-xl border border-dashed">
+                                <GraduationCap className="w-12 h-12 text-muted-foreground/50 mx-auto mb-4" />
+                                <h3 className="text-lg font-bold">No Courses Found</h3>
+                                <p className="text-muted-foreground text-sm mt-2">Try changing your filters.</p>
+                                <Button variant="outline" className="mt-4" onClick={() => { setSelectedLevel("All"); setSelectedStream("All"); }}>
+                                    Clear Filters
+                                </Button>
+                            </div>
+                        )}
+                    </div>
+                </div>
+
             </main>
 
             <Footer />

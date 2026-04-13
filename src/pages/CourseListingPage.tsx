@@ -118,7 +118,8 @@ export default function CourseListingPage() {
                                         </p>
                                     </CardHeader>
 
-                                    <CardContent className="flex-1 pt-6 space-y-4">
+                                    <CardContent className="flex-1 pt-6 space-y-5">
+                                        {/* Duration & Terms */}
                                         <div className="grid grid-cols-2 gap-y-4 text-sm">
                                             <div className="flex items-center gap-2 text-muted-foreground">
                                                 <Clock className="w-4 h-4 text-primary" />
@@ -135,8 +136,30 @@ export default function CourseListingPage() {
                                                 </div>
                                             </div>
                                         </div>
-                                        
-                                        <div className="pt-4 border-t">
+
+                                        {/* What You'll Learn */}
+                                        <div className="border-t pt-4">
+                                            <span className="text-[10px] uppercase font-bold text-muted-foreground/70 block mb-2">What You'll Learn</span>
+                                            <ul className="space-y-1.5">
+                                                {course.skillsGained.slice(0, 4).map((skill, i) => (
+                                                    <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
+                                                        <ChevronRight className="w-3.5 h-3.5 text-primary shrink-0 mt-0.5" />
+                                                        <span>{skill}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+
+                                        {/* Career Outcomes */}
+                                        <div className="border-t pt-4">
+                                            <span className="text-[10px] uppercase font-bold text-muted-foreground/70 block mb-2">Career Outcomes</span>
+                                            <p className="text-sm text-muted-foreground">
+                                                {course.careerOutcomes.slice(0, 2).join(" · ")}
+                                            </p>
+                                        </div>
+
+                                        {/* Ideal For */}
+                                        <div className="border-t pt-4">
                                             <span className="text-[10px] uppercase font-bold text-muted-foreground/70 block mb-2">Ideal For</span>
                                             <div className="flex flex-wrap gap-1">
                                                 {course.targetAudience.slice(0, 2).map((aud, i) => (
@@ -153,15 +176,10 @@ export default function CourseListingPage() {
                                         </div>
                                     </CardContent>
 
-                                    <CardFooter className="border-t bg-muted/5 p-4 flex flex-wrap items-center justify-between mt-auto gap-3">
-                                        <div className="flex flex-col">
-                                            <span className="text-xl font-bold text-primary">
-                                                {course.fee}
-                                            </span>
-                                        </div>
+                                    <CardFooter className="border-t bg-muted/5 p-4 flex items-center justify-end mt-auto">
                                         <Button
                                             onClick={() => navigate(`/courses/${stream}/${course.id}`)}
-                                            className="px-6 rounded-full group-hover:bg-primary/90 flex-1 sm:flex-none justify-center"
+                                            className="px-6 rounded-full w-full group-hover:bg-primary/90 justify-center"
                                         >
                                             View Details <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                                         </Button>

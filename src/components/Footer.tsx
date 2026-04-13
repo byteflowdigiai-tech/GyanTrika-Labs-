@@ -1,11 +1,8 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Youtube, Instagram } from "lucide-react";
-import { useTheme } from "@/contexts/ThemeContext";
-import logoLight from "@/assets/logo-light.png";
-import logoDark from "@/assets/logo-dark.png";
+import logo from "@/assets/logo.png";
 
 export function Footer() {
-    const { theme } = useTheme();
 
     return (
         <footer className="bg-card border-t">
@@ -14,9 +11,9 @@ export function Footer() {
                     {/* Brand */}
                     <div className="space-y-4">
                         <img
-                            src={theme === "dark" ? logoDark : logoLight}
+                            src={logo}
                             alt="GyanTrika Labs"
-                            className="h-44 w-auto object-contain mix-blend-multiply dark:mix-blend-screen dark:invert"
+                            className="h-44 w-auto object-contain transition-all duration-300 mix-blend-multiply dark:mix-blend-normal"
                         />
                         <p className="text-muted-foreground text-sm leading-relaxed">
                             Empowering the next generation of innovators through hands-on learning in Robotics, AI, IoT, and emerging technologies.

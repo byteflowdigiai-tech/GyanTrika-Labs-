@@ -32,11 +32,6 @@ export default function ApplyPage() {
         transactionId: "",
     });
 
-    const [screenshot, setScreenshot] = useState<File | null>(null);
-    const [screenshotName, setScreenshotName] = useState<string | null>(null);
-    const [screenshotError, setScreenshotError] = useState<string | null>(null);
-    const MAX_SCREENSHOT_SIZE = 100 * 1024; // 100 KB
-
     // Try to find the currently selected course in the form
     const selectedCourse = courses.find((c) => c.id === formData.selectedCourseId);
 
@@ -45,40 +40,36 @@ export default function ApplyPage() {
         setFormData((prev) => ({ ...prev, [name]: value }));
     };
 
+    const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const val = e.target.value.replace(/\D/g, '').slice(0, 10);
+        setFormData((prev) => ({ ...prev, contactNo: val }));
+    };
+
     const handleSelectChange = (name: string, value: string) => {
         setFormData((prev) => ({ ...prev, [name]: value }));
     };
 
-    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (e.target.files && e.target.files[0]) {
-            const file = e.target.files[0];
-            if (file.size > MAX_SCREENSHOT_SIZE) {
-                setScreenshotError(`File too large (${(file.size / 1024).toFixed(0)} KB). Maximum allowed size is 100 KB.`);
-                setScreenshot(null);
-                setScreenshotName(null);
-                e.target.value = "";
-                return;
-            }
-            setScreenshotError(null);
-            setScreenshot(file);
-            setScreenshotName(file.name);
+    const validateStep1 = () => {
+        if (!formData.fullName || !formData.email || !formData.contactNo) {
+            toast.error("Please fill all required personal details.");
+            return false;
         }
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(formData.email)) {
+            toast.error("Please enter a valid email address.");
+            return false;
+        }
+        if (formData.contactNo.length !== 10) {
+            toast.error("Please enter a valid 10-digit mobile number.");
+            return false;
+        }
+        return true;
     };
-
-    const toBase64 = (file: File): Promise<string> =>
-        new Promise((resolve, reject) => {
-            const reader = new FileReader();
-            reader.onload = () => resolve(reader.result as string);
-            reader.onerror = reject;
-            reader.readAsDataURL(file);
-        });
-
-    const validateStep1 = () => !!(formData.fullName && formData.email && formData.contactNo);
+    
     const validateStep2 = () => !!formData.selectedCourseId;
 
     const nextStep = () => {
         if (step === 1 && !validateStep1()) {
-            toast.error("Please fill all required personal details.");
             return;
         }
         if (step === 2 && !validateStep2()) {
@@ -92,12 +83,7 @@ export default function ApplyPage() {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        if (!screenshot) {
-            toast.error("Please upload the payment screenshot.");
-            return;
-        }
-
-        if (!formData.transactionId) {
+        if (!formData.transactionId || formData.transactionId.trim() === "") {
             toast.error("Please enter the Transaction ID / UTR Number.");
             return;
         }
@@ -106,7 +92,6 @@ export default function ApplyPage() {
         setLoading(true);
 
         try {
-            const screenshotBase64 = await toBase64(screenshot);
             const derivedStream = selectedCourse?.stream || "N/A";
 
             const templateParams = {
@@ -115,8 +100,6 @@ export default function ApplyPage() {
                 phone: formData.contactNo,
                 title: `Enrollment: ${selectedCourse?.title}`,
                 message: `Stream: ${derivedStream}\nCourse: ${selectedCourse?.title}\nFee: ${selectedCourse?.fee}\nTransaction ID: ${formData.transactionId}`,
-                screenshot_url: screenshotBase64,
-                screenshot_name: screenshot.name,
             };
 
             await emailjs.send(
@@ -200,7 +183,7 @@ export default function ApplyPage() {
                                                     </div>
                                                     <div className="grid gap-2">
                                                         <Label htmlFor="contactNo">Mobile Number</Label>
-                                                        <Input id="contactNo" name="contactNo" type="tel" value={formData.contactNo} onChange={handleChange} placeholder="+91 98765 43210" />
+                                                        <Input id="contactNo" name="contactNo" type="tel" value={formData.contactNo} onChange={handlePhoneChange} placeholder="10-digit mobile number" maxLength={10} />
                                                     </div>
                                                 </div>
                                             </div>
@@ -308,22 +291,6 @@ export default function ApplyPage() {
                                                         value={formData.transactionId}
                                                         onChange={handleChange}
                                                     />
-                                                </div>
-
-                                                <div className="grid gap-2 mt-4">
-                                                    <Label>Upload Payment Screenshot *</Label>
-                                                    <div
-                                                        className={`border-2 border-dashed rounded-lg p-5 flex flex-col items-center justify-center text-center transition-colors cursor-pointer ${
-                                                            screenshotError ? "border-red-400 bg-red-50" : screenshotName ? "border-green-400 bg-green-50" : "hover:bg-muted/50"
-                                                        }`}
-                                                        onClick={() => document.getElementById('screenshot-upload')?.click()}
-                                                    >
-                                                        <UploadCloud className={`w-8 h-8 mb-2 ${screenshotName ? "text-green-500" : "text-primary/60"}`} />
-                                                        <p className="text-sm font-medium">{screenshotName || "Click to upload payment screenshot"}</p>
-                                                        <p className="text-xs mt-1 text-muted-foreground">PNG, JPG — max 100 KB</p>
-                                                        <input id="screenshot-upload" type="file" className="hidden" accept="image/*" onChange={handleFileChange} />
-                                                    </div>
-                                                    {screenshotError && <p className="text-xs text-red-500 mt-1">{screenshotError}</p>}
                                                 </div>
                                             </div>
                                         </form>

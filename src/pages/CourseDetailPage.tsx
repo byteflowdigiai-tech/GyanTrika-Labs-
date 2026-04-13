@@ -252,6 +252,20 @@ export default function CourseDetailPage() {
                         </div>
                     </div>
                     
+                    {/* Final CTA */}
+                    <div className="mt-8 bg-primary/5 border border-primary/20 rounded-2xl p-8 md:p-12 text-center flex flex-col items-center">
+                        <h2 className="text-3xl font-display font-bold mb-4">Ready to Start Your Journey?</h2>
+                        <p className="text-muted-foreground text-lg max-w-2xl mb-8">
+                            Join the next batch for {course.title} and take the first step towards a successful career.
+                        </p>
+                        <Button 
+                            className="text-lg h-14 px-10 rounded-xl group w-full md:w-auto"
+                            onClick={() => navigate(`/apply/${course.id}?stream=${stream}`)}
+                        >
+                            Enroll Now 
+                            <ChevronRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                        </Button>
+                    </div>
                 </div>
             </main>
 
