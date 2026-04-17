@@ -13,7 +13,7 @@ export function Footer() {
                         <img
                             src={logo}
                             alt="GyanTrika Labs"
-                            className="h-44 w-auto object-contain transition-all duration-300 mix-blend-multiply dark:mix-blend-normal"
+                            className="h-44 w-auto object-contain transition-all duration-300 mix-blend-multiply dark:mix-blend-normal dark:brightness-150"
                         />
                         <p className="text-muted-foreground text-sm leading-relaxed">
                             Empowering the next generation of innovators through hands-on learning in Robotics, AI, IoT, and emerging technologies.

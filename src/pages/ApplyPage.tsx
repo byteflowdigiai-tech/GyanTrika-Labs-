@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { courses } from "@/data/courses";
+import { countryCodes } from "@/data/countryCodes";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -27,6 +28,7 @@ export default function ApplyPage() {
     const [formData, setFormData] = useState({
         fullName: "",
         email: "",
+        countryCode: "IN",
         contactNo: "",
         selectedCourseId: initialCourse?.id || "",
         transactionId: "",
@@ -39,6 +41,22 @@ export default function ApplyPage() {
         const { name, value } = e.target;
         setFormData((prev) => ({ ...prev, [name]: value }));
     };
+
+    useEffect(() => {
+        const fetchLocation = async () => {
+            try {
+                const response = await fetch("https://ipapi.co/json/");
+                if (!response.ok) return;
+                const data = await response.json();
+                if (data && data.country_code) {
+                    setFormData((prev) => ({ ...prev, countryCode: data.country_code }));
+                }
+            } catch (error) {
+                console.error("Error fetching location:", error);
+            }
+        };
+        fetchLocation();
+    }, []);
 
     const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const val = e.target.value.replace(/\D/g, '').slice(0, 10);
@@ -93,11 +111,12 @@ export default function ApplyPage() {
 
         try {
             const derivedStream = selectedCourse?.stream || "N/A";
+            const dialCode = countryCodes.find(c => c.code === formData.countryCode)?.dialCode || "+91";
 
             const templateParams = {
                 name: formData.fullName,
                 email: formData.email,
-                phone: formData.contactNo,
+                phone: `${dialCode} ${formData.contactNo}`,
                 title: `Enrollment: ${selectedCourse?.title}`,
                 message: `Stream: ${derivedStream}\nCourse: ${selectedCourse?.title}\nFee: ${selectedCourse?.fee}\nTransaction ID: ${formData.transactionId}`,
             };
@@ -183,7 +202,24 @@ export default function ApplyPage() {
                                                     </div>
                                                     <div className="grid gap-2">
                                                         <Label htmlFor="contactNo">Mobile Number</Label>
-                                                        <Input id="contactNo" name="contactNo" type="tel" value={formData.contactNo} onChange={handlePhoneChange} placeholder="10-digit mobile number" maxLength={10} />
+                                                        <div className="flex gap-2">
+                                                            <Select
+                                                                value={formData.countryCode}
+                                                                onValueChange={(val) => setFormData((prev) => ({ ...prev, countryCode: val }))}
+                                                            >
+                                                                <SelectTrigger className="w-[100px] shrink-0">
+                                                                    <SelectValue placeholder="Code" />
+                                                                </SelectTrigger>
+                                                                <SelectContent className="max-h-[300px]">
+                                                                    {countryCodes.map((country) => (
+                                                                        <SelectItem key={country.code} value={country.code}>
+                                                                            {country.code} {country.dialCode}
+                                                                        </SelectItem>
+                                                                    ))}
+                                                                </SelectContent>
+                                                            </Select>
+                                                            <Input id="contactNo" name="contactNo" type="tel" value={formData.contactNo} onChange={handlePhoneChange} placeholder="10-digit mobile no." maxLength={10} className="flex-1" />
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>

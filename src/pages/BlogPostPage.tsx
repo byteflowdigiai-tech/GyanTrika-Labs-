@@ -2,12 +2,12 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { getPostBySlug, blogPosts } from "@/data/blogData";
+import { getPostBySlug, blogPosts, BlogComment, BlogReply } from "@/data/blogData";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { Calendar, Clock, User, ArrowLeft, ArrowRight, Share2, Bookmark, Tag, Send } from "lucide-react";
+import { Calendar, Clock, User, ArrowLeft, ArrowRight, Share2, Bookmark, Tag, Send, Reply, ShieldCheck } from "lucide-react";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
 import ReactMarkdown from 'react-markdown';
@@ -17,7 +17,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { MessageSquare, UserCircle } from "lucide-react";
 
-interface Comment {
+interface LocalComment {
     id: string;
     name: string;
     content: string;
@@ -39,15 +39,8 @@ const BlogPostPage = () => {
         }
     }, [post]);
 
-    // Comment State
-    const [comments, setComments] = useState<Comment[]>([
-        {
-            id: "1",
-            name: "Rahul Sharma",
-            content: "Excellent guide on Arduino! This really helped me understand the basics before starting my first robotics project.",
-            date: "2026-01-20"
-        }
-    ]);
+    // Local user-submitted comments
+    const [localComments, setLocalComments] = useState<LocalComment[]>([]);
 
     const [newComment, setNewComment] = useState("");
     const [authorName, setAuthorName] = useState("");
@@ -56,18 +49,23 @@ const BlogPostPage = () => {
         e.preventDefault();
         if (!newComment.trim() || !authorName.trim()) return;
 
-        const comment: Comment = {
+        const comment: LocalComment = {
             id: Date.now().toString(),
             name: authorName,
             content: newComment,
             date: new Date().toISOString().split('T')[0]
         };
 
-        setComments([comment, ...comments]);
+        setLocalComments([comment, ...localComments]);
         setNewComment("");
         setAuthorName("");
         toast.success("Comment posted successfully!");
     };
+
+    // Merge blog data comments + local user comments for total count
+    const dataComments = post?.comments || [];
+    const totalReplies = dataComments.reduce((acc, c) => acc + (c.replies?.length || 0), 0);
+    const totalDiscussions = dataComments.length + totalReplies + localComments.length;
 
     if (!post) {
         return (
@@ -251,44 +249,125 @@ const BlogPostPage = () => {
                             </div>
                         </Card>
 
-                        {/* Posted Comments List */}
-                        <div className="mt-12 space-y-8">
-                            <div className="flex items-center gap-3 mb-8">
-                                <div className="p-2 bg-primary/10 rounded-lg">
+                        {/* Discussion Section */}
+                        <div className="mt-12">
+                            <div className="flex items-center gap-3 mb-10">
+                                <div className="p-2.5 bg-primary/10 rounded-xl">
                                     <MessageSquare className="w-6 h-6 text-primary" />
                                 </div>
-                                <h2 className="text-2xl font-display font-bold text-foreground capitalize">
-                                    Discussion ({comments.length})
-                                </h2>
+                                <div>
+                                    <h2 className="text-2xl font-display font-bold text-foreground">
+                                        Discussion
+                                    </h2>
+                                    <p className="text-sm text-muted-foreground">{totalDiscussions} comments</p>
+                                </div>
                             </div>
 
-                            <div className="space-y-6">
-                                {comments.length === 0 ? (
-                                    <div className="text-center py-10 bg-slate-50 dark:bg-slate-900 rounded-3xl border border-dashed border-slate-200 dark:border-slate-800">
-                                        <p className="text-muted-foreground">No comments yet. Be the first to share your thoughts!</p>
+                            <div className="space-y-8">
+                                {/* User-submitted comments (newest first) */}
+                                {localComments.map((comment) => (
+                                    <motion.div
+                                        key={comment.id}
+                                        initial={{ opacity: 0, y: -10 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm"
+                                    >
+                                        <div className="flex items-start gap-4">
+                                            <div className="w-11 h-11 rounded-full bg-gradient-to-br from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-800 flex items-center justify-center flex-shrink-0">
+                                                <UserCircle className="w-7 h-7 text-slate-500 dark:text-slate-400" />
+                                            </div>
+                                            <div className="flex-1 min-w-0">
+                                                <div className="flex items-center justify-between mb-1.5">
+                                                    <h4 className="font-semibold text-foreground">{comment.name}</h4>
+                                                    <span className="text-[11px] text-muted-foreground">{formatDate(comment.date)}</span>
+                                                </div>
+                                                <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-[15px]">
+                                                    {comment.content}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </motion.div>
+                                ))}
+
+                                {/* Pre-existing threaded comments from blog data */}
+                                {dataComments.length === 0 && localComments.length === 0 ? (
+                                    <div className="text-center py-14 bg-slate-50 dark:bg-slate-900/50 rounded-2xl border border-dashed border-slate-200 dark:border-slate-800">
+                                        <MessageSquare className="w-10 h-10 text-slate-300 dark:text-slate-700 mx-auto mb-3" />
+                                        <p className="text-muted-foreground font-medium">No comments yet. Be the first to share your thoughts!</p>
                                     </div>
                                 ) : (
-                                    comments.map((comment) => (
+                                    dataComments.map((comment) => (
                                         <motion.div
                                             key={comment.id}
-                                            initial={{ opacity: 0, x: -10 }}
-                                            animate={{ opacity: 1, x: 0 }}
-                                            className="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-sm"
+                                            initial={{ opacity: 0, y: 15 }}
+                                            whileInView={{ opacity: 1, y: 0 }}
+                                            viewport={{ once: true }}
+                                            className="space-y-0"
                                         >
-                                            <div className="flex items-start gap-4">
-                                                <div className="w-12 h-12 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center flex-shrink-0">
-                                                    <UserCircle className="w-8 h-8 text-slate-400" />
-                                                </div>
-                                                <div className="flex-1 min-w-0">
-                                                    <div className="flex items-center justify-between mb-2">
-                                                        <h4 className="font-bold text-primary">{comment.name}</h4>
-                                                        <span className="text-xs text-muted-foreground">{formatDate(comment.date)}</span>
+                                            {/* Parent comment */}
+                                            <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                                                <div className="flex items-start gap-4">
+                                                    <div className="w-11 h-11 rounded-full bg-gradient-to-br from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-800 flex items-center justify-center flex-shrink-0">
+                                                        <UserCircle className="w-7 h-7 text-slate-500 dark:text-slate-400" />
                                                     </div>
-                                                    <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
-                                                        {comment.content}
-                                                    </p>
+                                                    <div className="flex-1 min-w-0">
+                                                        <div className="flex items-center justify-between mb-1.5">
+                                                            <h4 className="font-semibold text-foreground">{comment.author}</h4>
+                                                            <span className="text-[11px] text-muted-foreground">{formatDate(comment.date)}</span>
+                                                        </div>
+                                                        <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-[15px]">
+                                                            {comment.content}
+                                                        </p>
+                                                    </div>
                                                 </div>
                                             </div>
+
+                                            {/* Threaded replies */}
+                                            {comment.replies && comment.replies.length > 0 && (
+                                                <div className="ml-5 md:ml-10 border-l-2 border-primary/20 dark:border-primary/30 pl-4 md:pl-6 space-y-3 pt-3">
+                                                    {comment.replies.map((reply) => (
+                                                        <div
+                                                            key={reply.id}
+                                                            className={`p-5 rounded-2xl border shadow-sm transition-colors ${
+                                                                reply.isAuthor
+                                                                    ? "bg-primary/5 dark:bg-primary/10 border-primary/20 dark:border-primary/25"
+                                                                    : "bg-slate-50 dark:bg-slate-900/70 border-slate-200 dark:border-slate-800"
+                                                            }`}
+                                                        >
+                                                            <div className="flex items-start gap-3">
+                                                                {reply.isAuthor && post ? (
+                                                                    <img
+                                                                        src={post.author.avatar}
+                                                                        alt={reply.author}
+                                                                        className="w-9 h-9 rounded-full object-cover ring-2 ring-primary/30 flex-shrink-0"
+                                                                    />
+                                                                ) : (
+                                                                    <div className="w-9 h-9 rounded-full bg-gradient-to-br from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-800 flex items-center justify-center flex-shrink-0">
+                                                                        <UserCircle className="w-5 h-5 text-slate-500 dark:text-slate-400" />
+                                                                    </div>
+                                                                )}
+                                                                <div className="flex-1 min-w-0">
+                                                                    <div className="flex items-center flex-wrap gap-2 mb-1.5">
+                                                                        <h4 className={`font-semibold text-sm ${reply.isAuthor ? "text-primary" : "text-foreground"}`}>
+                                                                            {reply.author}
+                                                                        </h4>
+                                                                        {reply.isAuthor && (
+                                                                            <span className="inline-flex items-center gap-1 bg-primary/15 text-primary text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">
+                                                                                <ShieldCheck className="w-3 h-3" />
+                                                                                Author
+                                                                            </span>
+                                                                        )}
+                                                                        <span className="text-[11px] text-muted-foreground ml-auto">{formatDate(reply.date)}</span>
+                                                                    </div>
+                                                                    <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-[14px]">
+                                                                        {reply.content}
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            )}
                                         </motion.div>
                                     ))
                                 )}

@@ -40,7 +40,7 @@ export const Header = () => {
                         <img
                             src={logo}
                             alt="GyanTrika Labs"
-                            className="h-16 md:h-20 w-auto transform scale-110 md:scale-[1.35] origin-left object-contain transition-all duration-300 mix-blend-multiply dark:mix-blend-normal"
+                            className="h-16 md:h-20 w-auto transform scale-110 md:scale-[1.35] origin-left object-contain transition-all duration-300 mix-blend-multiply dark:mix-blend-normal dark:brightness-150"
                         />
                     </Link>
 
