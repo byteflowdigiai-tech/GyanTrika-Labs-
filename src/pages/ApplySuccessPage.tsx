@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -6,6 +6,8 @@ import { CheckCircle } from "lucide-react";
 
 export default function ApplySuccessPage() {
     const navigate = useNavigate();
+    const [searchParams] = useSearchParams();
+    const isEarlyBird = searchParams.get("offer") === "earlybird";
 
     return (
         <div className="min-h-screen flex flex-col bg-background">
@@ -20,12 +22,25 @@ export default function ApplySuccessPage() {
                     <h1 className="text-4xl font-display font-bold mb-4">Application Submitted!</h1>
                     
                     <div className="bg-muted/30 p-6 rounded-xl border mb-8">
-                        <p className="text-lg text-muted-foreground mb-4">
-                            Thank you for enrolling with Gyantrika Labs. We have successfully received your enrollment and payment details.
-                        </p>
-                        <p className="text-sm font-medium text-foreground">
-                            Our admissions team will verify your payment and contact you shortly with your enrollment confirmation and next steps.
-                        </p>
+                        {isEarlyBird ? (
+                            <>
+                                <p className="text-lg text-muted-foreground mb-4">
+                                    Thank you for securing your free spot with Gyantrika Labs. We have successfully received your early bird registration details.
+                                </p>
+                                <p className="text-sm font-medium text-foreground">
+                                    Our admissions team will contact you shortly with your free enrollment confirmation and next steps.
+                                </p>
+                            </>
+                        ) : (
+                            <>
+                                <p className="text-lg text-muted-foreground mb-4">
+                                    Thank you for enrolling with Gyantrika Labs. We have successfully received your enrollment and payment details.
+                                </p>
+                                <p className="text-sm font-medium text-foreground">
+                                    Our admissions team will verify your payment and contact you shortly with your enrollment confirmation and next steps.
+                                </p>
+                            </>
+                        )}
                     </div>
 
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { motion } from "framer-motion";
 import { GraduationCap, Code, TestTube, Palette, Briefcase, ArrowRight, Clock, BookOpen, ChevronRight, SlidersHorizontal } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { EarlyBirdWizard } from "@/components/EarlyBirdWizard";
 import { courses } from "@/data/courses";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -12,8 +13,15 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default function CoursesStreamPage() {
     const navigate = useNavigate();
+    const [searchParams] = useSearchParams();
     const [selectedLevel, setSelectedLevel] = useState("All");
     const [selectedStream, setSelectedStream] = useState("All");
+    useEffect(() => {
+        if (searchParams.get("offer") === "earlybird") {
+            // If they land on courses with the old query param, redirect them to the new page automatically
+            navigate("/offer/early-bird", { replace: true });
+        }
+    }, [searchParams, navigate]);
 
     const streams = [
         {
@@ -124,6 +132,11 @@ export default function CoursesStreamPage() {
             </section>
 
             <main className="flex-1 container py-16 px-4 space-y-20">
+                
+                {/* Early Bird Offer Section Gateway */}
+                <div className="max-w-6xl mx-auto">
+                    <EarlyBirdWizard isExpanded={false} />
+                </div>
 
                 {/* Stream Cards */}
                 <motion.div

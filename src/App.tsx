@@ -26,6 +26,7 @@ import CourseListingPage from "./pages/CourseListingPage";
 import CourseDetailPage from "./pages/CourseDetailPage";
 import ApplyPage from "./pages/ApplyPage";
 import ApplySuccessPage from "./pages/ApplySuccessPage";
+import EarlyBirdPage from "./pages/EarlyBirdPage";
 import BooksPage from "./pages/BooksPage";
 import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
@@ -77,6 +78,7 @@ const App = () => (
               <Route path="/apply" element={<ApplyPage />} />
               <Route path="/apply/:courseId" element={<ApplyPage />} />
               <Route path="/apply/success" element={<ApplySuccessPage />} />
+              <Route path="/offer/early-bird" element={<EarlyBirdPage />} />
               
               <Route path="/books" element={<BooksPage />} />
               <Route path="/books/:category" element={<BooksPage />} />
