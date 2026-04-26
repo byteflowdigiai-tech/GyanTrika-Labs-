@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import emailjs from "@emailjs/browser";
-import { Copy, Gift, CheckCircle2, ChevronRight, Loader2, Sparkles, BookOpen, Clock, Zap } from "lucide-react";
+import { Copy, Gift, CheckCircle2, Circle, ChevronRight, Loader2, Sparkles, BookOpen, Clock, Zap } from "lucide-react";
 import { courses } from "@/data/courses";
 import { countryCodes } from "@/data/countryCodes";
 
@@ -220,12 +220,13 @@ export function EarlyBirdWizard({ isExpanded, onToggle, standalone = false }: Ea
                                     <div 
                                         key={stream}
                                         onClick={() => setFormData(p => ({ ...p, stream }))}
-                                        className={`p-4 rounded-xl border text-center cursor-pointer capitalize font-semibold transition-all ${
+                                        className={`p-4 flex flex-col items-center justify-center gap-2 rounded-xl border text-center cursor-pointer capitalize font-semibold transition-all ${
                                             formData.stream === stream 
                                             ? "bg-primary/10 border-primary text-primary shadow-sm ring-1 ring-primary" 
                                             : "bg-background hover:bg-muted/50 border-input text-muted-foreground"
                                         }`}
                                     >
+                                        {formData.stream === stream ? <CheckCircle2 className="w-5 h-5 text-primary" /> : <Circle className="w-5 h-5 opacity-40" />}
                                         {stream}
                                     </div>
                                 ))}
@@ -241,12 +242,13 @@ export function EarlyBirdWizard({ isExpanded, onToggle, standalone = false }: Ea
                                     <div 
                                         key={level}
                                         onClick={() => setFormData(p => ({ ...p, level }))}
-                                        className={`p-4 rounded-xl border text-center cursor-pointer font-semibold transition-all ${
+                                        className={`p-4 flex flex-col items-center justify-center gap-2 rounded-xl border text-center cursor-pointer font-semibold transition-all ${
                                             formData.level === level 
                                             ? "bg-primary/10 border-primary text-primary shadow-sm ring-1 ring-primary" 
                                             : "bg-background hover:bg-muted/50 border-input text-muted-foreground"
                                         }`}
                                     >
+                                        {formData.level === level ? <CheckCircle2 className="w-5 h-5 text-primary" /> : <Circle className="w-5 h-5 opacity-40" />}
                                         {level}
                                     </div>
                                 ))}
@@ -277,9 +279,13 @@ export function EarlyBirdWizard({ isExpanded, onToggle, standalone = false }: Ea
                                                 : "bg-card hover:border-primary/50 hover:shadow-sm"
                                             }`}
                                         >
-                                            {formData.selectedCourseId === course.id && (
-                                                <div className="absolute top-2 right-2 text-primary">
-                                                    <CheckCircle2 className="w-5 h-5 fill-primary/20" />
+                                            {formData.selectedCourseId === course.id ? (
+                                                <div className="absolute top-3 right-3 text-primary">
+                                                    <CheckCircle2 className="w-5 h-5 fill-primary/20 text-primary" />
+                                                </div>
+                                            ) : (
+                                                <div className="absolute top-3 right-3 text-muted-foreground opacity-30">
+                                                    <Circle className="w-5 h-5" />
                                                 </div>
                                             )}
                                             <h4 className="font-bold pr-6 line-clamp-1">{course.title}</h4>
