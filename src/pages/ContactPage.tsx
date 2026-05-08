@@ -251,7 +251,9 @@ const ContactPage = () => {
                                     <div>
                                         <p className="text-sm font-medium">Location</p>
                                         <p className="text-sm text-muted-foreground">
-                                            Main Branch: Bangalore<br />
+                                            Main Branch: Byteflow DigiAI, 1st Floor, Neeladri Complex,<br />
+                                            10th Cross, 2nd Main, Sampige Rd,<br />
+                                            Malleshwaram, Bengaluru, Karnataka 560003<br />
                                             Sub-branch: Guwahati
                                         </p>
                                     </div>
