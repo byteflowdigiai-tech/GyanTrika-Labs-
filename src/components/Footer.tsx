@@ -59,7 +59,7 @@ export function Footer() {
                         <ul className="space-y-3 text-sm">
                             <li className="flex items-start gap-2">
                                 <MapPin className="h-4 w-4 mt-1 text-primary" />
-                                <span className="text-muted-foreground">Main Branch: Bangalore<br />Sub-branch: Guwahati</span>
+                                <span className="text-muted-foreground">Main Branch: Byteflow DigiAI, 1st Floor, Neeladri Complex, 10th Cross, 2nd Main, Sampige Rd, Malleshwaram, Bengaluru, Karnataka 560003<br />Sub-branch: Guwahati</span>
                             </li>
                             <li className="flex items-center gap-2">
                                 <Phone className="h-4 w-4 text-primary" />
