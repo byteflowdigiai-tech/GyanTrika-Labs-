@@ -1,27 +1,52 @@
 import { motion, useInView, useSpring, useTransform } from "framer-motion";
-import { ArrowRight, Cpu, Bot, Lightbulb, Box, Network, Terminal, Code2, Database, Braces, Book, Library, BookOpen } from "lucide-react";
+import { ArrowRight, Cpu, Bot, Lightbulb, Box, Network, Terminal, Code2, Database, Braces, Book, Library, BookOpen, Plane, Layers } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import roboticArm from "@/assets/robotic-arm.jpg";
 import darkModeRobot from "@/assets/dark-mode-robot.jpg";
 import { useEffect, useRef, useState } from "react";
 
-const SpinOnClick = ({ children }: { children: React.ReactNode }) => {
-  const [spin, setSpin] = useState(0);
-  return (
+const FloatingBranchCard = ({ title, topics, icon: Icon, className, delay, rotateY = 0 }: { title: string, topics: string[], icon: any /* eslint-disable-line @typescript-eslint/no-explicit-any */, className: string, delay: number, rotateY?: number }) => (
+  <div className={`absolute pointer-events-auto z-30 hidden lg:block dark:hidden ${className}`} style={{ perspective: 1200 }}>
     <motion.div
-      animate={{ rotate: spin }}
-      transition={{ duration: 0.6, type: "spring", bounce: 0.4 }}
-      onClick={(e) => {
-        e.stopPropagation();
-        setSpin(s => s + 360);
+      className="relative rounded-xl w-[220px] sm:w-[260px]"
+      style={{ transformStyle: 'preserve-3d' }}
+      initial={{ y: 0, rotateY, rotateX: 0 }}
+      animate={{ 
+        y: [0, -15, 0], 
+        rotateY: [rotateY, rotateY + 8, rotateY - 8, rotateY], 
+        rotateX: [0, 8, -8, 0] 
       }}
-      className="cursor-pointer flex items-center justify-center w-full h-full"
+      transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay }}
     >
-      {children}
+      {/* 3D Depth / Back Plate to simulate physical thickness */}
+      <div 
+        className="absolute inset-0 rounded-xl bg-gradient-to-r from-[#B3CDE0] to-[#2B5C92]/30 border border-[#2B5C92]/40 opacity-70"
+        style={{ transform: 'translateZ(-8px)' }}
+      />
+      {/* 3D Depth / Front Glass Layer */}
+      <div 
+        className="relative p-4 sm:p-5 rounded-xl border border-[#B3CDE0] bg-white/80 backdrop-blur-md flex items-center justify-between shadow-[0_15px_35px_rgba(43,92,146,0.15),_inset_0_0_20px_rgba(255,255,255,0.9)]"
+        style={{ transform: 'translateZ(0px)', transformStyle: 'preserve-3d' }}
+      >
+        <div className="flex-1" style={{ transform: 'translateZ(25px)' }}>
+          <h3 className="font-bold text-[#0C1446] text-[13px] sm:text-[15px] mb-2 tracking-wider drop-shadow-sm">{title}</h3>
+          <ul className="space-y-1.5">
+            {topics.map((t, i) => (
+              <li key={i} className="text-[#2B5C92] text-[11px] sm:text-[12px] flex items-center gap-1.5 font-medium drop-shadow-sm">
+                <span className="w-1.5 h-1.5 rounded-sm bg-[#B3CDE0] shadow-[0_0_5px_#B3CDE0]" />
+                {t}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="ml-3 shrink-0" style={{ transform: 'translateZ(40px)' }}>
+          <Icon className="w-10 h-10 sm:w-12 sm:h-12 text-[#2B5C92]" strokeWidth={1.5} style={{ filter: 'drop-shadow(0 4px 6px rgba(43,92,146,0.2))' }} />
+        </div>
+      </div>
     </motion.div>
-  );
-};
+  </div>
+);
 
 const CounterItem = ({ icon: Icon, value, label }: { icon: any /* eslint-disable-line @typescript-eslint/no-explicit-any */, value: string, label: string }) => {
   const numericValue = parseInt(value);
@@ -45,14 +70,14 @@ const CounterItem = ({ icon: Icon, value, label }: { icon: any /* eslint-disable
 
   return (
     <div ref={ref} className="flex flex-col items-center">
-      <div className="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center mb-3">
-        <Icon className="w-5 h-5 text-primary" />
+      <div className="w-10 h-10 rounded-full bg-[#B3CDE0]/20 flex items-center justify-center mb-3">
+        <Icon className="w-5 h-5 text-[#2B5C92]" />
       </div>
-      <div className="font-display text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/70 flex items-center justify-center">
+      <div className="font-display text-3xl md:text-4xl font-bold text-[#0C1446] flex items-center justify-center">
         <motion.span>{displayValue}</motion.span>
         <span>{suffix}</span>
       </div>
-      <div className="text-xs uppercase tracking-widest font-semibold text-muted-foreground mt-1">
+      <div className="text-xs uppercase tracking-widest font-semibold text-[#2B5C92] mt-1">
         {label}
       </div>
     </div>
@@ -60,11 +85,18 @@ const CounterItem = ({ icon: Icon, value, label }: { icon: any /* eslint-disable
 };
 
 export function HeroSection() {
+
   return (
-    <section className="relative min-h-[90vh] flex items-center bg-background circuit-pattern overflow-hidden">
+    <section className="relative min-h-[90vh] flex items-center bg-[#FFFFFF] circuit-pattern overflow-hidden">
+      {/* Starry Night Premium Atmosphere - Exact match to Image 2 */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <div className="absolute inset-y-0 left-0 w-full md:w-[75%] bg-gradient-to-r from-[#2B5C92]/60 via-[#B3CDE0]/30 to-transparent" />
+        <div className="absolute top-0 right-0 w-[50%] h-[50%] bg-gradient-to-bl from-[#B3CDE0]/10 to-transparent" />
+      </div>
+
       {/* Light Mode: Background robotic arm elements */}
       <motion.div
-        className="absolute right-[-15%] sm:right-[-2%] top-[8%] sm:top-[5%] w-[80%] sm:w-[45%] opacity-[0.08] sm:opacity-[0.12] pointer-events-none select-none dark:hidden"
+        className="absolute right-[-15%] sm:right-[-2%] top-[8%] sm:top-[5%] w-[80%] sm:w-[45%] opacity-[0.4] sm:opacity-[0.5] pointer-events-none select-none dark:hidden z-10 mix-blend-multiply"
         initial={{ rotate: -10, y: 0 }}
         animate={{
           rotate: [-10, 5, -10],
@@ -79,13 +111,13 @@ export function HeroSection() {
         <img
           src={roboticArm}
           alt=""
-          className="w-full h-auto mix-blend-multiply"
+          className="w-full h-auto"
         />
       </motion.div>
 
       {/* Light Mode: Left side decorative books (Knowledge/Learning) */}
       <motion.div
-        className="absolute left-[2%] bottom-[10%] w-[30%] opacity-[0.1] pointer-events-none select-none hidden lg:block dark:hidden"
+        className="absolute left-[2%] bottom-[10%] w-[30%] opacity-[0.15] pointer-events-none select-none hidden lg:block dark:hidden"
         initial={{ y: 20, rotate: -5 }}
         animate={{
           y: [-10, 10, -10],
@@ -98,10 +130,10 @@ export function HeroSection() {
         }}
       >
         <div className="flex flex-col gap-8 items-center opacity-40">
-          <Library className="w-32 h-32 text-primary/50" strokeWidth={1} />
+          <Library className="w-32 h-32 text-[#2B5C92]/60" strokeWidth={1} />
           <div className="flex gap-12 -mt-4">
-            <Book className="w-20 h-20 text-primary/40 -rotate-12" strokeWidth={1} />
-            <BookOpen className="w-24 h-24 text-primary/40 rotate-12" strokeWidth={1} />
+            <Book className="w-20 h-20 text-[#2B5C92]/50 -rotate-12" strokeWidth={1} />
+            <BookOpen className="w-24 h-24 text-[#2B5C92]/50 rotate-12" strokeWidth={1} />
           </div>
         </div>
       </motion.div>
@@ -128,75 +160,63 @@ export function HeroSection() {
             className="w-full h-auto object-contain mask-radial-fade"
           />
           {/* Subtle glow behind the robot */}
-          <div className="absolute inset-0 bg-primary/20 blur-[100px] rounded-full -z-10" />
+          <div className="absolute inset-0 bg-[#B3CDE0]/20 blur-[100px] rounded-full -z-10" />
         </div>
       </motion.div>
 
       {/* Floating Decorative Elements inspired by Image 1 and to fill empty space */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-20">
-        {/* Floating Code Icon (Left Top) */}
-        <motion.div
-          className="absolute left-[5%] sm:left-[15%] top-[12%] sm:top-[15%] p-2 sm:p-3 rounded-lg sm:rounded-xl border border-primary/20 bg-primary/5 backdrop-blur-md flex items-center justify-center shadow-lg pointer-events-auto"
-          animate={{ y: [0, 20, 0], x: [0, 15, 0] }}
-          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <SpinOnClick><Code2 className="w-6 h-6 text-primary/40" /></SpinOnClick>
-        </motion.div>
+        {/* Branch Cards - Left side of the robotic arm */}
+        <FloatingBranchCard
+          title="3D PRINTING"
+          topics={["CAD Design", "Prototyping", "Materials"]}
+          icon={Layers}
+          className="right-[22%] xl:right-[28%] top-[10%]"
+          delay={0}
+          rotateY={25}
+        />
+        <FloatingBranchCard
+          title="IOT & EMBEDDED"
+          topics={["Sensors", "Microcontrollers", "Smart Devices"]}
+          icon={Cpu}
+          className="right-[25%] xl:right-[32%] top-[40%]"
+          delay={1.5}
+          rotateY={30}
+        />
+        <FloatingBranchCard
+          title="ENTREPRENEURSHIP"
+          topics={["Design Thinking", "Startups", "Innovation"]}
+          icon={Lightbulb}
+          className="right-[20%] xl:right-[26%] bottom-[12%]"
+          delay={2.8}
+          rotateY={20}
+        />
 
-        {/* Floating Terminal Icon (Left Middle) */}
-        <motion.div
-          className="absolute left-[3%] sm:left-[8%] top-[35%] sm:top-[40%] p-2 sm:p-3 rounded-lg sm:rounded-xl border border-primary/20 bg-primary/5 backdrop-blur-md flex items-center justify-center shadow-lg pointer-events-auto"
-          animate={{ scale: [1, 1.1, 1], y: [0, -15, 0] }}
-          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        >
-          <SpinOnClick><Terminal className="w-7 h-7 text-primary/40" /></SpinOnClick>
-        </motion.div>
-
-        {/* Floating Braces Icon (Left Bottom Area) */}
-        <motion.div
-          className="absolute left-[10%] sm:left-[20%] bottom-[30%] sm:bottom-[35%] p-2 sm:p-3 rounded-lg sm:rounded-xl border border-primary/20 bg-primary/5 backdrop-blur-md flex items-center justify-center shadow-lg pointer-events-auto"
-          animate={{ rotate: [0, 15, -15, 0] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <SpinOnClick><Braces className="w-6 h-6 text-primary/40" /></SpinOnClick>
-        </motion.div>
-
-        {/* Floating Database Icon (Right Top Area) */}
-        <motion.div
-          className="absolute right-[25%] sm:right-[30%] top-[8%] sm:top-[10%] p-1.5 sm:p-2 rounded-md sm:rounded-lg border border-primary/20 bg-primary/5 backdrop-blur-md flex items-center justify-center shadow-sm pointer-events-auto"
-          animate={{ opacity: [0.3, 0.6, 0.3] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <SpinOnClick><Database className="w-5 h-5 text-primary/30" /></SpinOnClick>
-        </motion.div>
-
-        {/* Original Floating Icons */}
-        {/* Floating Robot Icon (Right Side) */}
-        <motion.div
-          className="absolute right-[8%] sm:right-[12%] top-[18%] sm:top-[22%] p-2 sm:p-3 rounded-xl sm:rounded-2xl border border-primary/20 bg-primary/5 backdrop-blur-md flex items-center justify-center shadow-lg pointer-events-auto"
-          animate={{ y: [0, -25, 0], rotate: [0, 8, 0] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <SpinOnClick><Bot className="w-8 h-8 text-primary/60" /></SpinOnClick>
-        </motion.div>
-
-        {/* Floating Box Icon (Bottom Right) */}
-        <motion.div
-          className="absolute right-[12%] sm:right-[18%] bottom-[15%] sm:bottom-[20%] p-2 sm:p-3 rounded-xl sm:rounded-2xl border border-primary/20 bg-primary/5 backdrop-blur-md flex items-center justify-center shadow-lg -rotate-12 pointer-events-auto"
-          animate={{ y: [0, 20, 0], rotate: [-12, -4, -12] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        >
-          <SpinOnClick><Box className="w-8 h-8 text-primary/60" /></SpinOnClick>
-        </motion.div>
-
-        {/* Floating Network Icon (Bottom Left) */}
-        <motion.div
-          className="absolute left-[8%] sm:left-[12%] bottom-[20%] sm:bottom-[25%] p-2 sm:p-3 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-md flex items-center justify-center shadow-lg pointer-events-auto"
-          animate={{ scale: [1, 1.15, 1], rotate: [0, 360] }}
-          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-        >
-          <SpinOnClick><Network className="w-8 h-8 text-primary/60" /></SpinOnClick>
-        </motion.div>
+        {/* Branch Cards - Right side of the robotic arm */}
+        <FloatingBranchCard
+          title="AI & ROBOTICS"
+          topics={["Machine Learning", "Computer Vision", "Automation"]}
+          icon={Bot}
+          className="right-[1%] xl:right-[5%] top-[18%]"
+          delay={0.8}
+          rotateY={-25}
+        />
+        <FloatingBranchCard
+          title="DRONE & UAV"
+          topics={["Flight Dynamics", "Aerial Mapping", "Piloting"]}
+          icon={Plane}
+          className="right-[-2%] xl:right-[2%] top-[48%]"
+          delay={2.2}
+          rotateY={-30}
+        />
+        <FloatingBranchCard
+          title="CODING & DEV"
+          topics={["Web Development", "App Creation", "Algorithms"]}
+          icon={Code2}
+          className="right-[3%] xl:right-[8%] bottom-[8%]"
+          delay={1.1}
+          rotateY={-20}
+        />
 
         {/* Decorative Glowing Nodes */}
         {[
@@ -211,7 +231,7 @@ export function HeroSection() {
         ].map((node) => (
           <motion.div
             key={node.i}
-            className="absolute w-2 h-2 rounded-full bg-primary/30"
+            className="absolute w-2 h-2 rounded-full bg-[#B3CDE0]/50"
             style={{ top: node.top, left: node.left }}
             animate={{
               scale: [1, 1.8, 1],
@@ -236,7 +256,7 @@ export function HeroSection() {
         ].map((circle, i) => (
           <div
             key={i}
-            className="absolute rounded-full border border-primary/10"
+            className="absolute rounded-full border border-[#B3CDE0]/30"
             style={{
               top: circle.top,
               left: circle.left,
@@ -247,79 +267,104 @@ export function HeroSection() {
         ))}
       </div>
 
-      <div className="container relative z-10 pt-10 pointer-events-none">
-        <div className="max-w-4xl mx-auto text-center pointer-events-auto">
+      <div className="container relative z-10 pt-16 lg:pt-24 pb-12 pointer-events-none min-h-[85vh] flex flex-col justify-center">
+        <div className="max-w-[750px] text-left pointer-events-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 border border-primary/10 mb-8 backdrop-blur-sm">
-              <Cpu className="w-4 h-4 text-primary" />
-              <span className="text-sm font-medium text-foreground/80 tracking-wide uppercase font-display">LAB OF IDEAS · Robotics & AI Innovation Hub</span>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#B3CDE0]/30 shadow-sm mb-8">
+              <Cpu className="w-4 h-4 text-[#2B5C92]" />
+              <span className="text-sm font-medium text-[#2B5C92] tracking-wide uppercase font-display">LAB OF IDEAS · Innovation Hub</span>
             </div>
           </motion.div>
 
           <motion.h1
-            className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-8 leading-[1.1] tracking-tight text-primary max-w-6xl mx-auto"
+            className="font-display text-5xl md:text-[5.5rem] font-extrabold mb-8 leading-[1.05] tracking-tight text-[#0C1446] uppercase"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            Build Future Skills with <br className="hidden md:block" />
-            <span className="text-gradient">AI, Robotics and Experiential Learning</span>
+            BUILD FUTURE <br />
+            SKILLS WITH <br />
+            <span className="text-[#2B5C92]">AI & ROBOTICS</span>
           </motion.h1>
 
           <motion.p
-            className="text-xl md:text-2xl text-foreground/90 max-w-3xl mx-auto mb-10 leading-relaxed font-medium"
+            className="text-xl md:text-[22px] text-[#2B5C92]/90 max-w-[650px] mb-12 leading-relaxed font-medium"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            We transform schools into innovation ecosystems. Our courses are NEP 2020 aligned, industry-driven, student-focused. We provide future-ready lab infrastructure for progressive schools.
+            We transform schools into innovation ecosystems. A next-generation digital platform with NEP 2020 aligned, industry-driven courses and future-ready lab infrastructure.
           </motion.p>
 
-          <motion.div
-            className="flex flex-col items-center gap-6"
+          {/* 2x2 Feature Grid - Matching Target Image Layout */}
+          <motion.div 
+            className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 mb-12 max-w-[600px]"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <div className="flex flex-col sm:flex-row gap-4 justify-center w-full">
-              <Button asChild size="lg" className="h-14 px-8 text-lg gap-2 glow-effect">
-                <Link to="/lms">
-                  Start Learning <ArrowRight className="w-5 h-5" />
-                </Link>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="h-14 px-8 text-lg border-2">
-                <Link to="/technology-lab-setup">Explore Labs</Link>
-              </Button>
+            <div className="flex items-center gap-4">
+              <div className="w-14 h-14 rounded-2xl bg-white shadow-sm border border-[#B3CDE0]/30 flex items-center justify-center shrink-0">
+                <Bot className="w-6 h-6 text-[#2B5C92]" />
+              </div>
+              <div>
+                <div className="font-bold text-[#0C1446] text-[17px]">15+ Projects</div>
+                <div className="text-[#2B5C92]/80 text-[15px] font-medium">Real-world building</div>
+              </div>
+            </div>
+            
+            <div className="flex items-center gap-4">
+              <div className="w-14 h-14 rounded-2xl bg-white shadow-sm border border-[#B3CDE0]/30 flex items-center justify-center shrink-0">
+                <Lightbulb className="w-6 h-6 text-[#2B5C92]" />
+              </div>
+              <div>
+                <div className="font-bold text-[#0C1446] text-[17px]">8+ Courses</div>
+                <div className="text-[#2B5C92]/80 text-[15px] font-medium">Industry aligned</div>
+              </div>
             </div>
 
-            <p className="text-sm text-muted-foreground font-medium bg-secondary/30 px-4 py-2 rounded-full border border-border/50">
-              Trusted by 2000+ students | 15+ real-world projects
-            </p>
+            <div className="flex items-center gap-4">
+              <div className="w-14 h-14 rounded-2xl bg-white shadow-sm border border-[#B3CDE0]/30 flex items-center justify-center shrink-0">
+                <Cpu className="w-6 h-6 text-[#2B5C92]" />
+              </div>
+              <div>
+                <div className="font-bold text-[#0C1446] text-[17px]">2000+ Students</div>
+                <div className="text-[#2B5C92]/80 text-[15px] font-medium">Active learners</div>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-4">
+              <div className="w-14 h-14 rounded-2xl bg-white shadow-sm border border-[#B3CDE0]/30 flex items-center justify-center shrink-0">
+                <Box className="w-6 h-6 text-[#2B5C92]" />
+              </div>
+              <div>
+                <div className="font-bold text-[#0C1446] text-[17px]">5+ Labs</div>
+                <div className="text-[#2B5C92]/80 text-[15px] font-medium">Future-ready setup</div>
+              </div>
+            </div>
           </motion.div>
 
-          {/* Stats Section with Counting Effect */}
+          {/* Buttons */}
           <motion.div
-            className="grid grid-cols-1 sm:grid-cols-3 gap-8 mt-24 pt-12 border-t border-primary/10"
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            className="flex flex-col sm:flex-row gap-4 w-full"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
           >
-            {[
-              { icon: Bot, value: "15+", label: "Projects" },
-              { icon: Lightbulb, value: "8+", label: "Courses" },
-              { icon: Cpu, value: "2000+", label: "Students" },
-            ].map((stat, i) => (
-              <CounterItem
-                key={i}
-                icon={stat.icon}
-                value={stat.value}
-                label={stat.label}
-              />
-            ))}
+            <Button asChild size="lg" className="h-14 px-8 text-[17px] gap-2 bg-[#0C1446] hover:bg-[#2B5C92] text-white shadow-lg shadow-[#0C1446]/20 rounded-xl">
+              <Link to="/lms">
+                Start Learning <ArrowRight className="w-5 h-5" />
+              </Link>
+            </Button>
+            <Button asChild variant="outline" size="lg" className="h-14 px-8 text-[17px] gap-2 border-2 border-[#B3CDE0]/50 text-[#0C1446] hover:bg-[#B3CDE0]/10 bg-white/50 backdrop-blur-sm rounded-xl">
+              <Link to="/technology-lab-setup">
+                Explore Labs <Terminal className="w-5 h-5" />
+              </Link>
+            </Button>
           </motion.div>
         </div>
       </div>

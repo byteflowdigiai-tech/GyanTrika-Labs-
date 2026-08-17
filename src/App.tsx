@@ -26,7 +26,7 @@ import BooksPage from "./pages/BooksPage";
 import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
 import NotFound from "./pages/NotFound";
-import NeetJeePage from "./pages/NeetJeePage";
+
 
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import TermsConditionsPage from "./pages/TermsConditionsPage";
@@ -69,7 +69,6 @@ const App = () => (
               <Route path="/books" element={<BooksPage />} />
               <Route path="/books/:category" element={<BooksPage />} />
               <Route path="/programs" element={<ProgramsPage />} />
-              <Route path="/neet-jee" element={<NeetJeePage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />

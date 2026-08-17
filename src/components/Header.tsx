@@ -20,7 +20,6 @@ export const Header = () => {
         { name: 'Blogs', path: '/blogs' },
         { name: 'Learning Materials', path: '/books' },
         { name: 'Our Courses', path: '/programs' },
-        { name: 'NEET/JEE', path: '/neet-jee' },
         { name: 'About', path: '/about' },
         { name: 'Contact', path: '/contact' },
     ];
