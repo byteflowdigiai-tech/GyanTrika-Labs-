@@ -1,11 +1,8 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Youtube, Instagram } from "lucide-react";
-import { useTheme } from "@/contexts/ThemeContext";
-import logoLight from "@/assets/logo-light.png";
-import logoDark from "@/assets/logo-dark.png";
+import logo from "@/assets/logo.png";
 
 export function Footer() {
-    const { theme } = useTheme();
 
     return (
         <footer className="relative bg-[#FFFFFF] dark:bg-background border-t circuit-pattern overflow-hidden">
@@ -20,9 +17,9 @@ export function Footer() {
                     {/* Brand */}
                     <div className="col-span-2 md:col-span-1 space-y-4">
                         <img
-                            src={theme === "dark" ? logoDark : logoLight}
+                            src={logo}
                             alt="GyanTrika Labs"
-                            className="h-44 w-auto object-contain mix-blend-multiply dark:mix-blend-screen dark:invert"
+                            className="h-44 w-auto object-contain transition-all duration-300 mix-blend-multiply dark:mix-blend-normal dark:brightness-150"
                         />
                         <p className="text-muted-foreground text-sm leading-relaxed">
                             Empowering the next generation of innovators through hands-on learning in Robotics, AI, IoT, and emerging technologies.
@@ -37,7 +34,7 @@ export function Footer() {
                             <li><Link to="/shop/kits" className="text-muted-foreground hover:text-primary transition-colors">Shop</Link></li>
                             <li><Link to="/blogs" className="text-muted-foreground hover:text-primary transition-colors">Blogs</Link></li>
                             <li><Link to="/books" className="text-muted-foreground hover:text-primary transition-colors">Books</Link></li>
-                            <li><Link to="/programs" className="text-muted-foreground hover:text-primary transition-colors">Our Courses</Link></li>
+                            <li><Link to="/courses" className="text-muted-foreground hover:text-primary transition-colors">Our Courses</Link></li>
                         </ul>
                     </div>
 
@@ -69,7 +66,7 @@ export function Footer() {
                         <ul className="space-y-3 text-sm">
                             <li className="flex items-start gap-2">
                                 <MapPin className="h-4 w-4 mt-1 text-primary" />
-                                <span className="text-muted-foreground">Main Branch: Bangalore<br />Sub-branch: Guwahati</span>
+                                <span className="text-muted-foreground">Main Branch: Byteflow DigiAI, 1st Floor, Neeladri Complex, 10th Cross, 2nd Main, Sampige Rd, Malleshwaram, Bengaluru, Karnataka 560003<br />Sub-branch: Guwahati</span>
                             </li>
                             <li className="flex items-center gap-2">
                                 <Phone className="h-4 w-4 text-primary shrink-0" />

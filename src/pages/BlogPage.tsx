@@ -33,17 +33,19 @@ const BlogPage = () => {
 
     const isSearching = searchQuery !== "" || selectedCategory !== "All" || showOnlyTrending;
 
-    const filteredPosts = blogPosts.filter(post => {
-        const matchesCategory = selectedCategory === "All" || post.category === selectedCategory;
-        const matchesTrending = !showOnlyTrending || post.featured;
-        const searchLower = searchQuery.toLowerCase();
-        const matchesSearch = searchQuery === "" ||
-            post.title.toLowerCase().includes(searchLower) ||
-            post.excerpt.toLowerCase().includes(searchLower) ||
-            post.category.toLowerCase().includes(searchLower) ||
-            post.tags.some(tag => tag.toLowerCase().includes(searchLower));
-        return matchesCategory && matchesSearch && matchesTrending;
-    });
+    const filteredPosts = [...blogPosts]
+        .filter(post => {
+            const matchesCategory = selectedCategory === "All" || post.category === selectedCategory;
+            const matchesTrending = !showOnlyTrending || post.featured;
+            const searchLower = searchQuery.toLowerCase();
+            const matchesSearch = searchQuery === "" ||
+                post.title.toLowerCase().includes(searchLower) ||
+                post.excerpt.toLowerCase().includes(searchLower) ||
+                post.category.toLowerCase().includes(searchLower) ||
+                post.tags.some(tag => tag.toLowerCase().includes(searchLower));
+            return matchesCategory && matchesSearch && matchesTrending;
+        })
+        .sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime());
 
     const formatDate = (dateString: string) => {
         const date = new Date(dateString);
@@ -155,60 +157,57 @@ const BlogPage = () => {
                         </span>
                     </div>
 
-                    <AnimatePresence mode="popLayout">
-                        <motion.div
-                            layout
-                            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4"
-                        >
-                            {filteredPosts.map((post, index) => (
-                                <motion.div
-                                    layout
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: index % 3 * 0.1 }}
-                                    key={post.id}
-                                    className="group cursor-pointer"
-                                    onClick={() => navigate(`/blog/${post.slug}`)}
-                                >
-                                    <Card className="h-full border-none shadow-none bg-transparent group overflow-hidden flex flex-col">
-                                        <div className="relative aspect-[16/10] rounded-2xl overflow-hidden mb-6 shrink-0">
-                                            <img
-                                                src={post.image}
-                                                alt={post.title}
-                                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                                            />
-                                            <Badge className="absolute top-4 left-4 bg-white/90 backdrop-blur-md text-primary border-none text-xs font-bold uppercase tracking-wider">
-                                                {post.category}
-                                            </Badge>
-                                        </div>
-                                        <CardContent className="p-0 flex flex-col flex-1">
-                                            <div className="flex items-center gap-3 text-xs font-semibold text-primary mb-3 uppercase tracking-widest">
-                                                <Calendar className="w-3.5 h-3.5" />
-                                                <span>{formatDate(post.publishDate)}</span>
-                                                <span className="w-1 h-1 rounded-full bg-primary/30" />
-                                                <Clock className="w-3.5 h-3.5" />
-                                                <span>{post.readTime} min read</span>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
+                            <AnimatePresence mode="popLayout">
+                                {filteredPosts.map((post, index) => (
+                                    <motion.div
+                                        layout
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        exit={{ opacity: 0, scale: 0.95 }}
+                                        transition={{ duration: 0.3, delay: index % 3 * 0.05 }}
+                                        key={post.id}
+                                        className="group cursor-pointer"
+                                        onClick={() => navigate(`/blog/${post.slug}`)}
+                                    >
+                                        <Card className="h-full border-none shadow-none bg-transparent group overflow-hidden flex flex-col">
+                                            <div className="relative aspect-[16/10] rounded-2xl overflow-hidden mb-6 shrink-0">
+                                                <img
+                                                    src={post.image}
+                                                    alt={post.title}
+                                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                                />
+                                                <Badge className="absolute top-4 left-4 bg-white/90 backdrop-blur-md text-primary border-none text-xs font-bold uppercase tracking-wider">
+                                                    {post.category}
+                                                </Badge>
                                             </div>
-                                            <h3 className="text-2xl font-bold mb-3 leading-tight group-hover:text-primary transition-colors decoration-primary underline-offset-4 decoration-2 line-clamp-3 min-h-[5.25rem]">
-                                                {post.title}
-                                            </h3>
-                                            <p className="text-slate-600 dark:text-slate-400 line-clamp-2 leading-relaxed text-sm">
-                                                {post.excerpt}
-                                            </p>
-                                            <div className="mt-auto pt-6 border-t border-slate-100 dark:border-slate-800 flex items-center gap-3">
-                                                <img src={post.author.avatar} alt={post.author.name} className="w-10 h-10 rounded-full grayscale group-hover:grayscale-0 transition-all border border-slate-100" />
-                                                <div>
-                                                    <p className="text-sm font-bold">{post.author.name}</p>
-                                                    <p className="text-xs text-slate-500 uppercase tracking-tighter">{post.author.role}</p>
+                                            <CardContent className="p-0 flex flex-col flex-1">
+                                                <div className="flex items-center gap-3 text-xs font-semibold text-primary mb-3 uppercase tracking-widest">
+                                                    <Calendar className="w-3.5 h-3.5" />
+                                                    <span>{formatDate(post.publishDate)}</span>
+                                                    <span className="w-1 h-1 rounded-full bg-primary/30" />
+                                                    <Clock className="w-3.5 h-3.5" />
+                                                    <span>{post.readTime} min read</span>
                                                 </div>
-                                            </div>
-                                        </CardContent>
-                                    </Card>
-                                </motion.div>
-                            ))}
-                        </motion.div>
-                    </AnimatePresence>
+                                                <h3 className="text-2xl font-bold mb-3 leading-tight group-hover:text-primary transition-colors decoration-primary underline-offset-4 decoration-2 line-clamp-3 min-h-[5.25rem]">
+                                                    {post.title}
+                                                </h3>
+                                                <p className="text-slate-600 dark:text-slate-400 line-clamp-2 leading-relaxed text-sm">
+                                                    {post.excerpt}
+                                                </p>
+                                                <div className="mt-auto pt-6 border-t border-slate-100 dark:border-slate-800 flex items-center gap-3">
+                                                    <img src={post.author.avatar} alt={post.author.name} className="w-10 h-10 rounded-full grayscale group-hover:grayscale-0 transition-all border border-slate-100" />
+                                                    <div>
+                                                        <p className="text-sm font-bold">{post.author.name}</p>
+                                                        <p className="text-xs text-slate-500 uppercase tracking-tighter">{post.author.role}</p>
+                                                    </div>
+                                                </div>
+                                            </CardContent>
+                                        </Card>
+                                    </motion.div>
+                                ))}
+                            </AnimatePresence>
+                        </div>
 
                     {filteredPosts.length === 0 && (
                         <div className="text-center py-24 bg-slate-50 dark:bg-slate-900 rounded-3xl border border-dashed border-slate-200 dark:border-slate-800">

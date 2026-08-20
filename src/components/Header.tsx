@@ -3,8 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Moon, Sun, Menu, X } from 'lucide-react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
-import logoLight from '@/assets/logo-light.png';
-import logoDark from '@/assets/logo-dark.png';
+import logo from '@/assets/logo.png';
 
 export const Header = () => {
     const { theme, toggleTheme } = useTheme();
@@ -32,25 +31,25 @@ export const Header = () => {
     };
 
     return (
-        <header className="sticky top-0 z-50 w-full bg-background border-b border-border/40 shadow-sm transition-shadow duration-300">
-            <div className="w-full px-6 md:px-8">
-                <div className="flex h-32 items-center justify-between">
-                    {/* Logo */}
-                    <Link to="/" className="flex items-center flex-shrink-0">
+        <header className="sticky top-0 z-50 w-full bg-background border-b border-border/40 shadow-sm transition-all duration-300">
+            <div className="w-full max-w-[1400px] mx-auto px-4 md:px-6 lg:px-8">
+                <div className="flex h-16 md:h-24 items-center justify-between">
+                    {/* Logo - Visually scaled up without increasing navbar height */}
+                    <Link to="/" className="flex items-center flex-shrink-0 mr-6 md:mr-10">
                         <img
-                            src={isDark ? logoDark : logoLight}
+                            src={logo}
                             alt="GyanTrika Labs"
-                            className="h-28 w-auto object-contain mix-blend-multiply dark:mix-blend-screen dark:invert"
+                            className="h-16 md:h-20 w-auto transform scale-110 md:scale-[1.35] origin-left object-contain transition-all duration-300 mix-blend-multiply dark:mix-blend-normal dark:brightness-150"
                         />
                     </Link>
 
                     {/* Desktop Navigation */}
-                    <nav className="hidden lg:flex items-center gap-4">
+                    <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
                         {navItems.map((item) => (
                             <Link
                                 key={item.path}
                                 to={item.path}
-                                className={`px-4 py-2 text-sm font-medium transition-all duration-200 rounded-full whitespace-nowrap ${isActive(item.path)
+                                className={`px-3 py-2 xl:px-4 text-[13px] xl:text-sm font-medium transition-all duration-200 rounded-full whitespace-nowrap ${isActive(item.path)
                                     ? 'bg-foreground text-background shadow-md'
                                     : 'text-muted-foreground hover:text-foreground hover:bg-secondary/50'
                                     }`}
