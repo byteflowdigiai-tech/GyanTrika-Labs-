@@ -31,6 +31,7 @@ import BooksPage from "./pages/BooksPage";
 import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
 import NotFound from "./pages/NotFound";
+import ProgramsPage from "./pages/ProgramsPage";
 
 
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
