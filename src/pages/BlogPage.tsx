@@ -51,7 +51,7 @@ const BlogPage = () => {
     };
 
     return (
-        <div className="min-h-screen flex flex-col bg-white dark:bg-slate-950">
+        <div className="min-h-screen flex flex-col bg-transparent dark:bg-slate-950">
             <Header />
 
             <main className="flex-1">
@@ -64,7 +64,7 @@ const BlogPage = () => {
                             animate={{ scale: [1, 1.15, 1] }}
                             transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
                         />
-                        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white dark:to-slate-950" />
+                        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-transparent dark:to-slate-950" />
                     </div>
 
                     {/* Content */}

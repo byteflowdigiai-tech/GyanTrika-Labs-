@@ -58,17 +58,17 @@ const BooksPage = () => {
     // VIEW 1: CATEGORY LIST (Main /books page)
     if (!category || category === undefined) {
         return (
-            <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950">
+            <div className="min-h-screen flex flex-col bg-transparent dark:bg-slate-950">
                 <Header />
                 {/* Main Hero */}
-                <section className="relative pt-32 pb-20 overflow-hidden">
+                <section className="relative pt-32 pb-32 overflow-hidden">
                     <div className="absolute inset-0 bg-primary/90 dark:bg-primary/20 z-0 overflow-hidden">
                         <motion.div
                             className="absolute inset-0 bg-[url('/images/library_hero_bg.png')] bg-cover bg-center mix-blend-overlay opacity-30"
                             animate={{ scale: [1, 1.15, 1] }}
                             transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
                         />
-                        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-slate-50 dark:to-slate-950" />
+                        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-transparent dark:to-slate-950" />
                     </div>
 
                     <div className="container relative z-10 text-center px-4">
@@ -87,6 +87,22 @@ const BooksPage = () => {
                                 Dive into our collection of meticulously curated technical literature designed for architects of the future.
                             </p>
                         </motion.div>
+                    </div>
+
+                    {/* Wavy Divider */}
+                    <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0] z-20">
+                        <svg
+                            className="relative block w-[calc(150%+1.3px)] h-[60px] md:h-[100px]"
+                            data-name="Layer 1"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 1200 120"
+                            preserveAspectRatio="none"
+                        >
+                            <path
+                                d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+                                className="fill-white dark:fill-slate-950"
+                            ></path>
+                        </svg>
                     </div>
                 </section>
 
@@ -211,11 +227,11 @@ const BooksPage = () => {
     };
 
     return (
-        <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950">
+        <div className="min-h-screen flex flex-col bg-transparent dark:bg-slate-950">
             <Header />
 
             {/* Category Hero */}
-            <section className="relative py-12 overflow-hidden bg-slate-950">
+            <section className="relative pt-12 pb-32 overflow-hidden bg-slate-950">
                 {/* Technical "3D" Blueprint Background */}
                 <div className="absolute inset-0 z-0 opacity-20"
                     style={{
@@ -298,13 +314,29 @@ const BooksPage = () => {
                         </motion.div>
                     </div>
                 </div>
+
+                {/* Wavy Divider */}
+                <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0] z-20">
+                    <svg
+                        className="relative block w-[calc(150%+1.3px)] h-[60px] md:h-[100px]"
+                        data-name="Layer 1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 1200 120"
+                        preserveAspectRatio="none"
+                    >
+                        <path
+                            d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+                            className="fill-white dark:fill-slate-950"
+                        ></path>
+                    </svg>
+                </div>
             </section>
 
             {/* Books Grid */}
             <main className="flex-1 py-16 overflow-x-hidden">
                 {filteredBooks.length > 0 ? (
-                    <div className="container mx-auto px-4">
-                        <div className="flex flex-nowrap overflow-x-auto gap-8 pb-12 scrollbar-hide snap-x snap-mandatory items-stretch justify-center">
+                    <div className="container mx-auto px-0 md:px-4">
+                        <div className="flex flex-nowrap overflow-x-auto gap-8 pb-12 scrollbar-hide snap-x snap-mandatory items-stretch justify-start px-4 md:px-0">
                             {filteredBooks.map((book, index) => (
                                 <motion.div
                                     key={book.id}

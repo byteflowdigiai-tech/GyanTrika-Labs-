@@ -6,13 +6,13 @@ import { Button } from "@/components/ui/button";
 const features = [
   {
     icon: Lightbulb,
-    title: "STEM & Tinkering Lab",
+    title: "Atal Tinkering Lab",
     description: "Complete Atal Tinkering Lab setup as per NITI AAYOG specifications.",
     href: "/technology-lab-setup/stem-tinkering",
   },
   {
     icon: Bot,
-    title: "AI & Robotics Lab",
+    title: "Ai , STEM & Robotics Lab",
     description: "Advanced facility for designing autonomous systems and robotic arms.",
     href: "/technology-lab-setup/ai-robotics",
   },
@@ -38,7 +38,7 @@ const features = [
 
 export function FeaturedSection() {
   return (
-    <section className="relative py-24 bg-[#FAFCFF] overflow-hidden z-0">
+    <section className="relative py-24 bg-[#FAFCFF] dark:bg-background overflow-hidden z-0">
       {/* Premium Flowing Wave Background (Left Side Only) */}
       <div className="absolute inset-0 pointer-events-none z-[-1] overflow-hidden">
         {/* Soft radial glow for ambient lighting */}

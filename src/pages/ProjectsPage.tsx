@@ -308,18 +308,18 @@ const ProjectsPage = () => {
     // VIEW 1: Services list (main /projects page)
     if (!category) {
         return (
-            <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950">
+            <div className="min-h-screen flex flex-col bg-transparent dark:bg-slate-950">
                 <Header />
 
                 {/* Hero */}
-                <section className="relative pt-32 pb-20 overflow-hidden">
+                <section className="relative pt-32 pb-32 overflow-hidden">
                     <div className="absolute inset-0 bg-primary/90 dark:bg-primary/20 z-0 overflow-hidden">
                         <motion.div
                             className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop')] bg-cover bg-center mix-blend-overlay opacity-30 filter blur-[2px]"
                             animate={{ scale: [1, 1.15, 1] }}
                             transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
                         />
-                        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-slate-50 dark:to-slate-950" />
+                        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-transparent dark:to-slate-950" />
                     </div>
                     <div className="container relative z-10 text-center">
                         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
@@ -339,6 +339,22 @@ const ProjectsPage = () => {
                             </p>
                         </motion.div>
                     </div>
+
+                    {/* Wavy Divider */}
+                    <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0] z-20">
+                        <svg
+                            className="relative block w-[calc(150%+1.3px)] h-[60px] md:h-[100px]"
+                            data-name="Layer 1"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 1200 120"
+                            preserveAspectRatio="none"
+                        >
+                            <path
+                                d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+                                className="fill-white dark:fill-slate-950"
+                            ></path>
+                        </svg>
+                    </div>
                 </section>
 
                 <LearnMoreSection navigate={navigate} />
@@ -353,8 +369,8 @@ const ProjectsPage = () => {
 
     const categoryProjects = projects.filter((p) => {
         if (!categoryInfo) return true;
-        if (category === "stem-tinkering" && p.category === "STEM & Tinkering Lab") return true;
-        if (category === "ai-robotics" && p.category === "AI & Robotics Lab") return true;
+        if (category === "stem-tinkering" && p.category === "Atal Tinkering Lab") return true;
+        if (category === "ai-robotics" && p.category === "Ai , STEM & Robotics Lab") return true;
         if (category === "embedded-electronics" && p.category === "Embedded Systems & Electronics Lab") return true;
         if (category === "astronomy" && p.category === "Astronomy Lab") return true;
         if (category === "composite-skills" && p.category === "Composite Skills Lab") return true;
@@ -362,19 +378,19 @@ const ProjectsPage = () => {
     });
 
     return (
-        <div className="min-h-screen flex flex-col bg-background">
+        <div className="min-h-screen flex flex-col bg-transparent">
             <Header />
 
             {/* Category Hero */}
-            <section className="relative pt-32 pb-20 overflow-hidden">
-                <div className="absolute inset-0 bg-primary/95 dark:bg-primary/20 z-0 overflow-hidden">
+            <section className="relative pt-32 pb-32 overflow-hidden">
+                <div className="absolute inset-0 z-0 overflow-hidden bg-black">
                     <motion.div
-                        className="absolute inset-0 bg-cover bg-center mix-blend-overlay opacity-30 filter blur-[2px]"
-                        style={{ backgroundImage: `url(${categoryInfo?.image || 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop'})` }}
+                        className="absolute inset-0 bg-cover bg-center opacity-90"
+                        style={{ backgroundImage: `url('${categoryInfo?.heroImage || categoryInfo?.image || 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop'}')` }}
                         animate={{ scale: [1, 1.15, 1] }}
                         transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-slate-50 dark:to-slate-950" />
+                    <div className="absolute inset-0 bg-black/40" />
                 </div>
 
                 <div className="container px-4 relative z-20 mb-8 pt-8">
@@ -400,6 +416,22 @@ const ProjectsPage = () => {
                             {categoryInfo?.description || "Explore our innovative projects in this field."}
                         </p>
                     </motion.div>
+                </div>
+
+                {/* Wavy Divider */}
+                <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0] z-20">
+                    <svg
+                        className="relative block w-[calc(150%+1.3px)] h-[60px] md:h-[100px]"
+                        data-name="Layer 1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 1200 120"
+                        preserveAspectRatio="none"
+                    >
+                        <path
+                            d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+                            className="fill-white dark:fill-slate-950"
+                        ></path>
+                    </svg>
                 </div>
             </section>
 

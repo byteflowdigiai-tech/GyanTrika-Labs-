@@ -1,10 +1,8 @@
 
-import { useState, useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useState } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { kits } from "@/data/shopData";
-import { bots } from "@/data/botsData";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -16,28 +14,10 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 const ShopPage = () => {
-    const [searchParams, setSearchParams] = useSearchParams();
-    const typeParam = searchParams.get("type");
-
-    const [view, setView] = useState<"kits" | "bots">(
-        typeParam === "bots" ? "bots" : "kits"
-    );
-
     const [selectedItem, setSelectedItem] = useState<any | null>(null); // eslint-disable-line @typescript-eslint/no-explicit-any
 
-    useEffect(() => {
-        if (typeParam === "bots" || typeParam === "kits") {
-            setView(typeParam as "kits" | "bots");
-        }
-    }, [typeParam]);
-
-    const handleViewChange = (newView: "kits" | "bots") => {
-        setView(newView);
-        setSearchParams({ type: newView });
-    };
-
-    const items = view === "kits" ? kits : bots;
-    const itemTypeLabel = view === "kits" ? "Kit" : "Bot";
+    const items = kits;
+    const itemTypeLabel = "Kit";
 
     const handleAddToCart = (item: any /* eslint-disable-line @typescript-eslint/no-explicit-any */) => {
         if (item.buyLink) {
@@ -50,11 +30,11 @@ const ShopPage = () => {
     };
 
     return (
-        <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
+        <div className="min-h-screen flex flex-col bg-transparent dark:bg-slate-950 transition-colors duration-300">
             <Header />
 
             {/* Hero Section */}
-            <section className="relative pt-32 pb-24 overflow-hidden">
+            <section className="relative pt-32 pb-32 overflow-hidden">
                 {/* Background - Theme Consistent */}
                 <div className="absolute inset-0 bg-primary/90 dark:bg-primary/20 z-0 overflow-hidden">
                     <motion.div
@@ -62,7 +42,7 @@ const ShopPage = () => {
                         animate={{ scale: [1, 1.15, 1] }}
                         transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-slate-50 dark:to-slate-950" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-transparent dark:to-slate-950" />
                 </div>
 
                 <div className="container relative z-10 text-center">
@@ -81,33 +61,23 @@ const ShopPage = () => {
                         <p className="text-xl md:text-2xl text-blue-50/90 max-w-3xl mx-auto mb-12 font-medium leading-relaxed drop-shadow-sm">
                             Unlock your potential with our curated selection of high-quality electronics and comprehensive educational kits.
                         </p>
-
-                        {/* Switcher */}
-                        <div className="inline-flex p-1 rounded-full bg-white/20 backdrop-blur-md border border-white/30 shadow-xl">
-                            <button
-                                onClick={() => handleViewChange("kits")}
-                                className={`
-                                    px-8 py-3 rounded-full text-base font-semibold transition-all duration-300
-                                    ${view === "kits"
-                                        ? "bg-white text-primary shadow-md"
-                                        : "text-white hover:bg-white/10"}
-                                `}
-                            >
-                                Kits
-                            </button>
-                            <button
-                                onClick={() => handleViewChange("bots")}
-                                className={`
-                                    px-8 py-3 rounded-full text-base font-semibold transition-all duration-300
-                                    ${view === "bots"
-                                        ? "bg-white text-primary shadow-md"
-                                        : "text-white hover:bg-white/10"}
-                                `}
-                            >
-                                Bots
-                            </button>
-                        </div>
                     </motion.div>
+                </div>
+
+                {/* Wavy Divider */}
+                <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0] z-20">
+                    <svg
+                        className="relative block w-[calc(150%+1.3px)] h-[60px] md:h-[100px]"
+                        data-name="Layer 1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 1200 120"
+                        preserveAspectRatio="none"
+                    >
+                        <path
+                            d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+                            className="fill-white dark:fill-slate-950"
+                        ></path>
+                    </svg>
                 </div>
             </section>
 
@@ -115,7 +85,6 @@ const ShopPage = () => {
             <main className="flex-1 container pb-24">
                 <AnimatePresence mode="wait">
                     <motion.div
-                        key={view}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
@@ -130,17 +99,15 @@ const ShopPage = () => {
                                 transition={{ delay: index * 0.05 }}
                             >
                                 <Card className="h-full flex flex-col overflow-hidden hover:shadow-2xl transition-all duration-300 group border-none shadow-md bg-white dark:bg-slate-900 ring-1 ring-slate-200 dark:ring-slate-800">
-                                    <div className="relative aspect-[4/3] overflow-hidden bg-slate-100 dark:bg-slate-800">
+                                    {/* Mobile: horizontal layout */}
+                                    <div className="flex flex-row md:flex-col">
+                                    <div className="relative w-[130px] shrink-0 md:w-auto md:aspect-[4/3] overflow-hidden bg-slate-100 dark:bg-slate-800">
                                         <img
                                             src={item.image}
                                             alt={item.name}
                                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                         />
-                                        {item.stock ? (
-                                            <Badge className="absolute top-4 left-4 bg-emerald-500 hover:bg-emerald-600 shadow-lg border-none text-white">
-                                                In Stock
-                                            </Badge>
-                                        ) : (
+                                        {!item.stock && (
                                             <Badge variant="destructive" className="absolute top-4 left-4 shadow-lg border-none">
                                                 Out of Stock
                                             </Badge>
@@ -165,9 +132,12 @@ const ShopPage = () => {
                                         </div>
                                     </div>
 
-                                    <CardHeader className="space-y-2 pb-4">
-                                        <div className="flex justify-between items-start gap-4">
-                                            <CardTitle className="line-clamp-1 text-xl font-bold group-hover:text-primary transition-colors">
+                                    {/* Mobile: right content, Desktop: full width content */}
+                                    <div className="flex flex-col flex-1 md:contents">
+
+                                    <CardHeader className="space-y-1 pb-2 md:space-y-2 md:pb-4 px-3 pt-3 md:px-6 md:pt-6">
+                                        <div className="flex justify-between items-start gap-2">
+                                            <CardTitle className="line-clamp-2 text-base md:text-xl font-bold group-hover:text-primary transition-colors leading-tight">
                                                 {item.name}
                                             </CardTitle>
                                             <div className="flex items-center gap-1 bg-amber-100 dark:bg-amber-900/30 px-2 py-1 rounded-md">
@@ -177,46 +147,56 @@ const ShopPage = () => {
                                                 </span>
                                             </div>
                                         </div>
-                                        <p className="text-sm text-muted-foreground line-clamp-2 min-h-[2.5rem] leading-relaxed">
+                                        <p className="text-xs md:text-sm text-muted-foreground line-clamp-2 leading-relaxed hidden md:block">
                                             {item.description}
                                         </p>
                                     </CardHeader>
 
-                                    <CardContent className="flex-1 pb-4">
-                                        <div className="space-y-3 pt-4 border-t border-slate-100 dark:border-slate-800">
-                                            <div className="flex flex-wrap gap-2">
-                                                {item.features.slice(0, 3).map((feature: string, i: number) => (
-                                                    <span key={i} className="text-[10px] font-medium px-2 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+                                    <CardContent className="flex-1 pb-2 md:pb-4 px-3 md:px-6">
+                                        <div className="space-y-2 pt-2 md:pt-4 border-t border-slate-100 dark:border-slate-800">
+                                            <div className="flex flex-wrap gap-1 md:gap-2">
+                                                {item.features.slice(0, 2).map((feature: string, i: number) => (
+                                                    <span key={i} className="text-[9px] md:text-[10px] font-medium px-1.5 py-0.5 md:px-2 md:py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
                                                         {feature}
                                                     </span>
                                                 ))}
-                                                {item.features.length > 3 && (
-                                                    <span className="text-[10px] font-medium px-2 py-1 rounded-full bg-slate-50 dark:bg-slate-800/50 text-slate-400">
-                                                        +{item.features.length - 3} more
+                                                {item.features.length > 2 && (
+                                                    <span className="text-[9px] md:text-[10px] font-medium px-1.5 py-0.5 md:px-2 md:py-1 rounded-full bg-slate-50 dark:bg-slate-800/50 text-slate-400">
+                                                        +{item.features.length - 2} more
                                                     </span>
                                                 )}
                                             </div>
                                         </div>
                                     </CardContent>
 
-                                    <CardFooter className="p-6 pt-0 flex items-center justify-between gap-4">
-                                        <div className="flex flex-col">
-                                            <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider">Price</span>
-                                            <span className="text-2xl font-bold text-slate-900 dark:text-white">
-                                                ₹{item.price.toLocaleString('en-IN')}
-                                            </span>
-                                        </div>
-                                        <div className="flex items-center gap-2">
+                                    <CardFooter className="px-3 py-3 md:p-6 md:pt-0 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-2 md:gap-4">
+                                        <div className="flex items-center justify-between md:flex-col md:items-start gap-2">
+                                            <div>
+                                                <span className="text-[10px] md:text-xs text-muted-foreground font-medium uppercase tracking-wider">Price</span>
+                                                <div className="text-xl md:text-2xl font-bold text-slate-900 dark:text-white">
+                                                    ₹{item.price.toLocaleString('en-IN')}
+                                                </div>
+                                            </div>
                                             <Button
                                                 variant="ghost"
                                                 size="icon"
-                                                className="rounded-full hover:bg-primary/5 hover:text-primary dark:hover:bg-primary/10"
+                                                className="rounded-full hover:bg-primary/5 hover:text-primary dark:hover:bg-primary/10 shrink-0 md:hidden"
+                                                onClick={() => setSelectedItem(item)}
+                                            >
+                                                <Info className="w-4 h-4" />
+                                            </Button>
+                                        </div>
+                                        <div className="flex items-center gap-2 w-full md:w-auto">
+                                            <Button
+                                                variant="ghost"
+                                                size="icon"
+                                                className="rounded-full hover:bg-primary/5 hover:text-primary dark:hover:bg-primary/10 hidden md:flex"
                                                 onClick={() => setSelectedItem(item)}
                                             >
                                                 <Info className="w-5 h-5" />
                                             </Button>
                                             <Button
-                                                className="rounded-full px-6 bg-primary hover:bg-primary/90 shadow-lg shadow-primary/20"
+                                                className="rounded-full flex-1 md:flex-none md:px-6 bg-primary hover:bg-primary/90 shadow-lg shadow-primary/20 text-sm font-semibold"
                                                 onClick={() => handleAddToCart(item)}
                                                 disabled={!item.stock || item.status === "Launching Soon"}
                                             >
@@ -225,6 +205,8 @@ const ShopPage = () => {
                                             </Button>
                                         </div>
                                     </CardFooter>
+                                    </div>
+                                    </div>
                                 </Card>
                             </motion.div>
                         ))}

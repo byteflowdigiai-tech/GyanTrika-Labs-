@@ -15,6 +15,7 @@ export interface Product {
     description: string;
     features: string[];
     stock: boolean;
+    status?: string;
     details?: ComponentDetail[];
     buyLink?: string;
 }
@@ -48,7 +49,7 @@ export const kits: Product[] = [
     // AI Innovators Kit
     {
         id: "ai-001",
-        name: "AI Innovators Kit Powered by Arduino",
+        name: "SmartElex Bharat AI Innovators Kit",
         category: "AI",
         price: 2795,
         rating: 4.7,

@@ -71,7 +71,7 @@ const Dashboard = () => {
     };
 
     return (
-        <div className="min-h-screen flex flex-col bg-background">
+        <div className="min-h-screen flex flex-col bg-transparent">
             <Header />
 
             <main className="flex-1 container py-8 px-4 md:px-8">

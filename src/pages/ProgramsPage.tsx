@@ -29,18 +29,31 @@ import { toast } from "sonner";
 import { ProgramEnrollmentModal } from "@/components/ProgramEnrollmentModal";
 
 const ProgramsPage = () => {
-    const [selectedCategory, setSelectedCategory] = useState<string>("All");
-    const [selectedLevel, setSelectedLevel] = useState<string>("All");
+    type EducationFilter = "All" | "Schools & Colleges (6-12)" | "UG" | "PG";
+    const [educationFilter, setEducationFilter] = useState<EducationFilter>("All");
     const [selectedProgram, setSelectedProgram] = useState<Program | null>(null);
     const [enrollProgram, setEnrollProgram] = useState<Program | null>(null);
 
-    const categories = ["All", ...getAllCategories()];
-    const levels = ["All", ...getAllLevels()];
+    const educationFilters: EducationFilter[] = ["All", "Schools & Colleges (6-12)", "UG", "PG"];
+
+    const handleEducationFilterChange = (filter: EducationFilter) => {
+        setEducationFilter(filter);
+    };
 
     const filteredPrograms = programs.filter(program => {
-        const matchesCategory = selectedCategory === "All" || program.category === selectedCategory;
-        const matchesLevel = selectedLevel === "All" || program.level === selectedLevel;
-        return matchesCategory && matchesLevel;
+        if (educationFilter === "All") {
+            return true;
+        }
+        if (educationFilter === "Schools & Colleges (6-12)") {
+            return program.educationLevel === "schools-colleges-6-12";
+        }
+        if (educationFilter === "UG") {
+            return program.educationLevel === "ug" && program.isUgParent;
+        }
+        if (educationFilter === "PG") {
+            return program.educationLevel === "pg";
+        }
+        return false;
     });
 
     const containerVariants = {
@@ -81,11 +94,11 @@ const ProgramsPage = () => {
     };
 
     return (
-        <div className="min-h-screen flex flex-col bg-background">
+        <div className="min-h-screen flex flex-col bg-transparent">
             <Header />
 
             {/* Hero Section */}
-            <section className="relative py-20 overflow-hidden">
+            <section className="relative pt-20 pb-32 overflow-hidden">
                 {/* Background - Theme Consistent */}
                 {/* Background - Theme Consistent */}
                 <div className="absolute inset-0 bg-primary/80 dark:bg-primary/20 z-0 overflow-hidden">
@@ -94,7 +107,7 @@ const ProgramsPage = () => {
                         animate={{ scale: [1, 1.15, 1] }}
                         transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white dark:to-slate-950" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-transparent dark:to-slate-950" />
                 </div>
 
                 <div className="container px-4 relative z-10">
@@ -147,71 +160,76 @@ const ProgramsPage = () => {
                         </motion.div>
                     </div>
                 </div>
+
+                {/* Wavy Divider */}
+                <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0] z-20">
+                    <svg
+                        className="relative block w-[calc(150%+1.3px)] h-[60px] md:h-[100px]"
+                        data-name="Layer 1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 1200 120"
+                        preserveAspectRatio="none"
+                    >
+                        <path
+                            d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+                            className="fill-white dark:fill-slate-950"
+                        ></path>
+                    </svg>
+                </div>
             </section>
 
-            <main className="flex-1 container py-12 px-4">
-                {/* Filters */}
-                <div className="mb-8 space-y-4">
-                    {/* Category Tabs */}
-                    <div>
-                        <h3 className="text-sm font-semibold mb-3 flex items-center gap-2">
-                            <BookOpen className="w-4 h-4" />
-                            Filter by Category:
-                        </h3>
-                        <Tabs defaultValue="All" className="w-full" onValueChange={setSelectedCategory}>
-                            <TabsList className="grid w-full grid-cols-3 lg:grid-cols-6 gap-2 h-auto p-2 bg-muted/50">
-                                {categories.map((category) => (
-                                    <TabsTrigger
-                                        key={category}
-                                        value={category}
-                                        className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
-                                    >
-                                        {category}
-                                    </TabsTrigger>
-                                ))}
-                            </TabsList>
-                        </Tabs>
-                    </div>
+            <main className="flex-1 relative overflow-hidden">
+                {/* Background decorations matching reference */}
+                <div className="absolute inset-0 bg-gradient-to-b from-blue-50/50 to-white dark:from-slate-900 dark:to-background pointer-events-none z-0" />
+                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-100/40 dark:bg-blue-900/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none z-0" />
+                <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-cyan-100/40 dark:bg-cyan-900/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none z-0" />
 
-                    {/* Level Filter */}
-                    <div>
-                        <h3 className="text-sm font-semibold mb-3 flex items-center gap-2">
-                            <TrendingUp className="w-4 h-4" />
-                            Filter by Level:
-                        </h3>
-                        <div className="flex flex-wrap gap-2">
-                            {levels.map((level) => (
-                                <Button
-                                    key={level}
-                                    variant={selectedLevel === level ? "default" : "outline"}
-                                    size="sm"
-                                    onClick={() => setSelectedLevel(level)}
-                                >
-                                    {level}
-                                </Button>
-                            ))}
+                <div className="container py-12 px-4 relative z-10">
+                    {/* Filters */}
+                    <div className="mb-8 space-y-4">
+                        {/* Category Tabs */}
+                        <div>
+                            <h3 className="text-sm font-semibold mb-3 flex items-center gap-2">
+                                <BookOpen className="w-4 h-4" />
+                                Filter by Education Level:
+                            </h3>
+                            <Tabs value={educationFilter} className="w-full" onValueChange={(val) => handleEducationFilterChange(val as EducationFilter)}>
+                                <TabsList className="grid w-full grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2 h-auto p-2 bg-muted/50">
+                                    {educationFilters.map((filter) => (
+                                        <TabsTrigger
+                                            key={filter}
+                                            value={filter}
+                                            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-2"
+                                        >
+                                            {filter}
+                                        </TabsTrigger>
+                                    ))}
+                                </TabsList>
+                            </Tabs>
                         </div>
+
                     </div>
-                </div>
 
-                {/* Programs Grid */}
-                <motion.div
-                    variants={containerVariants}
-                    initial="hidden"
-                    animate="visible"
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-                >
-                    {filteredPrograms.length > 0 ? (
-                        filteredPrograms.map((program) => {
-                            const discountedPrice = calculateDiscountedPrice(program.price, program.discount);
-                            const hasDiscount = program.discount && program.discount > 0;
+                    {/* Programs Grid */}
+                    <motion.div
+                        variants={containerVariants}
+                        initial="hidden"
+                        animate="visible"
+                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                    >
+                        {filteredPrograms.length > 0 ? (
+                            filteredPrograms.map((program) => {
+                                const discountedPrice = calculateDiscountedPrice(program.price, program.discount);
+                                const hasDiscount = program.discount && program.discount > 0;
 
-                            return (
-                                <motion.div key={program.id} variants={itemVariants}>
-                                    <Card className="h-full flex flex-col overflow-hidden hover:shadow-xl transition-all duration-300 group border-border/50 hover:border-primary/50">
-                                        <div
-                                            className="relative aspect-video overflow-hidden bg-muted cursor-pointer"
-                                            onClick={() => setSelectedProgram(program)}
+                                return (
+                                    <motion.div key={program.id} variants={itemVariants}>
+                                        <Card className="h-full flex flex-col overflow-hidden hover:shadow-2xl hover:shadow-primary/20 transition-all duration-300 group border-border/50 hover:border-primary/50 bg-gradient-to-br from-background to-muted/20 hover:from-primary/[0.02] hover:to-primary/[0.05]">
+                                            <div
+                                                className="relative aspect-video overflow-hidden bg-muted cursor-pointer"
+                                            onClick={() => {
+                                                setSelectedProgram(program);
+                                            }}
                                         >
                                             <img
                                                 src={program.image}
@@ -253,7 +271,9 @@ const ProgramsPage = () => {
 
                                         <CardHeader
                                             className="space-y-2 cursor-pointer"
-                                            onClick={() => setSelectedProgram(program)}
+                                            onClick={() => {
+                                                setSelectedProgram(program);
+                                            }}
                                         >
                                             <CardTitle className="line-clamp-2 text-lg group-hover:text-primary transition-colors">
                                                 {program.title}
@@ -306,7 +326,10 @@ const ProgramsPage = () => {
                                                 </span>
                                             </div>
                                             <Button
-                                                onClick={() => handleEnroll(program)}
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    handleEnroll(program);
+                                                }}
                                                 className="gap-2"
                                             >
                                                 <GraduationCap className="w-4 h-4" />
@@ -325,6 +348,7 @@ const ProgramsPage = () => {
                         </div>
                     )}
                 </motion.div>
+                </div>
             </main>
 
             {/* Program Details Modal */}

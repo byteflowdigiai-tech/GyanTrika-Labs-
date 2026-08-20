@@ -1,15 +1,15 @@
 import { motion, useInView, useSpring, useTransform } from "framer-motion";
-import { ArrowRight, Cpu, Bot, Lightbulb, Box, Network, Terminal, Code2, Database, Braces, Book, Library, BookOpen, Plane, Layers } from "lucide-react";
+import { ArrowRight, Cpu, Bot, Lightbulb, Box, Network, Terminal, Code2, Database, Braces, Book, Library, BookOpen, Plane, Layers, Wrench } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import roboticArm from "@/assets/robotic-arm.jpg";
-import darkModeRobot from "@/assets/dark-mode-robot.jpg";
+import darkModeRobot from "@/assets/clean-dark-mode-robot.png";
 import { useEffect, useRef, useState } from "react";
 
 const FloatingBranchCard = ({ title, topics, icon: Icon, className, delay, rotateY = 0 }: { title: string, topics: string[], icon: any /* eslint-disable-line @typescript-eslint/no-explicit-any */, className: string, delay: number, rotateY?: number }) => (
-  <div className={`absolute pointer-events-auto z-30 hidden lg:block dark:hidden ${className}`} style={{ perspective: 1200 }}>
+  <div className={`absolute pointer-events-auto z-30 hidden lg:block ${className}`} style={{ perspective: 1200 }}>
     <motion.div
-      className="relative rounded-xl w-[220px] sm:w-[260px]"
+      className="relative rounded-xl w-[240px] sm:w-[280px]"
       style={{ transformStyle: 'preserve-3d' }}
       initial={{ y: 0, rotateY, rotateX: 0 }}
       animate={{ 
@@ -26,14 +26,14 @@ const FloatingBranchCard = ({ title, topics, icon: Icon, className, delay, rotat
       />
       {/* 3D Depth / Front Glass Layer */}
       <div 
-        className="relative p-4 sm:p-5 rounded-xl border border-[#B3CDE0] bg-white/80 backdrop-blur-md flex items-center justify-between shadow-[0_15px_35px_rgba(43,92,146,0.15),_inset_0_0_20px_rgba(255,255,255,0.9)]"
+        className="relative p-4 sm:p-5 rounded-xl border border-[#B3CDE0] bg-white dark:bg-card/80 backdrop-blur-md flex items-center justify-between shadow-[0_15px_35px_rgba(43,92,146,0.15),_inset_0_0_20px_rgba(255,255,255,0.9)]"
         style={{ transform: 'translateZ(0px)', transformStyle: 'preserve-3d' }}
       >
-        <div className="flex-1" style={{ transform: 'translateZ(25px)' }}>
-          <h3 className="font-bold text-[#0C1446] text-[13px] sm:text-[15px] mb-2 tracking-wider drop-shadow-sm">{title}</h3>
+        <div className="flex-1 min-w-0" style={{ transform: 'translateZ(25px)' }}>
+          <h3 className="font-bold text-[#0C1446] dark:text-foreground text-[12px] sm:text-[14px] mb-2 tracking-wide drop-shadow-sm">{title}</h3>
           <ul className="space-y-1.5">
             {topics.map((t, i) => (
-              <li key={i} className="text-[#2B5C92] text-[11px] sm:text-[12px] flex items-center gap-1.5 font-medium drop-shadow-sm">
+              <li key={i} className="text-[#2B5C92] dark:text-primary text-[11px] sm:text-[12px] flex items-center gap-1.5 font-medium drop-shadow-sm">
                 <span className="w-1.5 h-1.5 rounded-sm bg-[#B3CDE0] shadow-[0_0_5px_#B3CDE0]" />
                 {t}
               </li>
@@ -41,7 +41,7 @@ const FloatingBranchCard = ({ title, topics, icon: Icon, className, delay, rotat
           </ul>
         </div>
         <div className="ml-3 shrink-0" style={{ transform: 'translateZ(40px)' }}>
-          <Icon className="w-10 h-10 sm:w-12 sm:h-12 text-[#2B5C92]" strokeWidth={1.5} style={{ filter: 'drop-shadow(0 4px 6px rgba(43,92,146,0.2))' }} />
+          <Icon className="w-10 h-10 sm:w-12 sm:h-12 text-[#2B5C92] dark:text-primary" strokeWidth={1.5} style={{ filter: 'drop-shadow(0 4px 6px rgba(43,92,146,0.2))' }} />
         </div>
       </div>
     </motion.div>
@@ -71,13 +71,13 @@ const CounterItem = ({ icon: Icon, value, label }: { icon: any /* eslint-disable
   return (
     <div ref={ref} className="flex flex-col items-center">
       <div className="w-10 h-10 rounded-full bg-[#B3CDE0]/20 flex items-center justify-center mb-3">
-        <Icon className="w-5 h-5 text-[#2B5C92]" />
+        <Icon className="w-5 h-5 text-[#2B5C92] dark:text-primary" />
       </div>
-      <div className="font-display text-3xl md:text-4xl font-bold text-[#0C1446] flex items-center justify-center">
+      <div className="font-display text-3xl md:text-4xl font-bold text-[#0C1446] dark:text-foreground flex items-center justify-center">
         <motion.span>{displayValue}</motion.span>
         <span>{suffix}</span>
       </div>
-      <div className="text-xs uppercase tracking-widest font-semibold text-[#2B5C92] mt-1">
+      <div className="text-xs uppercase tracking-widest font-semibold text-[#2B5C92] dark:text-primary mt-1">
         {label}
       </div>
     </div>
@@ -87,7 +87,7 @@ const CounterItem = ({ icon: Icon, value, label }: { icon: any /* eslint-disable
 export function HeroSection() {
 
   return (
-    <section className="relative min-h-[90vh] flex items-center bg-[#FFFFFF] circuit-pattern overflow-hidden">
+    <section className="relative min-h-[90vh] flex items-center bg-[#FFFFFF] dark:bg-background circuit-pattern overflow-hidden">
       {/* Starry Night Premium Atmosphere - Exact match to Image 2 */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <div className="absolute inset-y-0 left-0 w-full md:w-[75%] bg-gradient-to-r from-[#2B5C92]/60 via-[#B3CDE0]/30 to-transparent" />
@@ -130,10 +130,10 @@ export function HeroSection() {
         }}
       >
         <div className="flex flex-col gap-8 items-center opacity-40">
-          <Library className="w-32 h-32 text-[#2B5C92]/60" strokeWidth={1} />
+          <Library className="w-32 h-32 text-[#2B5C92] dark:text-primary/60" strokeWidth={1} />
           <div className="flex gap-12 -mt-4">
-            <Book className="w-20 h-20 text-[#2B5C92]/50 -rotate-12" strokeWidth={1} />
-            <BookOpen className="w-24 h-24 text-[#2B5C92]/50 rotate-12" strokeWidth={1} />
+            <Book className="w-20 h-20 text-[#2B5C92] dark:text-primary/50 -rotate-12" strokeWidth={1} />
+            <BookOpen className="w-24 h-24 text-[#2B5C92] dark:text-primary/50 rotate-12" strokeWidth={1} />
           </div>
         </div>
       </motion.div>
@@ -184,8 +184,8 @@ export function HeroSection() {
           rotateY={30}
         />
         <FloatingBranchCard
-          title="ENTREPRENEURSHIP"
-          topics={["Design Thinking", "Startups", "Innovation"]}
+          title="STEM"
+          topics={["Science & Math", "Tinkering", "Engineering"]}
           icon={Lightbulb}
           className="right-[20%] xl:right-[26%] bottom-[12%]"
           delay={2.8}
@@ -202,17 +202,17 @@ export function HeroSection() {
           rotateY={-25}
         />
         <FloatingBranchCard
-          title="DRONE & UAV"
-          topics={["Flight Dynamics", "Aerial Mapping", "Piloting"]}
-          icon={Plane}
+          title="COMPOSITE SKILLS"
+          topics={["3D Printing", "Fabrication", "Design"]}
+          icon={Box}
           className="right-[-2%] xl:right-[2%] top-[48%]"
           delay={2.2}
           rotateY={-30}
         />
         <FloatingBranchCard
-          title="CODING & DEV"
-          topics={["Web Development", "App Creation", "Algorithms"]}
-          icon={Code2}
+          title="RAPID PROTOTYPING"
+          topics={["Laser Cutting", "CNC Machining", "3D Modeling"]}
+          icon={Wrench}
           className="right-[3%] xl:right-[8%] bottom-[8%]"
           delay={1.1}
           rotateY={-20}
@@ -256,7 +256,7 @@ export function HeroSection() {
         ].map((circle, i) => (
           <div
             key={i}
-            className="absolute rounded-full border border-[#B3CDE0]/30"
+            className="absolute rounded-full border border-[#B3CDE0]/30 dark:border-border"
             style={{
               top: circle.top,
               left: circle.left,
@@ -274,25 +274,25 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#B3CDE0]/30 shadow-sm mb-8">
-              <Cpu className="w-4 h-4 text-[#2B5C92]" />
-              <span className="text-sm font-medium text-[#2B5C92] tracking-wide uppercase font-display">LAB OF IDEAS · Innovation Hub</span>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white dark:bg-card border border-[#B3CDE0]/30 dark:border-border shadow-sm mb-8">
+              <Cpu className="w-4 h-4 text-[#2B5C92] dark:text-primary" />
+              <span className="text-sm font-medium text-[#2B5C92] dark:text-primary tracking-wide uppercase font-display">LAB OF IDEAS · Innovation Hub</span>
             </div>
           </motion.div>
 
           <motion.h1
-            className="font-display text-5xl md:text-[5.5rem] font-extrabold mb-8 leading-[1.05] tracking-tight text-[#0C1446] uppercase"
+            className="font-display text-5xl md:text-[5.5rem] font-extrabold mb-8 leading-[1.05] tracking-tight text-[#0C1446] dark:text-foreground uppercase"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            BUILD FUTURE <br />
-            SKILLS WITH <br />
-            <span className="text-[#2B5C92]">AI & ROBOTICS</span>
+            SHAPING <span className="whitespace-nowrap">FUTURE SKILLS.</span> <br />
+            INSPIRING FUTURE <br />
+            <span className="text-[#2B5C92] dark:text-primary">INNOVATORS.</span>
           </motion.h1>
 
           <motion.p
-            className="text-xl md:text-[22px] text-[#2B5C92]/90 max-w-[650px] mb-12 leading-relaxed font-medium"
+            className="text-xl md:text-[22px] text-[#2B5C92] dark:text-primary/90 max-w-[650px] mb-12 leading-relaxed font-medium"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -302,69 +302,128 @@ export function HeroSection() {
 
           {/* 2x2 Feature Grid - Matching Target Image Layout */}
           <motion.div 
-            className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 mb-12 max-w-[600px]"
+            className="grid grid-cols-2 gap-x-2 sm:gap-x-8 gap-y-5 sm:gap-y-6 mb-12 max-w-[600px]"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <div className="flex items-center gap-4">
-              <div className="w-14 h-14 rounded-2xl bg-white shadow-sm border border-[#B3CDE0]/30 flex items-center justify-center shrink-0">
-                <Bot className="w-6 h-6 text-[#2B5C92]" />
+            <div className="flex items-center gap-3 sm:gap-4">
+              <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-white dark:bg-card shadow-sm border border-[#B3CDE0]/30 dark:border-border flex items-center justify-center shrink-0">
+                <Bot className="w-5 h-5 sm:w-6 sm:h-6 text-[#2B5C92] dark:text-primary" />
               </div>
               <div>
-                <div className="font-bold text-[#0C1446] text-[17px]">15+ Projects</div>
-                <div className="text-[#2B5C92]/80 text-[15px] font-medium">Real-world building</div>
+                <div className="font-bold text-[#0C1446] dark:text-foreground text-[14px] sm:text-[17px] leading-tight mb-0.5 sm:mb-0">15+ Projects</div>
+                <div className="text-[#2B5C92] dark:text-primary/80 text-[12px] sm:text-[15px] font-medium leading-tight">Real-world building</div>
               </div>
             </div>
             
-            <div className="flex items-center gap-4">
-              <div className="w-14 h-14 rounded-2xl bg-white shadow-sm border border-[#B3CDE0]/30 flex items-center justify-center shrink-0">
-                <Lightbulb className="w-6 h-6 text-[#2B5C92]" />
+            <div className="flex items-center gap-3 sm:gap-4">
+              <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-white dark:bg-card shadow-sm border border-[#B3CDE0]/30 dark:border-border flex items-center justify-center shrink-0">
+                <Lightbulb className="w-5 h-5 sm:w-6 sm:h-6 text-[#2B5C92] dark:text-primary" />
               </div>
               <div>
-                <div className="font-bold text-[#0C1446] text-[17px]">8+ Courses</div>
-                <div className="text-[#2B5C92]/80 text-[15px] font-medium">Industry aligned</div>
+                <div className="font-bold text-[#0C1446] dark:text-foreground text-[14px] sm:text-[17px] leading-tight mb-0.5 sm:mb-0">8+ Courses</div>
+                <div className="text-[#2B5C92] dark:text-primary/80 text-[12px] sm:text-[15px] font-medium leading-tight">Industry aligned</div>
               </div>
             </div>
 
-            <div className="flex items-center gap-4">
-              <div className="w-14 h-14 rounded-2xl bg-white shadow-sm border border-[#B3CDE0]/30 flex items-center justify-center shrink-0">
-                <Cpu className="w-6 h-6 text-[#2B5C92]" />
+            <div className="flex items-center gap-3 sm:gap-4">
+              <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-white dark:bg-card shadow-sm border border-[#B3CDE0]/30 dark:border-border flex items-center justify-center shrink-0">
+                <Cpu className="w-5 h-5 sm:w-6 sm:h-6 text-[#2B5C92] dark:text-primary" />
               </div>
               <div>
-                <div className="font-bold text-[#0C1446] text-[17px]">2000+ Students</div>
-                <div className="text-[#2B5C92]/80 text-[15px] font-medium">Active learners</div>
+                <div className="font-bold text-[#0C1446] dark:text-foreground text-[14px] sm:text-[17px] leading-tight mb-0.5 sm:mb-0">2000+ Students</div>
+                <div className="text-[#2B5C92] dark:text-primary/80 text-[12px] sm:text-[15px] font-medium leading-tight">Active learners</div>
               </div>
             </div>
 
-            <div className="flex items-center gap-4">
-              <div className="w-14 h-14 rounded-2xl bg-white shadow-sm border border-[#B3CDE0]/30 flex items-center justify-center shrink-0">
-                <Box className="w-6 h-6 text-[#2B5C92]" />
+            <div className="flex items-center gap-3 sm:gap-4">
+              <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-white dark:bg-card shadow-sm border border-[#B3CDE0]/30 dark:border-border flex items-center justify-center shrink-0">
+                <Box className="w-5 h-5 sm:w-6 sm:h-6 text-[#2B5C92] dark:text-primary" />
               </div>
               <div>
-                <div className="font-bold text-[#0C1446] text-[17px]">5+ Labs</div>
-                <div className="text-[#2B5C92]/80 text-[15px] font-medium">Future-ready setup</div>
+                <div className="font-bold text-[#0C1446] dark:text-foreground text-[14px] sm:text-[17px] leading-tight mb-0.5 sm:mb-0">5+ Labs</div>
+                <div className="text-[#2B5C92] dark:text-primary/80 text-[12px] sm:text-[15px] font-medium leading-tight">Future-ready setup</div>
               </div>
             </div>
           </motion.div>
 
           {/* Buttons */}
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 w-full"
+            className="flex flex-row gap-3 sm:gap-4 sm:w-auto"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <Button asChild size="lg" className="h-14 px-8 text-[17px] gap-2 bg-[#0C1446] hover:bg-[#2B5C92] text-white shadow-lg shadow-[#0C1446]/20 rounded-xl">
-              <Link to="/lms">
-                Start Learning <ArrowRight className="w-5 h-5" />
+            <Button asChild size="lg" className="flex-1 sm:flex-none h-14 px-2 sm:px-8 text-[14px] sm:text-[17px] gap-2 bg-[#0C1446] hover:bg-[#2B5C92] text-white shadow-lg shadow-[#0C1446]/20 rounded-xl">
+              <Link to="/lms" className="flex items-center justify-center">
+                Start Learning <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-1" />
               </Link>
             </Button>
-            <Button asChild variant="outline" size="lg" className="h-14 px-8 text-[17px] gap-2 border-2 border-[#B3CDE0]/50 text-[#0C1446] hover:bg-[#B3CDE0]/10 bg-white/50 backdrop-blur-sm rounded-xl">
-              <Link to="/technology-lab-setup">
-                Explore Labs <Terminal className="w-5 h-5" />
+            <Button asChild variant="outline" size="lg" className="flex-1 sm:flex-none h-14 px-2 sm:px-8 text-[14px] sm:text-[17px] gap-2 border-2 border-[#B3CDE0]/50 text-[#0C1446] dark:text-foreground hover:bg-[#B3CDE0]/10 bg-white dark:bg-card/50 backdrop-blur-sm rounded-xl">
+              <Link to="/technology-lab-setup" className="flex items-center justify-center">
+                Explore Labs <Terminal className="w-4 h-4 sm:w-5 sm:h-5 ml-1" />
               </Link>
             </Button>
+          </motion.div>
+          {/* Mobile-only: Horizontal scrollable 3D branch cards */}
+          <motion.div
+            className="lg:hidden mt-10 -mx-4 px-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+          >
+            <p className="text-xs font-semibold uppercase tracking-widest text-[#2B5C92] dark:text-primary/70 mb-4">Explore Our Labs</p>
+            <div className="flex gap-4 overflow-x-auto pb-5 scrollbar-hide snap-x snap-mandatory" style={{ perspective: 1000 }}>
+              {[
+                { title: "3D PRINTING", topics: ["CAD Design", "Prototyping", "Materials"], Icon: Layers, rotateY: 12, delay: 0 },
+                { title: "IOT & EMBEDDED", topics: ["Sensors", "Microcontrollers", "Smart Devices"], Icon: Cpu, rotateY: -10, delay: 0.4 },
+                { title: "AI & ROBOTICS", topics: ["Machine Learning", "Computer Vision", "Automation"], Icon: Bot, rotateY: 15, delay: 0.8 },
+                { title: "COMPOSITE SKILLS", topics: ["3D Printing", "Fabrication", "Design"], Icon: Box, rotateY: -12, delay: 1.2 },
+                { title: "RAPID PROTOTYPING", topics: ["Laser Cutting", "CNC Machining", "3D Modeling"], Icon: Wrench, rotateY: 10, delay: 1.6 },
+                { title: "STEM", topics: ["Science & Math", "Tinkering", "Engineering"], Icon: Lightbulb, rotateY: -8, delay: 2.0 },
+              ].map((card, i) => (
+                <div key={i} className="shrink-0 snap-start" style={{ perspective: 1200 }}>
+                  <motion.div
+                    className="relative rounded-xl w-[190px]"
+                    style={{ transformStyle: 'preserve-3d' }}
+                    initial={{ y: 0, rotateY: card.rotateY, rotateX: 0 }}
+                    animate={{
+                      y: [0, -10, 0],
+                      rotateY: [card.rotateY, card.rotateY + 8, card.rotateY - 8, card.rotateY],
+                      rotateX: [0, 6, -6, 0]
+                    }}
+                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: card.delay }}
+                  >
+                    {/* 3D Back Plate */}
+                    <div
+                      className="absolute inset-0 rounded-xl bg-gradient-to-r from-[#B3CDE0] to-[#2B5C92]/30 border border-[#2B5C92]/40 opacity-70"
+                      style={{ transform: 'translateZ(-8px)' }}
+                    />
+                    {/* 3D Front Glass Layer */}
+                    <div
+                      className="relative p-3.5 rounded-xl border border-[#B3CDE0] bg-white dark:bg-card/80 backdrop-blur-md flex items-center justify-between shadow-[0_15px_35px_rgba(43,92,146,0.15),_inset_0_0_20px_rgba(255,255,255,0.9)]"
+                      style={{ transform: 'translateZ(0px)', transformStyle: 'preserve-3d' }}
+                    >
+                      <div className="flex-1 min-w-0" style={{ transform: 'translateZ(25px)' }}>
+                        <h3 className="font-bold text-[#0C1446] dark:text-foreground text-[11px] mb-2 tracking-wide drop-shadow-sm leading-tight">{card.title}</h3>
+                        <ul className="space-y-1">
+                          {card.topics.map((t, j) => (
+                            <li key={j} className="text-[#2B5C92] dark:text-primary text-[10px] flex items-center gap-1.5 font-medium drop-shadow-sm">
+                              <span className="w-1.5 h-1.5 rounded-sm bg-[#B3CDE0] shadow-[0_0_5px_#B3CDE0] shrink-0" />
+                              {t}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div className="ml-2 shrink-0" style={{ transform: 'translateZ(40px)' }}>
+                        <card.Icon className="w-8 h-8 text-[#2B5C92] dark:text-primary" strokeWidth={1.5} style={{ filter: 'drop-shadow(0 4px 6px rgba(43,92,146,0.2))' }} />
+                      </div>
+                    </div>
+                  </motion.div>
+                </div>
+              ))}
+            </div>
           </motion.div>
         </div>
       </div>

@@ -71,7 +71,7 @@ const BlogPostPage = () => {
 
     if (!post) {
         return (
-            <div className="min-h-screen flex flex-col bg-background">
+            <div className="min-h-screen flex flex-col bg-transparent">
                 <Header />
                 <main className="flex-1 container py-20 px-4 text-center">
                     <h1 className="text-4xl font-bold mb-4">Article Not Found</h1>
@@ -118,7 +118,7 @@ const BlogPostPage = () => {
     };
 
     return (
-        <div className="min-h-screen flex flex-col bg-background">
+        <div className="min-h-screen flex flex-col bg-transparent">
             <Header />
 
             {/* Hero Section with Featured Image */}

@@ -11,12 +11,13 @@ export interface ProjectService {
     link: string;
     color: string;
     hoverImage?: string;
+    heroImage?: string;
 }
 
 export const projectServices: ProjectService[] = [
     {
         id: "stem-tinkering",
-        title: "STEM & Tinkering Lab",
+        title: "Atal Tinkering Lab",
         description: "A creative space for hands-on learning, fostering innovation. We offer complete Atal Tinkering Lab setup as per NITI AAYOG approved specifications, categorized into 4 comprehensive packages.",
         features: [
             "Package 1 (P1) - Electronics, Robotics, IoT",
@@ -28,11 +29,12 @@ export const projectServices: ProjectService[] = [
         image: "/images/STEM & Tinkering LAb.png",
         link: "/technology-lab-setup/stem-tinkering",
         color: "from-yellow-500 to-orange-500",
-        hoverImage: "/images/STEM & Tinkering Lab 2.png"
+        hoverImage: "/images/STEM & Tinkering Lab 2.png",
+        heroImage: "/images/ATAL Tinkering Lab.png"
     },
     {
         id: "ai-robotics",
-        title: "AI & Robotics Lab",
+        title: "Ai , STEM & Robotics Lab",
         description: "Advanced facility for designing autonomous systems, robotic arms, and implementing artificial intelligence algorithms.",
         features: [
             "Sensor Integration Modules",
@@ -44,7 +46,8 @@ export const projectServices: ProjectService[] = [
         image: "/images/bot-workbench.png",
         link: "/technology-lab-setup/ai-robotics",
         color: "from-blue-500 to-cyan-500",
-        hoverImage: "/images/robotics-hover-new.png"
+        hoverImage: "/images/robotics-hover-new.png",
+        heroImage: "/images/Ai , STEM & Robotics  Lab.png"
     },
     {
         id: "embedded-electronics",
@@ -60,7 +63,8 @@ export const projectServices: ProjectService[] = [
         image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop",
         link: "/technology-lab-setup/embedded-electronics",
         color: "from-emerald-500 to-green-500",
-        hoverImage: "/images/Electronics Lab.png"
+        hoverImage: "/images/Electronics Lab.png",
+        heroImage: "/images/Embedded Systems and Electronics Lab.png"
     },
     {
         id: "astronomy",
@@ -76,7 +80,8 @@ export const projectServices: ProjectService[] = [
         image: "https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?q=80&w=2070&auto=format&fit=crop",
         link: "/technology-lab-setup/astronomy",
         color: "from-indigo-500 to-violet-500",
-        hoverImage: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop"
+        hoverImage: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop",
+        heroImage: "/images/AStronomy Lab.png"
     },
     {
         id: "composite-skills",
@@ -92,6 +97,24 @@ export const projectServices: ProjectService[] = [
         image: "/images/composite_lab_3d_printing.png",
         link: "/technology-lab-setup/composite-skills",
         color: "from-pink-500 to-rose-500",
-        hoverImage: "/images/composite_lab_details.png"
+        hoverImage: "/images/composite_lab_details.png",
+        heroImage: "/images/Composite Skill Lab.png"
+    },
+    {
+        id: "rapid-prototyping",
+        title: "Rapid Prototyping Lab",
+        description: "A specialized facility equipped with advanced 3D printers, laser cutters, and CNC machines to accelerate design iterations and product development.",
+        features: [
+            "Advanced 3D Printing",
+            "Laser Cutting & Engraving",
+            "CNC Machining",
+            "CAD/CAM Software"
+        ],
+        icon: Printer,
+        image: "/images/rapid_prototyping_lab_setup.png",
+        link: "/technology-lab-setup/rapid-prototyping",
+        color: "from-teal-500 to-cyan-500",
+        hoverImage: "/images/rapid_prototyping_lab_hover.png",
+        heroImage: "/images/Rapid Prototyping Lab.png"
     }
 ];

@@ -41,7 +41,7 @@ const KitsPage = () => {
     };
 
     return (
-        <div className="min-h-screen flex flex-col bg-background">
+        <div className="min-h-screen flex flex-col bg-transparent">
             <Header />
 
             {/* Hero Section */}
@@ -88,9 +88,7 @@ const KitsPage = () => {
                                         alt={kit.name}
                                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                                     />
-                                    {kit.stock ? (
-                                        <Badge className="absolute top-3 left-3 bg-green-500 hover:bg-green-600">In Stock</Badge>
-                                    ) : (
+                                    {!kit.stock && (
                                         <Badge variant="destructive" className="absolute top-3 left-3">Out of Stock</Badge>
                                     )}
                                     <Badge variant="secondary" className="absolute top-3 right-3 backdrop-blur-md bg-white/50 dark:bg-black/50">{kit.category}</Badge>

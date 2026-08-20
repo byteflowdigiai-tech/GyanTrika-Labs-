@@ -6,42 +6,42 @@
 
 @layer base {
   :root {
-    /* Light theme - Matched to logo blue (#1B456C) */
-    --background: 0 0% 100%;
-    --foreground: 209 60% 15%;
+    /* Light theme - Starry Night Palette */
+    --background: 206 46% 96%; /* Very soft tint of #B3CDE0 for fallback */
+    --foreground: 232 71% 16%; /* #0C1446 for text */
 
     --card: 0 0% 100%;
-    --card-foreground: 209 60% 15%;
+    --card-foreground: 232 71% 16%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 209 60% 15%;
+    --popover-foreground: 232 71% 16%;
 
-    --primary: 209 60% 26%;
+    --primary: 232 71% 16%; /* #0C1446 */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 209 40% 94%;
-    --secondary-foreground: 209 60% 26%;
+    --secondary: 211 54% 37%; /* #2B5C92 */
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 209 20% 95%;
-    --muted-foreground: 209 30% 45%;
+    --muted: 206 46% 90%;
+    --muted-foreground: 211 54% 37%;
 
-    --accent: 209 85% 45%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 206 46% 79%; /* #B3CDE0 */
+    --accent-foreground: 232 71% 16%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 209 30% 88%;
-    --input: 209 30% 88%;
-    --ring: 209 60% 26%;
+    --border: 206 46% 85%;
+    --input: 206 46% 85%;
+    --ring: 211 54% 37%;
 
     --radius: 0.75rem;
 
     /* Custom tokens */
-    --hero-gradient: linear-gradient(135deg, hsl(209 40% 98%) 0%, hsl(209 50% 92%) 100%);
-    --card-gradient: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(209 40% 97%) 100%);
-    --glow: 0 0 40px hsla(209, 85%, 45%, 0.15);
-    --circuit-color: hsla(209, 60%, 26%, 0.08);
+    --hero-gradient: linear-gradient(135deg, #FFFFFF 0%, #B3CDE0 100%);
+    --card-gradient: linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgba(179,205,224,0.15) 100%);
+    --glow: 0 0 40px rgba(43, 92, 146, 0.2);
+    --circuit-color: rgba(12, 20, 70, 0.05);
   }
 
   .dark {
@@ -92,10 +92,20 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply text-foreground antialiased;
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
     width: 100%;
+  }
+
+  :root body {
+    background-color: #F4F7FA;
+    background-image: linear-gradient(135deg, #FFFFFF 0%, #E6F0F9 40%, #B3CDE0 100%);
+    background-attachment: fixed;
+  }
+
+  .dark body {
+    background: hsl(var(--background));
   }
 
   h1,
@@ -205,4 +215,13 @@
   50% {
     opacity: 1;
   }
+}
+
+/* Hide scrollbar for horizontal scroll strips */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }

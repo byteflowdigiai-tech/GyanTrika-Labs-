@@ -21,6 +21,42 @@ import kvLogo from "@/assets/kv-logo.png";
 import apsLogo from "@/assets/aps-logo.png";
 import iitgLogo from "@/assets/iitg-logo.png";
 
+const renderWaves = (position: 'left' | 'right') => {
+  const isLeft = position === 'left';
+  return (
+    <svg 
+      className={`absolute ${isLeft ? 'bottom-0 left-0' : 'top-0 right-0 transform scale-[-1]'} w-[400px] md:w-[600px] lg:w-[800px] h-auto pointer-events-none opacity-50 z-0`} 
+      viewBox="0 0 800 600" 
+      fill="none" 
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      {Array.from({ length: 25 }).map((_, i) => (
+        <path
+          key={i}
+          className="animate-path-wave"
+          style={{ animationDelay: `${(isLeft ? 0 : 2.25) + (i * 0.12)}s` }}
+          d={`M -100,${400 - i * 20} C ${250 - i * 5},${550 - i * 10} ${500 + i * 15},${650} 800,600`}
+          stroke="currentColor"
+          strokeWidth="1.2"
+          fill="none"
+          opacity={0.6 - i * 0.02}
+        />
+      ))}
+    </svg>
+  );
+};
+
+const renderDotGrid = (position: 'top-left' | 'middle-right') => {
+  return (
+    <svg className={`absolute ${position === 'top-left' ? 'top-12 left-12' : 'top-1/2 right-12'} w-32 h-32 opacity-40 pointer-events-none`} fill="none" viewBox="0 0 100 100">
+      <pattern id={`dots-${position}`} x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+        <circle fill="currentColor" cx="2" cy="2" r="2"></circle>
+      </pattern>
+      <rect x="0" y="0" width="100" height="100" fill={`url(#dots-${position})`}></rect>
+    </svg>
+  );
+};
+
 const AboutPage = () => {
     const containerVariants = {
         hidden: { opacity: 0 },
@@ -80,11 +116,11 @@ const AboutPage = () => {
     ];
 
     return (
-        <div className="min-h-screen flex flex-col bg-background">
+        <div className="min-h-screen flex flex-col bg-transparent">
             <Header />
 
             {/* Hero Section */}
-            <section className="relative py-20 overflow-hidden">
+            <section className="relative pt-20 pb-32 overflow-hidden">
                 {/* Background - Theme Consistent */}
                 <div className="absolute inset-0 bg-primary/90 dark:bg-primary/20 z-0 overflow-hidden">
                     <motion.div
@@ -92,7 +128,7 @@ const AboutPage = () => {
                         animate={{ scale: [1, 1.15, 1] }}
                         transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background dark:to-slate-950" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-transparent dark:to-slate-950" />
                 </div>
 
                 <div className="container px-4 relative z-10">
@@ -116,6 +152,22 @@ const AboutPage = () => {
                             Empowering the next generation of innovators through hands-on learning in robotics, AI, IoT, and emerging technologies.
                         </motion.p>
                     </div>
+                </div>
+
+                {/* Wavy Divider */}
+                <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0] z-20">
+                    <svg
+                        className="relative block w-[calc(150%+1.3px)] h-[60px] md:h-[100px]"
+                        data-name="Layer 1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 1200 120"
+                        preserveAspectRatio="none"
+                    >
+                        <path
+                            d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+                            className="fill-white dark:fill-slate-950"
+                        ></path>
+                    </svg>
                 </div>
             </section>
 
@@ -191,10 +243,15 @@ const AboutPage = () => {
                 </section>
 
                 {/* Core Values */}
-                <section className="py-16 bg-muted/30">
-                    <div className="container px-4">
+                <section className="py-16 relative overflow-hidden">
+                    {/* Background decorations matching reference */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-blue-50/50 to-white dark:from-slate-900 dark:to-background pointer-events-none z-0" />
+                    <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-100/40 dark:bg-blue-900/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none z-0" />
+                    <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-cyan-100/40 dark:bg-cyan-900/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none z-0" />
+
+                    <div className="container px-4 relative z-10">
                         <div className="text-center mb-12">
-                            <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Core Values</h2>
+                            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-display text-slate-800 dark:text-foreground">Our Core Values</h2>
                             <p className="text-muted-foreground max-w-2xl mx-auto">
                                 The principles that guide everything we do at GyanTrika Labs
                             </p>
@@ -209,9 +266,9 @@ const AboutPage = () => {
                         >
                             {values.map((value, index) => (
                                 <motion.div key={index} variants={itemVariants}>
-                                    <Card className="h-full hover:shadow-lg transition-all duration-300 border-border/50 hover:border-primary/50">
+                                    <Card className="h-full hover:shadow-2xl hover:shadow-primary/20 transition-all duration-300 border-border/50 hover:border-primary/50 bg-gradient-to-br from-background to-muted/20 hover:from-primary/[0.02] hover:to-primary/[0.05]">
                                         <CardContent className="p-6">
-                                            <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                                            <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center mb-4 border border-primary/10">
                                                 <value.icon className="w-7 h-7 text-primary" />
                                             </div>
                                             <h3 className="text-xl font-semibold mb-2">{value.title}</h3>
@@ -229,7 +286,25 @@ const AboutPage = () => {
 
 
                 {/* Partners Section */}
-                <section className="py-20 bg-background relative overflow-hidden">
+                <section className="py-20 bg-gradient-to-br from-[#F5FAFD] via-white to-[#F5FAFD] relative overflow-hidden">
+                    {/* Background Subtle Elements */}
+                    <div className="absolute inset-0 pointer-events-none text-[#A4CBE3]">
+                        {/* Blur Shadows */}
+                        <div className="absolute -top-40 -left-40 w-[600px] h-[600px] bg-[#6EACC9]/30 rounded-full blur-[120px]"></div>
+                        <div className="absolute -top-40 -right-40 w-[600px] h-[600px] bg-[#6EACC9]/30 rounded-full blur-[120px]"></div>
+                        <div className="absolute -bottom-40 -left-40 w-[600px] h-[600px] bg-[#6EACC9]/30 rounded-full blur-[120px]"></div>
+                        <div className="absolute -bottom-40 -right-40 w-[600px] h-[600px] bg-[#6EACC9]/30 rounded-full blur-[120px]"></div>
+
+                        {/* Subtle grid pattern */}
+                        <div className="absolute inset-0 bg-[linear-gradient(rgba(164,203,227,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(164,203,227,0.15)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_20%,transparent_100%)]"></div>
+                        
+                        {/* Vector Waves & Dots */}
+                        {renderWaves('left')}
+                        {renderWaves('right')}
+                        {renderDotGrid('top-left')}
+                        {renderDotGrid('middle-right')}
+                    </div>
+
                     <div className="container px-4 relative z-10">
                         <div className="text-center mb-12">
                             <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Trusted <span className="text-gradient">Partners</span></h2>
@@ -238,11 +313,28 @@ const AboutPage = () => {
                             </p>
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
                             {[
                                 { name: "IIT Guwahati", logo: iitgLogo, role: "Innovation Partner", url: "https://www.iitg.ac.in/" },
                                 { name: "Kendriya Vidyalaya", logo: kvLogo, role: "Learning Partner", url: "https://kvsangathan.nic.in/" },
-                                { name: "Army Public School", logo: apsLogo, role: "Technology Partner", url: "https://www.awesindia.com/" }
+                                { name: "Army Public School", logo: apsLogo, role: "Technology Partner", url: "https://www.awesindia.com/" },
+                                { name: "Jagiroad College", logo: "/images/partners/jagiroad_college.jpg", role: "Academic Partner", url: "https://www.jagiroadcollege.co.in/" },
+                                { name: "Kampur College", logo: "/images/partners/kampur_college.png", role: "Academic Partner", url: "https://www.kampurcollege.ac.in/" },
+                                { name: "Kamrup College", logo: "/images/partners/kamrup_college.png", role: "Academic Partner", url: "https://www.kamrupcollege.co.in/" },
+                                { name: "Nalbari College", logo: "/images/partners/nalbari_college.png", role: "Academic Partner", url: "https://www.nalbaricollege.ac.in/" },
+                                { name: "DeviCharan Baruah Girls College", logo: "/images/partners/dc_barua_girls_college.png", role: "Academic Partner", url: "https://dcbgirlscollegejorhat.org/" },
+                                { name: "Women's College, Tinsukia", logo: "/images/partners/womens_college_tinsukia.png", role: "Academic Partner", url: "https://wcttsk.ac.in/" },
+                                { name: "Gauhati Commerce College", logo: "/images/partners/gauhati_commerce_college.png", role: "Academic Partner", url: "https://gcc.ac.in/" },
+                                { name: "Furkating College", logo: "/images/partners/furkating_college.png", role: "Academic Partner", url: "https://www.furkatingcollege.edu.in/" },
+                                { name: "K.R.B. Mahavidyalaya, Guwahati", logo: "/images/partners/krb_mahavidyalaya.png", role: "Academic Partner", url: "https://krbgirlscollege.ac.in/" },
+                                { name: "Pandu College", logo: "/images/partners/pandu_college.png", role: "Academic Partner", url: "https://panducollege.ac.in/" },
+                                { name: "B. Borooah College", logo: "/images/partners/b_borooah_college.png", role: "Academic Partner", url: "https://www.bborooahcollege.ac.in/" },
+                                { name: "Mangaldai College", logo: "/images/partners/mangaldai_college.png", role: "Academic Partner", url: "https://www.mangaldaicollege.org/#gsc.tab=0" },
+                                { name: "Dalgoma Anchalik College", logo: "/images/partners/dalgoma_anchalik_college.png", role: "Academic Partner", url: "https://www.dalgomaanchalikcollege.co.in/" },
+                                { name: "Bhattadev University, Bajali", logo: "/images/partners/bhattadev_university.png", role: "Academic Partner", url: "https://www.bhattadevuniversity.ac.in/web" },
+                                { name: "Gauhati University", logo: "/images/partners/gauhati_university.png", role: "Academic Partner", url: "http://gauhati.ac.in/" },
+                                { name: "Habraghat Mahavidyalaya", logo: "/images/partners/habraghat_mahavidyalaya.png", role: "Academic Partner", url: "https://www.habraghatcollege.in/" },
+                                { name: "Agia College", logo: "/images/partners/agia_college.png", role: "Academic Partner", url: "https://agiacollege.co.in/" }
                             ].map((partner, i) => (
                                 <motion.a
                                     key={i}

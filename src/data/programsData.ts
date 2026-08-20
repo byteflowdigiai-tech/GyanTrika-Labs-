@@ -1,6 +1,9 @@
 export interface Program {
     id: string;
     title: string;
+    educationLevel?: "schools-colleges-6-12" | "ug" | "pg";
+    isUgParent?: boolean;
+    ugParents?: string[];
     category: "Workshop" | "Course" | "Bootcamp" | "Certification" | "Mentorship";
     duration?: string;
     level: "Beginner" | "Intermediate" | "Advanced" | "All Levels";
@@ -28,13 +31,67 @@ export interface Program {
 }
 
 export const programs: Program[] = [
+
+    // --- SCHOOLS & COLLEGES (6-12) ---
+    {
+        id: "school-001",
+        title: "AI Explorer Academy",
+        educationLevel: "schools-colleges-6-12",
+        category: "Course",
+        duration: "Class 6–8",
+        level: "Beginner",
+        mode: "Online",
+        price: 2000,
+        image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&q=80&w=1200",
+        description: "Introduce younger students to the wonders of AI, basic logic, and creative technology.",
+        features: ["Age-Appropriate AI Basics", "Interactive Projects", "Live Sessions"],
+        curriculum: ["What is AI?", "Logic & Games", "Creative AI Drawing", "Final Showcase"],
+        instructor: { name: "Tushardri Paul", avatar: "/assets/authors/tushardri-paul.jpg", role: "AI Educator", experience: "8+ years" },
+        enrolled: 120, rating: 4.8, reviews: 30, certificate: true, tags: ["Kids", "AI", "Class 6-8"]
+    },
+    {
+        id: "school-002",
+        title: "AI Creator Academy",
+        educationLevel: "schools-colleges-6-12",
+        category: "Course",
+        duration: "Class 9–10",
+        level: "Intermediate",
+        mode: "Online",
+        price: 2500,
+        image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=1200",
+        description: "Equip high schoolers with practical AI application skills and basic prompt engineering.",
+        features: ["AI Tools Mastery", "Prompt Engineering", "School Projects Assistance"],
+        curriculum: ["AI in Daily Life", "Using LLMs", "AI for Study & Research", "Building a Mini Project"],
+        instructor: { name: "Tushardri Paul", avatar: "/assets/authors/tushardri-paul.jpg", role: "AI Educator", experience: "8+ years" },
+        enrolled: 150, rating: 4.9, reviews: 45, certificate: true, tags: ["High School", "AI", "Class 9-10"]
+    },
+    {
+        id: "school-003",
+        title: "AI Professional Academy",
+        educationLevel: "schools-colleges-6-12",
+        category: "Course",
+        duration: "Class 11–12",
+        level: "Advanced",
+        mode: "Online",
+        price: 3000,
+        image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&q=80&w=1200",
+        description: "Advanced AI techniques, career preparation, and foundational machine learning concepts for seniors.",
+        features: ["Python Basics", "Intro to ML", "Career Counseling"],
+        curriculum: ["Python Refresher", "Data Basics", "How ML works", "College Prep Portfolio"],
+        instructor: { name: "Tushardri Paul", avatar: "/assets/authors/tushardri-paul.jpg", role: "AI Educator", experience: "8+ years" },
+        enrolled: 200, rating: 5.0, reviews: 60, certificate: true, tags: ["Seniors", "AI", "Class 11-12"]
+    },
+
+
     {
         id: "prog-ai-science",
         title: "AI for Science",
+        educationLevel: "ug",
+        isUgParent: true,
         category: "Course",
         level: "Beginner",
         mode: "Offline",
-        price: 150,
+        price: 1499,
         pricingModel: "registration",
         image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?q=80&w=2070&auto=format&fit=crop",
         description: "Explore how Artificial Intelligence is revolutionizing the scientific method. Learn how machine learning accelerates drug discovery, predicts protein folding, models climate change, and automates experimental data analysis.",
@@ -69,10 +126,12 @@ export const programs: Program[] = [
     {
         id: "prog-ai-arts",
         title: "AI for Arts",
+        educationLevel: "ug",
+        isUgParent: true,
         category: "Course",
         level: "Beginner",
         mode: "Offline",
-        price: 150,
+        price: 1499,
         pricingModel: "registration",
         image: "https://images.unsplash.com/photo-1547891654-e66ed7ebb968?q=80&w=2070&auto=format&fit=crop",
         description: "Discover the intersection of artificial intelligence and human creativity. See how AI algorithms are creating award-winning digital paintings, generating narrative storylines, synthesizing music, and pushing the boundaries of traditional arts.",
@@ -107,10 +166,12 @@ export const programs: Program[] = [
     {
         id: "prog-ai-commerce",
         title: "AI for Commerce",
+        educationLevel: "ug",
+        isUgParent: true,
         category: "Course",
         level: "Beginner",
         mode: "Offline",
-        price: 150,
+        price: 1499,
         pricingModel: "registration",
         image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
         description: "Learn how AI automates financial workflows, predicts market trends, and personalizes e-commerce experiences. Uncover how big data and AI algorithms are transforming accounting, trading, and modern business logistics.",
@@ -146,6 +207,7 @@ export const programs: Program[] = [
         id: "prog-001",
         title: "Arduino Robotics Bootcamp",
         category: "Bootcamp",
+        educationLevel: "pg",
         duration: "4 Weeks",
         level: "Beginner",
         mode: "Offline",
@@ -187,6 +249,7 @@ export const programs: Program[] = [
         id: "prog-003",
         title: "AI & Machine Learning for Robotics",
         category: "Bootcamp",
+        educationLevel: "pg",
         duration: "8 Weeks",
         level: "Advanced",
         mode: "Hybrid",
@@ -230,6 +293,7 @@ export const programs: Program[] = [
         id: "prog-004",
         title: "PCB Design Mastery Workshop",
         category: "Workshop",
+        educationLevel: "pg",
         duration: "1 Week",
         level: "Intermediate",
         mode: "Offline",
@@ -271,6 +335,7 @@ export const programs: Program[] = [
         id: "prog-005",
         title: "3D Printing for Makers",
         category: "Workshop",
+        educationLevel: "pg",
         duration: "1 Week",
         level: "Beginner",
         mode: "Offline",
@@ -312,6 +377,7 @@ export const programs: Program[] = [
         id: "prog-006",
         title: "Python Programming for Engineers",
         category: "Course",
+        educationLevel: "pg",
         duration: "4 Weeks",
         level: "Beginner",
         mode: "Hybrid",
@@ -352,6 +418,7 @@ export const programs: Program[] = [
         id: "prog-008",
         title: "Embedded Systems Certification",
         category: "Certification",
+        educationLevel: "pg",
         duration: "8 Weeks",
         level: "Advanced",
         mode: "Offline",
@@ -392,47 +459,7 @@ export const programs: Program[] = [
         certificate: true,
         tags: ["Embedded Systems", "ARM", "RTOS", "C Programming", "Professional"]
     },
-    {
-        id: "prog-009",
-        title: "Young Innovators Program (Ages 10-14)",
-        category: "Course",
-        duration: "8 Weeks",
-        level: "Beginner",
-        mode: "Offline",
-        price: 3000,
-        image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=1200",
-        description: "Introduce young minds to robotics, coding, and innovation. Fun, hands-on learning designed specifically for kids aged 10-14.",
-        features: [
-            "Age-Appropriate Curriculum",
-            "Block-Based Coding",
-            "Robot Building Projects",
-            "Creative Problem Solving",
-            "Small Batch Sizes (8-10 kids)",
-            "Certificate & Showcase Event"
-        ],
-        curriculum: [
-            "Introduction to Coding (Scratch)",
-            "Basic Electronics & Circuits",
-            "Building Simple Robots",
-            "Sensor Integration",
-            "Creative Project Design",
-            "Team Collaboration",
-            "Innovation Challenge",
-            "Showcase & Presentation"
-        ],
-        instructor: {
-            name: "Vishal Nath",
-            avatar: "/assets/authors/vishal-nath.jpeg",
-            role: "Electronics Engineer",
-            experience: "7+ years in Children's Education"
-        },
-        enrolled: 567,
-        rating: 5.0,
-        reviews: 245,
-        spots: 10,
-        certificate: true,
-        tags: ["Kids", "Robotics", "Coding", "STEM", "Education"]
-    },
+    
     {
         id: "prog-011",
         title: "Website Designing and Building Masterclass",

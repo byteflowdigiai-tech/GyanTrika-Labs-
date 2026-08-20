@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const TermsConditionsPage = () => {
     return (
-        <div className="min-h-screen flex flex-col bg-background">
+        <div className="min-h-screen flex flex-col bg-transparent">
             <Header />
 
             <main className="flex-1 container py-12 px-4">

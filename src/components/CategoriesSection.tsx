@@ -1,20 +1,13 @@
+import React, { Suspense, lazy } from 'react';
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
-import { Plus } from "lucide-react";
 
-const labMarkers = [
-  { title: "AI Lab", href: "/technology-lab-setup/ai-robotics", top: "30%", left: "20%" },
-  { title: "Robotics Lab", href: "/technology-lab-setup/ai-robotics", top: "20%", left: "45%" },
-  { title: "Drone Lab", href: "/technology-lab-setup/stem-tinkering", top: "25%", left: "75%" },
-  { title: "Elearning Lab", href: "/technology-lab-setup/embedded-electronics", top: "65%", left: "30%" },
-  { title: "Innovation Hub", href: "/technology-lab-setup/composite-skills", top: "70%", left: "75%" },
-];
+const InnovationHub3D = lazy(() => import('./InnovationHub3D'));
 
 export function CategoriesSection() {
   return (
-    <section className="relative py-24 bg-[#FFFFFF] overflow-hidden z-0">
-      {/* Premium Flowing Wave Background - Matches Ecosystem Target Image Exactly */}
-      <div className="absolute inset-0 pointer-events-none z-[-1] bg-[#FAFCFF] overflow-hidden">
+    <section className="relative py-24 bg-[#FFFFFF] dark:bg-background overflow-hidden z-0">
+      {/* Premium Flowing Wave Background */}
+      <div className="absolute inset-0 pointer-events-none z-[-1] bg-[#FAFCFF] dark:bg-background overflow-hidden">
         {/* Soft radial glows for ambient lighting */}
         <div className="absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] bg-[#1E3A8A]/10 blur-[120px] rounded-full" />
 
@@ -24,9 +17,7 @@ export function CategoriesSection() {
           style={{ backgroundImage: 'radial-gradient(#1E3A8A 1px, transparent 1px)', backgroundSize: '24px 24px' }} 
         />
 
-
-
-        {/* Flowing Wave Lines (Right Side - Originating exactly from Bottom Right) */}
+        {/* Flowing Wave Lines */}
         <svg className="absolute inset-0 w-full h-full opacity-70 pointer-events-none" viewBox="0 0 100 100" preserveAspectRatio="none">
           <defs>
             <linearGradient id="wave-grad-lines-right" x1="100%" y1="100%" x2="0%" y2="0%">
@@ -56,7 +47,7 @@ export function CategoriesSection() {
         <div className="absolute bottom-[30%] left-[8%] w-1.5 h-1.5 bg-blue-200 rounded-full shadow-[0_0_12px_2px_rgba(191,219,254,0.6)] opacity-70" />
       </div>
 
-      <div className="container relative">
+      <div className="container relative max-w-[1400px]">
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
@@ -66,45 +57,28 @@ export function CategoriesSection() {
         >
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="w-1.5 h-1.5 rounded-full bg-[#2563EB]" />
-            <span className="text-[#2563EB] font-bold text-xs tracking-[0.2em] uppercase">Our Ecosystem</span>
+            <span className="text-[#2563EB] font-bold text-xs tracking-[0.2em] uppercase">Our Innovation Hub</span>
             <div className="w-1.5 h-1.5 rounded-full bg-[#2563EB]" />
           </div>
           
-          <h2 className="font-display text-4xl md:text-[3rem] font-black uppercase mb-4 tracking-wide text-[#0C1446]">
-            EXPLORE OUR <span className="text-[#2563EB]">ECOSYSTEM</span>
+          <h2 className="font-display text-4xl md:text-[3rem] font-black mb-4 tracking-wide text-[#0C1446] dark:text-foreground">
+            Explore Our <span className="text-[#2563EB]">Innovation Hub</span>
           </h2>
-          <p className="text-[#64748B] max-w-2xl mx-auto text-[17px]">
-            Everything you need to learn, build, and innovate in the world of robotics and emerging technologies.
+          <p className="text-[#64748B] dark:text-muted-foreground max-w-2xl mx-auto text-[17px]">
+            Step into our advanced labs and innovation spaces designed for hands-on learning, research, and real-world problem solving.
           </p>
         </motion.div>
 
-        <div className="relative w-full max-w-[1200px] mx-auto aspect-[16/9] md:aspect-[21/9] rounded-3xl overflow-hidden shadow-2xl border border-blue-100/50 bg-white/50 backdrop-blur-sm">
-          <img 
-            src="/images/isometric_tech_labs.png" 
-            alt="3D Technology Lab Complex" 
-            className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
-          />
-          
-          {labMarkers.map((marker, i) => (
-            <motion.div
-              key={marker.title}
-              initial={{ opacity: 0, scale: 0 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: i * 0.15 + 0.3 }}
-              viewport={{ once: true }}
-              className="absolute z-10 -translate-x-1/2 -translate-y-1/2"
-              style={{ top: marker.top, left: marker.left }}
-            >
-              <Link to={marker.href} className="group relative flex items-center gap-2">
-                <div className="bg-[#0C1446]/90 backdrop-blur-md border border-white/10 px-4 py-2 rounded-full shadow-[0_4px_20px_rgba(12,20,70,0.4)] whitespace-nowrap group-hover:-translate-y-1 transition-all duration-300">
-                  <span className="font-display font-bold text-white text-sm tracking-wide">{marker.title}</span>
-                </div>
-                <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white shadow-[0_0_15px_rgba(59,130,246,0.8)] group-hover:scale-110 group-hover:bg-blue-400 group-hover:shadow-[0_0_25px_rgba(59,130,246,1)] transition-all duration-300">
-                  <Plus className="w-5 h-5" />
-                </div>
-              </Link>
-            </motion.div>
-          ))}
+        {/* 3D WebGL Canvas Container */}
+        <div className="relative w-full aspect-[4/3] md:aspect-[16/9] lg:aspect-[2/1] rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(12,20,70,0.1)] border border-blue-100/50 dark:border-blue-900/30 bg-[#FAFCFF] dark:bg-slate-900 ring-1 ring-black/5 dark:ring-white/5">
+          <Suspense fallback={
+            <div className="absolute inset-0 flex flex-col items-center justify-center bg-white/80 dark:bg-slate-900/80 backdrop-blur-md">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#2563EB] mb-4"></div>
+              <p className="text-[#2B5C92] dark:text-blue-300 font-semibold animate-pulse">Loading 3D Campus...</p>
+            </div>
+          }>
+            <InnovationHub3D />
+          </Suspense>
         </div>
       </div>
     </section>

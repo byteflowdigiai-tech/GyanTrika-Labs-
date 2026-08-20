@@ -1,7 +1,7 @@
 export interface Project {
     id: string;
     title: string;
-    category: "STEM & Tinkering Lab" | "AI & Robotics Lab" | "Embedded Systems & Electronics Lab" | "Astronomy Lab" | "Composite Skills Lab";
+    category: "Atal Tinkering Lab" | "Ai , STEM & Robotics Lab" | "Embedded Systems & Electronics Lab" | "Astronomy Lab" | "Composite Skills Lab";
     description: string;
     image: string;
     difficulty: "Beginner" | "Intermediate" | "Advanced";
@@ -13,7 +13,7 @@ export const projects: Project[] = [
     {
         id: "stem-p1",
         title: "Tinkering Lab – Package 1 (P1) – Electronics Development, Robotics, Internet of Things and Sensors",
-        category: "STEM & Tinkering Lab",
+        category: "Atal Tinkering Lab",
         description: "Tinkering Lab Package 1 contains components for Electronics Development, Internet of Things & Sensors, Robotics, and DIY Kits.\n\nThis product is As per QR/specification for Package No. 1 – Tinkering Lab of NITI AAYOG Electronics Development, Robotics, Internet of Things and Sensors approved by NITI AAYOG(Approved Copy of Qrs / Specification uploaded in GeM portal).",
         image: "/images/STEM & Tinkering LAb.png",
         difficulty: "Beginner",
@@ -23,7 +23,7 @@ export const projects: Project[] = [
     {
         id: "stem-p2",
         title: "Tinkering Lab – Package 2 (P2) Rapid Prototyping Tool",
-        category: "STEM & Tinkering Lab",
+        category: "Atal Tinkering Lab",
         description: "Tinkering Lab Package 2 contains components for 3D Printing, Rapid Prototyping, and DIY Crafting.\n\nThis product is as per QR/specification for Package No.2 – Tinkering Lab of NITI AAYOG Rapid Prototyping Tools approved by NITI AAYOG(Approved Copy of Qrs / Specification uploaded in GeM portal).",
         image: "/images/STEM & Tinkering Lab 2.png",
         difficulty: "Beginner",
@@ -33,7 +33,7 @@ export const projects: Project[] = [
     {
         id: "stem-p3",
         title: "Tinkering Lab – Package 3 (P3) – Mechanical, Electrical and Measurement Tools",
-        category: "STEM & Tinkering Lab",
+        category: "Atal Tinkering Lab",
         description: "Tinkering Lab Package 3 contains components for Electronics and Mechanical Prototyping.\n\nThis product is as per QR/specification for Package No.3 – Tinkering Lab of NITI AAYOG Mechanical, Electrical, and Measurement Tools approved by NITI AAYOG(Approved Copy of Qrs / Specification uploaded in GeM portal).",
         image: "/images/stem_p3_tools.png",
         difficulty: "Beginner",
@@ -43,7 +43,7 @@ export const projects: Project[] = [
     {
         id: "stem-p4",
         title: "Tinkering Lab – Package 4 (P4) – Power Supply and Accessories and Safety Equipment",
-        category: "STEM & Tinkering Lab",
+        category: "Atal Tinkering Lab",
         description: "Tinkering Lab Package 4 contains components for DIY Tinkering and Safety.\n\nThis product is as per QR/specification for Package No. 4 – Tinkering Lab of NITI AAYOG Power Supply and Accessories and Safety Equipment approved by NITI AAYOG(Approved Copy of Qrs / Specification uploaded in GeM portal).",
         image: "/images/stem_p4_safety.png",
         difficulty: "Beginner",
@@ -133,7 +133,7 @@ export const projects: Project[] = [
     {
         id: "ai-robotics-p1",
         title: "AI & Robotics Lab – Package 1 – Sensor Integration Modules",
-        category: "AI & Robotics Lab",
+        category: "Ai , STEM & Robotics Lab",
         description: "Equip your lab with advanced sensor integration modules. This package contains a comprehensive set of sensors for environmental, motion, and distance detection.\n\nStudents will learn how to interface, calibrate, and process data from various sensors to give their robotic systems perception of the physical world.",
         image: "https://images.unsplash.com/photo-1555664424-778a1e5e1b48?q=80&w=2070&auto=format&fit=crop",
         difficulty: "Beginner",
@@ -143,7 +143,7 @@ export const projects: Project[] = [
     {
         id: "ai-robotics-p2",
         title: "AI & Robotics Lab – Package 2 – Robotics Assembly Components",
-        category: "AI & Robotics Lab",
+        category: "Ai , STEM & Robotics Lab",
         description: "A robust collection of mechanical components, actuators, and chassis kits for building diverse robotic assemblies.\n\nFrom robotic arms and rovers to humanoid frames, this package includes precision motors, servos, and structural elements for assembling structural designs with high mobility.",
         image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=2070&auto=format&fit=crop",
         difficulty: "Intermediate",
@@ -153,7 +153,7 @@ export const projects: Project[] = [
     {
         id: "ai-robotics-p3",
         title: "AI & Robotics Lab – Package 3 – AI Programming & Software Stack",
-        category: "AI & Robotics Lab",
+        category: "Ai , STEM & Robotics Lab",
         description: "Unleash the capabilities of artificial intelligence. This software stack and compute module package enables intelligent decision-making.\n\nFeaturing edge-computing devices, vision processing units, and access to machine learning libraries (like TensorFlow and OpenCV), students can program neural networks and computer vision algorithms.",
         image: "/images/ai_robotics_p3_software.png",
         difficulty: "Advanced",
@@ -163,7 +163,7 @@ export const projects: Project[] = [
     {
         id: "ai-robotics-p4",
         title: "AI & Robotics Lab – Package 4 – Project-Based Learning Manuals",
-        category: "AI & Robotics Lab",
+        category: "Ai , STEM & Robotics Lab",
         description: "A comprehensive set of learning resources, manuals, and guided curriculums tailored for the AI and robotics ecosystem.\n\nThese step-by-step project blueprints guide educators and students from foundational concepts to advanced autonomous robotics applications, ensuring structured and hands-on skill development.",
         image: "/images/ai_robotics_p4_manuals.png",
         difficulty: "Beginner",

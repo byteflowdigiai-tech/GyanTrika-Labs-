@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 const LMSLanding = () => {
 
     return (
-        <div className="min-h-screen flex flex-col bg-background">
+        <div className="min-h-screen flex flex-col bg-transparent">
             <Header />
 
             {/* Full Screen Launching Soon Section */}
@@ -18,7 +18,7 @@ const LMSLanding = () => {
                         animate={{ scale: [1, 1.1, 1] }}
                         transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/20 to-background dark:to-slate-950" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-transparent dark:to-slate-950" />
                 </div>
 
                 <div className="container px-4 relative z-10">
