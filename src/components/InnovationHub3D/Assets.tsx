@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useMemo } from 'react';
 import * as THREE from 'three';
 import { Box, Cylinder } from '@react-three/drei';

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useMemo, useState, useRef } from 'react';
 import { useTexture } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
