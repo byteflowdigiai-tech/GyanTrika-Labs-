@@ -49,7 +49,7 @@ export const Header = () => {
                             <Link
                                 key={item.path}
                                 to={item.path}
-                                className={`px-3 py-2 xl:px-4 text-[13px] xl:text-sm font-medium transition-all duration-200 rounded-full whitespace-nowrap ${isActive(item.path)
+                                className={`px-3 py-2 xl:px-4 text-[13px] xl:text-sm font-display font-medium transition-all duration-200 rounded-full whitespace-nowrap ${isActive(item.path)
                                     ? 'bg-foreground text-background shadow-md'
                                     : 'text-muted-foreground hover:text-foreground hover:bg-secondary/50'
                                     }`}
@@ -105,7 +105,7 @@ export const Header = () => {
                                     key={item.path}
                                     to={item.path}
                                     onClick={() => setIsMobileMenuOpen(false)}
-                                    className={`px-4 py-2 text-sm font-medium transition-colors duration-200 rounded-md ${isActive(item.path)
+                                    className={`px-4 py-2 text-sm font-display font-medium transition-colors duration-200 rounded-md ${isActive(item.path)
                                         ? 'text-primary font-semibold bg-primary/10'
                                         : 'text-muted-foreground hover:text-foreground hover:bg-secondary/50'
                                         }`}
