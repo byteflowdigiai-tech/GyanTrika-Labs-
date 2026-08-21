@@ -281,12 +281,12 @@ export function HeroSection() {
           </motion.div>
 
           <motion.h1
-            className="font-display text-5xl md:text-[5.5rem] font-extrabold mb-8 leading-[1.05] tracking-tight text-[#0C1446] dark:text-foreground uppercase"
+            className="font-display text-3xl leading-[1.1] sm:text-4xl sm:leading-[1.1] md:text-[5.5rem] md:leading-[1.05] font-extrabold mb-8 tracking-tight text-[#0C1446] dark:text-foreground uppercase break-words"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            SHAPING <span className="whitespace-nowrap">FUTURE SKILLS.</span> <br />
+            SHAPING <span className="md:whitespace-nowrap">FUTURE SKILLS.</span> <br />
             INSPIRING FUTURE <br />
             <span className="text-[#2B5C92] dark:text-primary">INNOVATORS.</span>
           </motion.h1>
