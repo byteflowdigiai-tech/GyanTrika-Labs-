@@ -8,206 +8,209 @@
 <!-- Homepage - Highest Priority -->
 <url>
   <loc>https://gyantrika.com/</loc>
-  <lastmod>2026-03-06</lastmod>
+  <lastmod>2026-08-21</lastmod>
   <changefreq>daily</changefreq>
   <priority>1.0</priority>
+  <image:image>
+    <image:loc>https://gyantrika.com/favicon.png</image:loc>
+    <image:title>GyanTrika Labs - Premier Educational Technology Lab Setup</image:title>
+  </image:image>
+</url>
+
+<!-- SEO Optimized Lab Setup Pages (High Priority) -->
+<url>
+  <loc>https://gyantrika.com/technology-lab-setup</loc>
+  <lastmod>2026-08-21</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.95</priority>
+  <image:image>
+    <image:loc>https://gyantrika.com/favicon.png</image:loc>
+    <image:title>Complete Technology Lab Setup and Educational Innovation Ecosystems</image:title>
+  </image:image>
+</url>
+
+<url>
+  <loc>https://gyantrika.com/technology-lab-setup/ai-robotics</loc>
+  <lastmod>2026-08-21</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.90</priority>
+  <image:image>
+    <image:loc>https://gyantrika.com/favicon.png</image:loc>
+    <image:title>AI and Robotics Lab Setup Equipment</image:title>
+  </image:image>
+</url>
+
+<url>
+  <loc>https://gyantrika.com/technology-lab-setup/stem-tinkering</loc>
+  <lastmod>2026-08-21</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.90</priority>
+  <image:image>
+    <image:loc>https://gyantrika.com/favicon.png</image:loc>
+    <image:title>STEM and Atal Tinkering Lab Setup Components</image:title>
+  </image:image>
+</url>
+
+<url>
+  <loc>https://gyantrika.com/technology-lab-setup/embedded-electronics</loc>
+  <lastmod>2026-08-21</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.90</priority>
+  <image:image>
+    <image:loc>https://gyantrika.com/favicon.png</image:loc>
+    <image:title>Embedded Systems and Electronics Lab Setup</image:title>
+  </image:image>
+</url>
+
+<url>
+  <loc>https://gyantrika.com/technology-lab-setup/composite-skills</loc>
+  <lastmod>2026-08-21</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.85</priority>
+  <image:image>
+    <image:loc>https://gyantrika.com/favicon.png</image:loc>
+    <image:title>Composite Skills Technology Lab</image:title>
+  </image:image>
+</url>
+
+<url>
+  <loc>https://gyantrika.com/technology-lab-setup/astronomy</loc>
+  <lastmod>2026-08-21</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.85</priority>
+  <image:image>
+    <image:loc>https://gyantrika.com/favicon.png</image:loc>
+    <image:title>Astronomy Lab Setup for Schools</image:title>
+  </image:image>
+</url>
+
+<url>
+  <loc>https://gyantrika.com/technology-lab-setup/rapid-prototyping</loc>
+  <lastmod>2026-08-21</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.85</priority>
+  <image:image>
+    <image:loc>https://gyantrika.com/favicon.png</image:loc>
+    <image:title>Rapid Prototyping and 3D Printing Lab Setup</image:title>
+  </image:image>
 </url>
 
 <!-- Main Service Pages - High Priority -->
 <url>
   <loc>https://gyantrika.com/lms</loc>
-  <lastmod>2026-03-06</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.9</priority>
-</url>
-
-<url>
-  <loc>https://gyantrika.com/programs</loc>
-  <lastmod>2026-03-06</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.9</priority>
-</url>
-
-<url>
-  <loc>https://gyantrika.com/shop</loc>
-  <lastmod>2026-03-06</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.9</priority>
-</url>
-
-<url>
-  <loc>https://gyantrika.com/events</loc>
-  <lastmod>2026-03-06</lastmod>
-  <changefreq>daily</changefreq>
-  <priority>0.9</priority>
-</url>
-
-<!-- Blog Listing - High Priority for SEO -->
-<url>
-  <loc>https://gyantrika.com/blogs</loc>
-  <lastmod>2026-03-06</lastmod>
-  <changefreq>daily</changefreq>
-  <priority>0.9</priority>
-</url>
-
-<!-- Individual Blog Posts - High SEO Value -->
-<url>
-  <loc>https://gyantrika.com/blog/arduino-for-beginners-guide</loc>
-  <lastmod>2026-03-06</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.8</priority>
-</url>
-
-<url>
-  <loc>https://gyantrika.com/blog/iot-smart-home-automation-guide</loc>
-  <lastmod>2026-03-06</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.8</priority>
-</url>
-
-<url>
-  <loc>https://gyantrika.com/blog/ai-machine-learning-robotics-guide</loc>
-  <lastmod>2026-03-06</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.8</priority>
-</url>
-
-<url>
-  <loc>https://gyantrika.com/blog/top-robotics-projects-for-students-2026</loc>
-  <lastmod>2026-03-06</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.8</priority>
-</url>
-
-<url>
-  <loc>https://gyantrika.com/blog/3d-printing-in-education-benefits</loc>
-  <lastmod>2026-03-06</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.8</priority>
-</url>
-
-<url>
-  <loc>https://gyantrika.com/blog/pcb-design-fundamentals-guide</loc>
-  <lastmod>2026-03-06</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.8</priority>
-</url>
-
-<url>
-  <loc>https://gyantrika.com/blog/sensor-integration-robotics-guide</loc>
-  <lastmod>2026-03-06</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.8</priority>
-</url>
-
-<url>
-  <loc>https://gyantrika.com/blog/python-for-robotics-libraries-guide</loc>
-  <lastmod>2026-03-06</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.8</priority>
-</url>
-
-<!-- Projects Section - Important for Lead Generation -->
-<url>
-  <loc>https://gyantrika.com/technology-lab-setup</loc>
-  <lastmod>2026-03-06</lastmod>
+  <lastmod>2026-08-21</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.85</priority>
 </url>
 
 <url>
-  <loc>https://gyantrika.com/technology-lab-setup/robotics</loc>
-  <lastmod>2026-03-06</lastmod>
+  <loc>https://gyantrika.com/programs</loc>
+  <lastmod>2026-08-21</lastmod>
   <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
+  <priority>0.85</priority>
 </url>
 
 <url>
-  <loc>https://gyantrika.com/technology-lab-setup/iot</loc>
-  <lastmod>2026-03-06</lastmod>
+  <loc>https://gyantrika.com/shop</loc>
+  <lastmod>2026-08-21</lastmod>
   <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
+  <priority>0.80</priority>
 </url>
 
-<url>
-  <loc>https://gyantrika.com/technology-lab-setup/ai</loc>
-  <lastmod>2026-03-06</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-
-<url>
-  <loc>https://gyantrika.com/technology-lab-setup/pcb</loc>
-  <lastmod>2026-03-06</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-
-<url>
-  <loc>https://gyantrika.com/technology-lab-setup/3d</loc>
-  <lastmod>2026-03-06</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-
-<!-- Shop Categories -->
 <url>
   <loc>https://gyantrika.com/shop/kits</loc>
-  <lastmod>2026-03-06</lastmod>
+  <lastmod>2026-08-21</lastmod>
   <changefreq>weekly</changefreq>
-  <priority>0.75</priority>
+  <priority>0.80</priority>
 </url>
 
-<url>
-  <loc>https://gyantrika.com/shop/bots</loc>
-  <lastmod>2026-03-06</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.75</priority>
-</url>
-
-<!-- Books Section -->
+<!-- Educational Resources -->
 <url>
   <loc>https://gyantrika.com/books</loc>
-  <lastmod>2026-03-06</lastmod>
+  <lastmod>2026-08-21</lastmod>
   <changefreq>weekly</changefreq>
-  <priority>0.7</priority>
+  <priority>0.75</priority>
 </url>
 
 <url>
   <loc>https://gyantrika.com/books/Arduino</loc>
-  <lastmod>2026-03-06</lastmod>
+  <lastmod>2026-08-21</lastmod>
   <changefreq>monthly</changefreq>
-  <priority>0.65</priority>
+  <priority>0.70</priority>
+</url>
+
+<!-- Blog Listing - High Priority for SEO -->
+<url>
+  <loc>https://gyantrika.com/blogs</loc>
+  <lastmod>2026-08-21</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.80</priority>
+</url>
+
+<!-- Individual Blog Posts - High SEO Value -->
+<url>
+  <loc>https://gyantrika.com/blog/arduino-for-beginners-guide</loc>
+  <lastmod>2026-08-21</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.75</priority>
+</url>
+
+<url>
+  <loc>https://gyantrika.com/blog/iot-smart-home-automation-guide</loc>
+  <lastmod>2026-08-21</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.75</priority>
+</url>
+
+<url>
+  <loc>https://gyantrika.com/blog/ai-machine-learning-robotics-guide</loc>
+  <lastmod>2026-08-21</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.75</priority>
+</url>
+
+<url>
+  <loc>https://gyantrika.com/blog/top-robotics-projects-for-students-2026</loc>
+  <lastmod>2026-08-21</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.75</priority>
+</url>
+
+<url>
+  <loc>https://gyantrika.com/blog/3d-printing-in-education-benefits</loc>
+  <lastmod>2026-08-21</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.75</priority>
 </url>
 
 <!-- About and Contact - Standard Priority -->
 <url>
   <loc>https://gyantrika.com/about</loc>
-  <lastmod>2026-03-06</lastmod>
+  <lastmod>2026-08-21</lastmod>
   <changefreq>monthly</changefreq>
-  <priority>0.6</priority>
+  <priority>0.70</priority>
 </url>
 
 <url>
   <loc>https://gyantrika.com/contact</loc>
-  <lastmod>2026-03-06</lastmod>
+  <lastmod>2026-08-21</lastmod>
   <changefreq>monthly</changefreq>
-  <priority>0.7</priority>
+  <priority>0.75</priority>
 </url>
 
 <!-- Legal Pages - Lower Priority -->
 <url>
   <loc>https://gyantrika.com/privacy-policy</loc>
-  <lastmod>2026-03-06</lastmod>
+  <lastmod>2026-08-21</lastmod>
   <changefreq>yearly</changefreq>
-  <priority>0.3</priority>
+  <priority>0.30</priority>
 </url>
 
 <url>
   <loc>https://gyantrika.com/terms-conditions</loc>
-  <lastmod>2026-03-06</lastmod>
+  <lastmod>2026-08-21</lastmod>
   <changefreq>yearly</changefreq>
-  <priority>0.3</priority>
+  <priority>0.30</priority>
 </url>
 
 </urlset>
