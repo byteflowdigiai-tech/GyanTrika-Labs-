@@ -194,12 +194,12 @@ const ProgramsPage = () => {
                                 Filter by Education Level:
                             </h3>
                             <Tabs value={educationFilter} className="w-full" onValueChange={(val) => handleEducationFilterChange(val as EducationFilter)}>
-                                <TabsList className="grid w-full grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2 h-auto p-2 bg-muted/50">
+                                <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 gap-2 h-auto p-2 bg-muted/50">
                                     {educationFilters.map((filter) => (
                                         <TabsTrigger
                                             key={filter}
                                             value={filter}
-                                            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-2"
+                                            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-2 h-auto whitespace-normal text-xs sm:text-sm"
                                         >
                                             {filter}
                                         </TabsTrigger>
