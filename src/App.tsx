@@ -6,8 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { init } from "@emailjs/browser";
 
-// Initialize EmailJS with Public Key
-init("zG-JXRtH0hQyn8B2V");
+
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { ProtectedRoute } from "@/components/ProtectedRoute";
 import ScrollToTop from "@/components/ScrollToTop";
@@ -38,6 +37,9 @@ import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import TermsConditionsPage from "./pages/TermsConditionsPage";
 
 const queryClient = new QueryClient();
+
+// Initialize EmailJS with Public Key
+init("zG-JXRtH0hQyn8B2V");
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
