@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Bot, CircuitBoard, Lightbulb, Rocket, Layers, ArrowRight } from "lucide-react";
+import { Bot, CircuitBoard, Lightbulb, Rocket, Layers, ArrowRight, Printer } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
@@ -33,6 +33,12 @@ const features = [
     title: "Composite Skills Lab",
     description: "Multidisciplinary hub integrating 3D printing, carpentry, and fabrication.",
     href: "/technology-lab-setup/composite-skills",
+  },
+  {
+    icon: Printer,
+    title: "Rapid Prototyping Lab",
+    description: "A specialized facility equipped with advanced 3D printers, laser cutters, and CNC machines.",
+    href: "/technology-lab-setup/rapid-prototyping",
   },
 ];
 
