@@ -52,6 +52,17 @@
 </url>
 
 <url>
+  <loc>https://gyantrika.com/technology-lab-setup/rapid-prototyping</loc>
+  <lastmod>2026-08-21</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.85</priority>
+  <image:image>
+    <image:loc>https://gyantrika.com/favicon.png</image:loc>
+    <image:title>Rapid Prototyping Lab Setup with 3D Printing and Laser Cutting</image:title>
+  </image:image>
+</url>
+
+<url>
   <loc>https://gyantrika.com/technology-lab-setup/embedded-electronics</loc>
   <lastmod>2026-08-21</lastmod>
   <changefreq>weekly</changefreq>
