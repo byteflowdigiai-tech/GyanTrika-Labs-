@@ -115,9 +115,9 @@ export function CTASection() {
   const scrollBrands = [...brands, ...brands];
 
   return (
-    <section className="py-16 bg-primary text-primary-foreground relative overflow-hidden">
+    <section className="py-20 bg-[#0C1446] dark:bg-[#0E1A33] dark:border-y dark:border-border text-white relative overflow-hidden">
       {/* Background decoration */}
-      <div className="absolute inset-0 opacity-10">
+      <div className="absolute inset-0 opacity-[0.06]">
         <div className="absolute top-0 left-0 w-64 h-64 bg-white rounded-full blur-3xl" />
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl" />
       </div>
@@ -133,12 +133,12 @@ export function CTASection() {
           <h2 className="font-display text-3xl md:text-4xl font-bold mb-4 text-white">
             Ready to Start Your Innovation Journey?
           </h2>
-          <p className="text-primary-foreground/80 mb-10 text-lg">
+          <p className="text-white/75 mb-10 text-lg">
             Join hundreds of students who are building the future. Get access to courses, projects, and a community of innovators.
           </p>
 
           <div className="mb-12">
-            <p className="text-primary-foreground/60 text-sm font-medium uppercase tracking-wider mb-8">
+            <p className="text-white/60 text-sm font-medium mb-8">
               Our Trusted Partners
             </p>
             <div className="relative group max-w-4xl mx-auto">
@@ -176,14 +176,14 @@ export function CTASection() {
                 </motion.div>
 
                 {/* Edge Gradient Fade for hiding the "duplicate" entrance */}
-                <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-primary to-transparent z-10" />
-                <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-primary to-transparent z-10" />
+                <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#0C1446] dark:from-[#0E1A33] to-transparent z-10" />
+                <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#0C1446] dark:from-[#0E1A33] to-transparent z-10" />
               </div>
             </div>
           </div>
 
           <div className="flex flex-row gap-2 sm:gap-4 justify-center">
-            <Button asChild size="lg" variant="secondary" className="flex-1 sm:flex-none h-auto min-h-[44px] sm:h-11 py-2 sm:py-0 px-3 sm:px-8 text-[12px] sm:text-[15px] gap-1 sm:gap-2 whitespace-normal">
+            <Button asChild size="lg" className="bg-white text-[#0C1446] hover:bg-white/90 font-semibold flex-1 sm:flex-none h-auto min-h-[44px] sm:h-11 py-2 sm:py-0 px-3 sm:px-8 text-[12px] sm:text-[15px] gap-1 sm:gap-2 whitespace-normal">
               <Link to="/technology-lab-setup" className="flex items-center justify-center text-center leading-tight">
                 <span>Technology Lab Setup</span>
               </Link>

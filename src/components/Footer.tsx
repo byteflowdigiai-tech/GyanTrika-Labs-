@@ -5,12 +5,8 @@ import logo from "@/assets/logo.png";
 export function Footer() {
 
     return (
-        <footer className="relative bg-[#FFFFFF] dark:bg-background border-t circuit-pattern overflow-hidden">
+        <footer className="relative bg-card dark:bg-background border-t border-border overflow-hidden">
             {/* Premium Atmosphere - Matching Hero Section */}
-            <div className="absolute inset-0 pointer-events-none z-0">
-                <div className="absolute inset-y-0 left-0 w-full md:w-[75%] bg-gradient-to-r from-[#2B5C92]/60 via-[#B3CDE0]/30 to-transparent" />
-                <div className="absolute top-0 right-0 w-[50%] h-[100%] bg-gradient-to-bl from-[#B3CDE0]/10 to-transparent" />
-            </div>
             
             <div className="container relative z-10 py-12">
                 <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-x-4 gap-y-8 md:gap-8">
@@ -28,7 +24,7 @@ export function Footer() {
 
                     {/* Quick Links */}
                     <div>
-                        <h4 className="font-display font-semibold mb-4">Quick Links</h4>
+                        <h4 className="font-display font-semibold text-sm text-foreground mb-4">Quick Links</h4>
                         <ul className="space-y-2 text-sm">
                             <li><Link to="/lms" className="text-muted-foreground hover:text-primary transition-colors">LMS</Link></li>
                             <li><Link to="/shop/kits" className="text-muted-foreground hover:text-primary transition-colors">Shop</Link></li>
@@ -40,7 +36,7 @@ export function Footer() {
 
                     {/* Lab Setups */}
                     <div>
-                        <h4 className="font-display font-semibold mb-4">Lab Setups</h4>
+                        <h4 className="font-display font-semibold text-sm text-foreground mb-4">Lab Setups</h4>
                         <ul className="space-y-2 text-sm">
                             <li><Link to="/technology-lab-setup/stem-tinkering" className="text-muted-foreground hover:text-primary transition-colors">Atal Tinkering Lab</Link></li>
                             <li><Link to="/technology-lab-setup/ai-robotics" className="text-muted-foreground hover:text-primary transition-colors">Ai , STEM & Robotics Lab</Link></li>
@@ -53,7 +49,7 @@ export function Footer() {
 
                     {/* Legal — full width on desktop, left col on mobile hidden on mobile to merge with contact */}
                     <div className="hidden md:block">
-                        <h4 className="font-display font-semibold mb-4">Legal</h4>
+                        <h4 className="font-display font-semibold text-sm text-foreground mb-4">Legal</h4>
                         <ul className="space-y-2 text-sm">
                             <li><Link to="/privacy-policy" className="text-muted-foreground hover:text-primary transition-colors">Privacy Policy</Link></li>
                             <li><Link to="/terms-conditions" className="text-muted-foreground hover:text-primary transition-colors">Terms &amp; Conditions</Link></li>
@@ -62,10 +58,10 @@ export function Footer() {
 
                     {/* Contact — full width on desktop */}
                     <div className="hidden md:block">
-                        <h4 className="font-display font-semibold mb-4">Contact Us</h4>
+                        <h4 className="font-display font-semibold text-sm text-foreground mb-4">Contact Us</h4>
                         <ul className="space-y-3 text-sm">
                             <li className="flex items-start gap-2">
-                                <MapPin className="h-4 w-4 mt-1 text-primary" />
+                                <MapPin className="h-4 w-4 mt-1 text-primary shrink-0" />
                                 <span className="text-muted-foreground">Main Branch: Byteflow DigiAI, 1st Floor, Neeladri Complex, 10th Cross, 2nd Main, Sampige Rd, Malleshwaram, Bengaluru, Karnataka 560003<br />Sub-branch: Guwahati</span>
                             </li>
                             <li className="flex items-center gap-2">
@@ -81,14 +77,14 @@ export function Footer() {
 
                     {/* Mobile-only Row 1: Legal (left) | Location (right) */}
                     <div className="md:hidden">
-                        <h4 className="font-display font-semibold mb-4">Legal</h4>
+                        <h4 className="font-display font-semibold text-sm text-foreground mb-4">Legal</h4>
                         <ul className="space-y-2 text-sm">
                             <li><Link to="/privacy-policy" className="text-muted-foreground hover:text-primary transition-colors">Privacy Policy</Link></li>
                             <li><Link to="/terms-conditions" className="text-muted-foreground hover:text-primary transition-colors">Terms &amp; Conditions</Link></li>
                         </ul>
                     </div>
                     <div className="md:hidden">
-                        <h4 className="font-display font-semibold mb-4">Contact Us</h4>
+                        <h4 className="font-display font-semibold text-sm text-foreground mb-4">Contact Us</h4>
                         <ul className="space-y-3 text-sm">
                             <li className="flex items-start gap-2">
                                 <MapPin className="h-4 w-4 mt-1 text-primary shrink-0" />
