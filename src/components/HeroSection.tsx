@@ -1,5 +1,5 @@
 import { motion, useInView, useSpring, useTransform } from "framer-motion";
-import { ArrowRight, Cpu, Bot, Lightbulb, Box, Network, Terminal, Code2, Database, Braces, Book, Library, BookOpen, Plane, Layers, Wrench } from "lucide-react";
+import { ArrowRight, Cpu, Bot, Lightbulb, Box, Layers, Wrench } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import roboticArm from "@/assets/robotic-arm.jpg";
@@ -12,36 +12,23 @@ const FloatingBranchCard = ({ title, topics, icon: Icon, className, delay, rotat
       className="relative rounded-xl w-[240px] sm:w-[280px]"
       style={{ transformStyle: 'preserve-3d' }}
       initial={{ y: 0, rotateY, rotateX: 0 }}
-      animate={{ 
-        y: [0, -15, 0], 
-        rotateY: [rotateY, rotateY + 8, rotateY - 8, rotateY], 
-        rotateX: [0, 8, -8, 0] 
-      }}
-      transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay }}
+      animate={{ y: [0, -8, 0] }}
+      transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay }}
     >
-      {/* 3D Depth / Back Plate to simulate physical thickness */}
-      <div 
-        className="absolute inset-0 rounded-xl bg-gradient-to-r from-[#B3CDE0] to-[#2B5C92]/30 border border-[#2B5C92]/40 opacity-70"
-        style={{ transform: 'translateZ(-8px)' }}
-      />
-      {/* 3D Depth / Front Glass Layer */}
-      <div 
-        className="relative p-4 sm:p-5 rounded-xl border border-[#B3CDE0] bg-white dark:bg-card/80 backdrop-blur-md flex items-center justify-between shadow-[0_15px_35px_rgba(43,92,146,0.15),_inset_0_0_20px_rgba(255,255,255,0.9)]"
-        style={{ transform: 'translateZ(0px)', transformStyle: 'preserve-3d' }}
-      >
-        <div className="flex-1 min-w-0" style={{ transform: 'translateZ(25px)' }}>
-          <h3 className="font-bold text-[#0C1446] dark:text-foreground text-[12px] sm:text-[14px] mb-2 tracking-wide drop-shadow-sm">{title}</h3>
+      <div className="relative p-4 sm:p-5 rounded-xl border border-border bg-card/95 backdrop-blur-md flex items-center justify-between shadow-[0_12px_32px_-12px_rgba(12,20,70,0.25)]">
+        <div className="flex-1 min-w-0">
+          <h3 className="font-semibold text-foreground text-[13px] sm:text-[14px] mb-2 tracking-normal">{title}</h3>
           <ul className="space-y-1.5">
             {topics.map((t, i) => (
-              <li key={i} className="text-[#2B5C92] dark:text-primary text-[11px] sm:text-[12px] flex items-center gap-1.5 font-medium drop-shadow-sm">
-                <span className="w-1.5 h-1.5 rounded-sm bg-[#B3CDE0] shadow-[0_0_5px_#B3CDE0]" />
+              <li key={i} className="text-muted-foreground text-[11px] sm:text-[12px] flex items-center gap-1.5">
+                <span className="w-1 h-1 rounded-full bg-secondary dark:bg-primary" />
                 {t}
               </li>
             ))}
           </ul>
         </div>
-        <div className="ml-3 shrink-0" style={{ transform: 'translateZ(40px)' }}>
-          <Icon className="w-10 h-10 sm:w-12 sm:h-12 text-[#2B5C92] dark:text-primary" strokeWidth={1.5} style={{ filter: 'drop-shadow(0 4px 6px rgba(43,92,146,0.2))' }} />
+        <div className="ml-3 shrink-0 w-11 h-11 rounded-lg bg-primary/[0.06] dark:bg-primary/10 flex items-center justify-center">
+          <Icon className="w-6 h-6 text-secondary dark:text-primary" strokeWidth={1.75} />
         </div>
       </div>
     </motion.div>
@@ -90,13 +77,13 @@ export function HeroSection() {
     <section className="relative min-h-[90vh] flex items-center bg-[#FFFFFF] dark:bg-background circuit-pattern overflow-hidden">
       {/* Starry Night Premium Atmosphere - Exact match to Image 2 */}
       <div className="absolute inset-0 pointer-events-none z-0">
-        <div className="absolute inset-y-0 left-0 w-full md:w-[75%] bg-gradient-to-r from-[#2B5C92]/60 via-[#B3CDE0]/30 to-transparent" />
+        <div className="absolute inset-y-0 left-0 w-full md:w-[75%] bg-gradient-to-r from-[#2B5C92]/[0.08] via-[#B3CDE0]/10 to-transparent dark:from-[#2B5C92]/40 dark:via-[#2B5C92]/10" />
         <div className="absolute top-0 right-0 w-[50%] h-[50%] bg-gradient-to-bl from-[#B3CDE0]/10 to-transparent" />
       </div>
 
       {/* Light Mode: Background robotic arm elements */}
       <motion.div
-        className="absolute right-[-15%] sm:right-[-2%] top-[8%] sm:top-[5%] w-[80%] sm:w-[45%] opacity-[0.4] sm:opacity-[0.5] pointer-events-none select-none dark:hidden z-10 mix-blend-multiply"
+        className="absolute right-[-15%] sm:right-[-2%] top-[8%] sm:top-[5%] w-[80%] sm:w-[45%] opacity-[0.12] sm:opacity-[0.5] pointer-events-none select-none dark:hidden z-10 mix-blend-multiply"
         initial={{ rotate: -10, y: 0 }}
         animate={{
           rotate: [-10, 5, -10],
@@ -115,28 +102,6 @@ export function HeroSection() {
         />
       </motion.div>
 
-      {/* Light Mode: Left side decorative books (Knowledge/Learning) */}
-      <motion.div
-        className="absolute left-[2%] bottom-[10%] w-[30%] opacity-[0.15] pointer-events-none select-none hidden lg:block dark:hidden"
-        initial={{ y: 20, rotate: -5 }}
-        animate={{
-          y: [-10, 10, -10],
-          rotate: [-5, 0, -5]
-        }}
-        transition={{
-          duration: 12,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      >
-        <div className="flex flex-col gap-8 items-center opacity-40">
-          <Library className="w-32 h-32 text-[#2B5C92] dark:text-primary/60" strokeWidth={1} />
-          <div className="flex gap-12 -mt-4">
-            <Book className="w-20 h-20 text-[#2B5C92] dark:text-primary/50 -rotate-12" strokeWidth={1} />
-            <BookOpen className="w-24 h-24 text-[#2B5C92] dark:text-primary/50 rotate-12" strokeWidth={1} />
-          </div>
-        </div>
-      </motion.div>
 
       {/* Dark Mode: Background robot element */}
       <motion.div
@@ -168,7 +133,7 @@ export function HeroSection() {
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-20">
         {/* Branch Cards - Left side of the robotic arm */}
         <FloatingBranchCard
-          title="3D PRINTING"
+          title="3D Printing"
           topics={["CAD Design", "Prototyping", "Materials"]}
           icon={Layers}
           className="right-[22%] xl:right-[28%] top-[10%]"
@@ -176,7 +141,7 @@ export function HeroSection() {
           rotateY={25}
         />
         <FloatingBranchCard
-          title="IOT & EMBEDDED"
+          title="IoT & Embedded"
           topics={["Sensors", "Microcontrollers", "Smart Devices"]}
           icon={Cpu}
           className="right-[25%] xl:right-[32%] top-[40%]"
@@ -194,7 +159,7 @@ export function HeroSection() {
 
         {/* Branch Cards - Right side of the robotic arm */}
         <FloatingBranchCard
-          title="AI & ROBOTICS"
+          title="AI & Robotics"
           topics={["Machine Learning", "Computer Vision", "Automation"]}
           icon={Bot}
           className="right-[1%] xl:right-[5%] top-[18%]"
@@ -202,7 +167,7 @@ export function HeroSection() {
           rotateY={-25}
         />
         <FloatingBranchCard
-          title="COMPOSITE SKILLS"
+          title="Composite Skills"
           topics={["3D Printing", "Fabrication", "Design"]}
           icon={Box}
           className="right-[-2%] xl:right-[2%] top-[48%]"
@@ -210,61 +175,13 @@ export function HeroSection() {
           rotateY={-30}
         />
         <FloatingBranchCard
-          title="RAPID PROTOTYPING"
+          title="Rapid Prototyping"
           topics={["Laser Cutting", "CNC Machining", "3D Modeling"]}
           icon={Wrench}
           className="right-[3%] xl:right-[8%] bottom-[8%]"
           delay={1.1}
           rotateY={-20}
         />
-
-        {/* Decorative Glowing Nodes */}
-        {[
-          { top: '15%', left: '15%', i: 1 },
-          { top: '25%', left: '45%', i: 2 },
-          { top: '60%', left: '8%', i: 3 },
-          { top: '75%', left: '40%', i: 4 },
-          { top: '35%', left: '85%', i: 5 },
-          { top: '65%', left: '75%', i: 6 },
-          { top: '20%', left: '5%', i: 7 },
-          { top: '50%', left: '15%', i: 8 },
-        ].map((node) => (
-          <motion.div
-            key={node.i}
-            className="absolute w-2 h-2 rounded-full bg-[#B3CDE0]/50"
-            style={{ top: node.top, left: node.left }}
-            animate={{
-              scale: [1, 1.8, 1],
-              opacity: [0.2, 0.6, 0.2]
-            }}
-            transition={{
-              duration: 3 + Math.random() * 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: node.i * 0.4
-            }}
-          />
-        ))}
-
-        {/* Decorative Grid Circles */}
-        {[
-          { top: '10%', left: '20%', size: 40 },
-          { top: '80%', left: '15%', size: 30 },
-          { top: '40%', left: '80%', size: 25 },
-          { top: '30%', left: '10%', size: 50 },
-          { top: '60%', left: '20%', size: 20 },
-        ].map((circle, i) => (
-          <div
-            key={i}
-            className="absolute rounded-full border border-[#B3CDE0]/30 dark:border-border"
-            style={{
-              top: circle.top,
-              left: circle.left,
-              width: circle.size,
-              height: circle.size
-            }}
-          />
-        ))}
       </div>
 
       <div className="container relative z-10 pt-16 lg:pt-24 pb-12 pointer-events-none min-h-[85vh] flex flex-col justify-center">
@@ -274,25 +191,24 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white dark:bg-card border border-[#B3CDE0]/30 dark:border-border shadow-sm mb-8">
-              <Cpu className="w-4 h-4 text-[#2B5C92] dark:text-primary" />
-              <span className="text-sm font-medium text-[#2B5C92] dark:text-primary tracking-wide uppercase font-display">LAB OF IDEAS · Innovation Hub</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-card border border-border shadow-sm mb-6">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+              <span className="text-[13px] font-medium text-muted-foreground">Lab of Ideas · Innovation Hub</span>
             </div>
           </motion.div>
 
           <motion.h1
-            className="font-display text-3xl leading-[1.1] sm:text-4xl sm:leading-[1.1] md:text-[5.5rem] md:leading-[1.05] font-extrabold mb-8 tracking-tight text-[#0C1446] dark:text-foreground uppercase break-words"
+            className="font-display text-4xl leading-[1.1] sm:text-5xl sm:leading-[1.08] lg:text-[4rem] lg:leading-[1.05] font-bold mb-6 tracking-tight text-foreground break-words"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            SHAPING <span className="md:whitespace-nowrap">FUTURE SKILLS.</span> <br />
-            INSPIRING FUTURE <br />
-            <span className="text-[#2B5C92] dark:text-primary">INNOVATORS.</span>
+            Shaping future skills. <br className="hidden sm:block" />
+            Inspiring future <span className="text-secondary dark:text-primary">innovators.</span>
           </motion.h1>
 
           <motion.p
-            className="text-xl md:text-[22px] text-[#2B5C92] dark:text-primary/90 max-w-[650px] mb-12 leading-relaxed font-medium"
+            className="text-lg md:text-xl text-muted-foreground max-w-[600px] mb-10 leading-relaxed"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -302,48 +218,48 @@ export function HeroSection() {
 
           {/* 2x2 Feature Grid - Matching Target Image Layout */}
           <motion.div 
-            className="grid grid-cols-2 gap-x-2 sm:gap-x-8 gap-y-5 sm:gap-y-6 mb-12 max-w-[600px]"
+            className="grid grid-cols-2 gap-x-4 sm:gap-x-8 gap-y-5 mb-10 max-w-[560px]"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <div className="flex items-center gap-3 sm:gap-4">
-              <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-white dark:bg-card shadow-sm border border-[#B3CDE0]/30 dark:border-border flex items-center justify-center shrink-0">
-                <Bot className="w-5 h-5 sm:w-6 sm:h-6 text-[#2B5C92] dark:text-primary" />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-card border border-border flex items-center justify-center shrink-0">
+                <Bot className="w-5 h-5 text-secondary dark:text-primary" />
               </div>
               <div>
-                <div className="font-bold text-[#0C1446] dark:text-foreground text-[14px] sm:text-[17px] leading-tight mb-0.5 sm:mb-0">15+ Projects</div>
-                <div className="text-[#2B5C92] dark:text-primary/80 text-[12px] sm:text-[15px] font-medium leading-tight">Real-world building</div>
+                <div className="font-semibold text-foreground text-[14px] sm:text-[16px] leading-tight mb-0.5">15+ Projects</div>
+                <div className="text-muted-foreground text-[12px] sm:text-[14px] leading-tight">Real-world building</div>
               </div>
             </div>
             
             <div className="flex items-center gap-3 sm:gap-4">
-              <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-white dark:bg-card shadow-sm border border-[#B3CDE0]/30 dark:border-border flex items-center justify-center shrink-0">
-                <Lightbulb className="w-5 h-5 sm:w-6 sm:h-6 text-[#2B5C92] dark:text-primary" />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-card border border-border flex items-center justify-center shrink-0">
+                <Lightbulb className="w-5 h-5 text-secondary dark:text-primary" />
               </div>
               <div>
-                <div className="font-bold text-[#0C1446] dark:text-foreground text-[14px] sm:text-[17px] leading-tight mb-0.5 sm:mb-0">8+ Courses</div>
-                <div className="text-[#2B5C92] dark:text-primary/80 text-[12px] sm:text-[15px] font-medium leading-tight">Industry aligned</div>
+                <div className="font-semibold text-foreground text-[14px] sm:text-[16px] leading-tight mb-0.5">8+ Courses</div>
+                <div className="text-muted-foreground text-[12px] sm:text-[14px] leading-tight">Industry aligned</div>
               </div>
             </div>
 
             <div className="flex items-center gap-3 sm:gap-4">
-              <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-white dark:bg-card shadow-sm border border-[#B3CDE0]/30 dark:border-border flex items-center justify-center shrink-0">
-                <Cpu className="w-5 h-5 sm:w-6 sm:h-6 text-[#2B5C92] dark:text-primary" />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-card border border-border flex items-center justify-center shrink-0">
+                <Cpu className="w-5 h-5 text-secondary dark:text-primary" />
               </div>
               <div>
-                <div className="font-bold text-[#0C1446] dark:text-foreground text-[14px] sm:text-[17px] leading-tight mb-0.5 sm:mb-0">2000+ Students</div>
-                <div className="text-[#2B5C92] dark:text-primary/80 text-[12px] sm:text-[15px] font-medium leading-tight">Active learners</div>
+                <div className="font-semibold text-foreground text-[14px] sm:text-[16px] leading-tight mb-0.5">2000+ Students</div>
+                <div className="text-muted-foreground text-[12px] sm:text-[14px] leading-tight">Active learners</div>
               </div>
             </div>
 
             <div className="flex items-center gap-3 sm:gap-4">
-              <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-white dark:bg-card shadow-sm border border-[#B3CDE0]/30 dark:border-border flex items-center justify-center shrink-0">
-                <Box className="w-5 h-5 sm:w-6 sm:h-6 text-[#2B5C92] dark:text-primary" />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-card border border-border flex items-center justify-center shrink-0">
+                <Box className="w-5 h-5 text-secondary dark:text-primary" />
               </div>
               <div>
-                <div className="font-bold text-[#0C1446] dark:text-foreground text-[14px] sm:text-[17px] leading-tight mb-0.5 sm:mb-0">5+ Labs</div>
-                <div className="text-[#2B5C92] dark:text-primary/80 text-[12px] sm:text-[15px] font-medium leading-tight">Future-ready setup</div>
+                <div className="font-semibold text-foreground text-[14px] sm:text-[16px] leading-tight mb-0.5">5+ Labs</div>
+                <div className="text-muted-foreground text-[12px] sm:text-[14px] leading-tight">Future-ready setup</div>
               </div>
             </div>
           </motion.div>
@@ -355,14 +271,14 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <Button asChild size="lg" className="flex-1 sm:flex-none h-14 px-2 sm:px-8 text-[14px] sm:text-[17px] gap-2 bg-[#0C1446] hover:bg-[#2B5C92] text-white shadow-lg shadow-[#0C1446]/20 rounded-xl">
+            <Button asChild size="lg" className="flex-1 sm:flex-none h-12 px-3 sm:px-7 text-[14px] sm:text-[15px] font-semibold gap-2 bg-primary hover:bg-primary/90 text-primary-foreground shadow-sm rounded-lg">
               <Link to="/lms" className="flex items-center justify-center">
-                Start Learning <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-1" />
+                Start Learning <ArrowRight className="w-4 h-4 ml-1" />
               </Link>
             </Button>
-            <Button asChild variant="outline" size="lg" className="flex-1 sm:flex-none h-14 px-2 sm:px-8 text-[14px] sm:text-[17px] gap-2 border-2 border-[#B3CDE0]/50 text-[#0C1446] dark:text-foreground hover:bg-[#B3CDE0]/10 bg-white dark:bg-card/50 backdrop-blur-sm rounded-xl">
+            <Button asChild variant="outline" size="lg" className="flex-1 sm:flex-none h-12 px-3 sm:px-7 text-[14px] sm:text-[15px] font-semibold gap-2 border border-border text-foreground hover:bg-muted bg-card rounded-lg">
               <Link to="/technology-lab-setup" className="flex items-center justify-center">
-                Explore Labs <Terminal className="w-4 h-4 sm:w-5 sm:h-5 ml-1" />
+                Explore Labs
               </Link>
             </Button>
           </motion.div>
@@ -373,54 +289,29 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
           >
-            <p className="text-xs font-semibold uppercase tracking-widest text-[#2B5C92] dark:text-primary/70 mb-4">Explore Our Labs</p>
-            <div className="flex gap-4 overflow-x-auto pb-5 scrollbar-hide snap-x snap-mandatory" style={{ perspective: 1000 }}>
+            <p className="text-sm font-semibold text-foreground mb-3">Explore our labs</p>
+            <div className="flex gap-3 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory">
               {[
-                { title: "3D PRINTING", topics: ["CAD Design", "Prototyping", "Materials"], Icon: Layers, rotateY: 12, delay: 0 },
-                { title: "IOT & EMBEDDED", topics: ["Sensors", "Microcontrollers", "Smart Devices"], Icon: Cpu, rotateY: -10, delay: 0.4 },
-                { title: "AI & ROBOTICS", topics: ["Machine Learning", "Computer Vision", "Automation"], Icon: Bot, rotateY: 15, delay: 0.8 },
-                { title: "COMPOSITE SKILLS", topics: ["3D Printing", "Fabrication", "Design"], Icon: Box, rotateY: -12, delay: 1.2 },
-                { title: "RAPID PROTOTYPING", topics: ["Laser Cutting", "CNC Machining", "3D Modeling"], Icon: Wrench, rotateY: 10, delay: 1.6 },
-                { title: "STEM", topics: ["Science & Math", "Tinkering", "Engineering"], Icon: Lightbulb, rotateY: -8, delay: 2.0 },
+                { title: "3D Printing", topics: ["CAD Design", "Prototyping", "Materials"], Icon: Layers },
+                { title: "IoT & Embedded", topics: ["Sensors", "Microcontrollers", "Smart Devices"], Icon: Cpu },
+                { title: "AI & Robotics", topics: ["Machine Learning", "Computer Vision", "Automation"], Icon: Bot },
+                { title: "Composite Skills", topics: ["3D Printing", "Fabrication", "Design"], Icon: Box },
+                { title: "Rapid Prototyping", topics: ["Laser Cutting", "CNC Machining", "3D Modeling"], Icon: Wrench },
+                { title: "STEM", topics: ["Science & Math", "Tinkering", "Engineering"], Icon: Lightbulb },
               ].map((card, i) => (
-                <div key={i} className="shrink-0 snap-start" style={{ perspective: 1200 }}>
-                  <motion.div
-                    className="relative rounded-xl w-[190px]"
-                    style={{ transformStyle: 'preserve-3d' }}
-                    initial={{ y: 0, rotateY: card.rotateY, rotateX: 0 }}
-                    animate={{
-                      y: [0, -10, 0],
-                      rotateY: [card.rotateY, card.rotateY + 8, card.rotateY - 8, card.rotateY],
-                      rotateX: [0, 6, -6, 0]
-                    }}
-                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: card.delay }}
-                  >
-                    {/* 3D Back Plate */}
-                    <div
-                      className="absolute inset-0 rounded-xl bg-gradient-to-r from-[#B3CDE0] to-[#2B5C92]/30 border border-[#2B5C92]/40 opacity-70"
-                      style={{ transform: 'translateZ(-8px)' }}
-                    />
-                    {/* 3D Front Glass Layer */}
-                    <div
-                      className="relative p-3.5 rounded-xl border border-[#B3CDE0] bg-white dark:bg-card/80 backdrop-blur-md flex items-center justify-between shadow-[0_15px_35px_rgba(43,92,146,0.15),_inset_0_0_20px_rgba(255,255,255,0.9)]"
-                      style={{ transform: 'translateZ(0px)', transformStyle: 'preserve-3d' }}
-                    >
-                      <div className="flex-1 min-w-0" style={{ transform: 'translateZ(25px)' }}>
-                        <h3 className="font-bold text-[#0C1446] dark:text-foreground text-[11px] mb-2 tracking-wide drop-shadow-sm leading-tight">{card.title}</h3>
-                        <ul className="space-y-1">
-                          {card.topics.map((t, j) => (
-                            <li key={j} className="text-[#2B5C92] dark:text-primary text-[10px] flex items-center gap-1.5 font-medium drop-shadow-sm">
-                              <span className="w-1.5 h-1.5 rounded-sm bg-[#B3CDE0] shadow-[0_0_5px_#B3CDE0] shrink-0" />
-                              {t}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      <div className="ml-2 shrink-0" style={{ transform: 'translateZ(40px)' }}>
-                        <card.Icon className="w-8 h-8 text-[#2B5C92] dark:text-primary" strokeWidth={1.5} style={{ filter: 'drop-shadow(0 4px 6px rgba(43,92,146,0.2))' }} />
-                      </div>
-                    </div>
-                  </motion.div>
+                <div key={i} className="shrink-0 snap-start w-[190px] p-3.5 rounded-xl border border-border bg-card flex items-center justify-between shadow-sm">
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-semibold text-foreground text-[12px] mb-2 leading-tight tracking-normal">{card.title}</h3>
+                    <ul className="space-y-1">
+                      {card.topics.map((t, j) => (
+                        <li key={j} className="text-muted-foreground text-[11px] flex items-center gap-1.5">
+                          <span className="w-1 h-1 rounded-full bg-secondary dark:bg-primary shrink-0" />
+                          {t}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <card.Icon className="ml-2 w-6 h-6 shrink-0 text-secondary dark:text-primary" strokeWidth={1.75} />
                 </div>
               ))}
             </div>

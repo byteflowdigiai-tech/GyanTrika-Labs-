@@ -2,6 +2,7 @@ import React, { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Environment, ContactShadows } from '@react-three/drei';
 import InnovationHubImage from './InnovationHubImage';
+import { ErrorBoundary } from '../ErrorBoundary';
 
 export default function InnovationHub3D() {
   return (
@@ -28,8 +29,14 @@ export default function InnovationHub3D() {
             <ContactShadows position={[0, -9.1, 0]} opacity={0.5} scale={40} blur={2.0} far={10} />
           </group>
           
-          <Environment preset="city" />
         </Suspense>
+
+        {/* The HDR preset is fetched from a CDN; if it fails, keep the scene lit by the lights above */}
+        <ErrorBoundary>
+          <Suspense fallback={null}>
+            <Environment preset="city" />
+          </Suspense>
+        </ErrorBoundary>
 
         <OrbitControls 
           makeDefault

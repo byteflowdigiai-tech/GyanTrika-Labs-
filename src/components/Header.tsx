@@ -31,7 +31,7 @@ export const Header = () => {
     };
 
     return (
-        <header className="sticky top-0 z-50 w-full bg-background border-b border-border/40 shadow-sm transition-all duration-300">
+        <header className="sticky top-0 z-50 w-full bg-background/90 backdrop-blur-md supports-[backdrop-filter]:bg-background/80 border-b border-border transition-all duration-300">
             <div className="w-full max-w-[1400px] mx-auto px-4 md:px-6 lg:px-8">
                 <div className="flex h-16 md:h-24 items-center justify-between">
                     {/* Logo - Visually scaled up without increasing navbar height */}
@@ -49,9 +49,9 @@ export const Header = () => {
                             <Link
                                 key={item.path}
                                 to={item.path}
-                                className={`px-3 py-2 xl:px-4 text-[13px] xl:text-sm font-display font-medium transition-all duration-200 rounded-full whitespace-nowrap ${isActive(item.path)
-                                    ? 'bg-foreground text-background shadow-md'
-                                    : 'text-muted-foreground hover:text-foreground hover:bg-secondary/50'
+                                className={`px-3 py-2 xl:px-3.5 text-[13px] xl:text-sm font-medium transition-colors duration-200 rounded-md whitespace-nowrap ${isActive(item.path)
+                                    ? 'text-primary bg-primary/[0.08] dark:bg-primary/15'
+                                    : 'text-muted-foreground hover:text-foreground hover:bg-muted'
                                     }`}
                             >
                                 {item.name}
@@ -66,13 +66,13 @@ export const Header = () => {
                             <TooltipTrigger asChild>
                                 <button
                                     onClick={toggleTheme}
-                                    className="p-2.5 rounded-full hover:bg-secondary transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary/20 active:scale-95 group"
+                                    className="p-2.5 rounded-md hover:bg-muted transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary/20 active:scale-95 group"
                                     aria-label="Toggle theme"
                                 >
                                     {isDark ? (
-                                        <Sun className="h-5 w-5 text-muted-foreground group-hover:text-yellow-500 transition-colors" />
+                                        <Sun className="h-5 w-5 text-muted-foreground group-hover:text-foreground transition-colors" />
                                     ) : (
-                                        <Moon className="h-5 w-5 text-muted-foreground group-hover:text-violet-500 transition-colors" />
+                                        <Moon className="h-5 w-5 text-muted-foreground group-hover:text-foreground transition-colors" />
                                     )}
                                 </button>
                             </TooltipTrigger>
@@ -84,7 +84,7 @@ export const Header = () => {
                         {/* Mobile Menu Toggle */}
                         <button
                             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                            className="lg:hidden p-2 rounded-md hover:bg-secondary/50 transition-colors duration-200"
+                            className="lg:hidden p-2 rounded-md hover:bg-muted transition-colors duration-200"
                             aria-label="Toggle menu"
                         >
                             {isMobileMenuOpen ? (
@@ -105,9 +105,9 @@ export const Header = () => {
                                     key={item.path}
                                     to={item.path}
                                     onClick={() => setIsMobileMenuOpen(false)}
-                                    className={`px-4 py-2 text-sm font-display font-medium transition-colors duration-200 rounded-md ${isActive(item.path)
+                                    className={`px-4 py-2.5 text-sm font-medium transition-colors duration-200 rounded-md ${isActive(item.path)
                                         ? 'text-primary font-semibold bg-primary/10'
-                                        : 'text-muted-foreground hover:text-foreground hover:bg-secondary/50'
+                                        : 'text-muted-foreground hover:text-foreground hover:bg-muted'
                                         }`}
                                 >
                                     {item.name}
